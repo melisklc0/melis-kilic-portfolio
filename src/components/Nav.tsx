@@ -20,8 +20,9 @@ export function Nav() {
   const links = [
     { href: '#about',      label: t.nav.about },
     { href: '#skills',     label: t.nav.skills },
-    { href: '#projects',   label: t.nav.projects },
     { href: '#experience', label: t.nav.experience },
+    { href: '#projects',   label: t.nav.projects },
+    { href: '#education',  label: t.nav.education },
     { href: '#certificates', label: lang === 'en' ? 'Certificates' : 'Sertifikalar' },
     { href: '#contact',    label: t.nav.contact },
   ];

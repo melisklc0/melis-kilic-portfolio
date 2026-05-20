@@ -3,7 +3,7 @@ export type Lang = 'en' | 'tr';
 export const translations = {
   en: {
     nav: {
-      about: 'About', skills: 'Skills', projects: 'Projects', experience: 'Experience', contact: 'Contact',
+      about: 'About', skills: 'Skills', projects: 'Projects', experience: 'Experience', education: 'Education', contact: 'Contact',
     },
     hero: {
       role: 'AI & Data Engineer',
@@ -60,7 +60,7 @@ Currently building AI-powered healthcare products at Qkare Bilgi Teknolojileri.`
   },
   tr: {
     nav: {
-      about: 'Hakkımda', skills: 'Yetenekler', projects: 'Projeler', experience: 'Deneyim', contact: 'İletişim',
+      about: 'Hakkımda', skills: 'Yetenekler', projects: 'Projeler', experience: 'Deneyim', education: 'Eğitim', contact: 'İletişim',
     },
     hero: {
       role: 'Yapay Zeka & Veri Mühendisi',
