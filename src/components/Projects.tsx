@@ -13,7 +13,7 @@ export function Projects() {
   return (
     <section id="projects" className="relative overflow-hidden border-t border-border bg-page py-20 md:py-28">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-[linear-gradient(to_bottom,rgba(15,50,72,0.06),transparent)]" />
-      <div className="container-main">
+      <div className="mx-auto max-w-[1320px] px-5 md:px-8">
         <div className="relative mb-12 grid gap-6 md:grid-cols-[0.72fr_1fr] md:items-end">
           <div>
             <p className="section-eyebrow">{t.projects.label}</p>
@@ -22,8 +22,8 @@ export function Projects() {
           <div className="flex flex-col gap-4 md:items-end">
             <p className="max-w-xl text-sm leading-7 text-text-secondary md:text-right">
               {lang === 'en'
-                ? 'Selected systems framed as mini case studies: problem, contribution, technical approach, and outcome.'
-                : 'Secilmis sistemler mini vaka calismasi olarak: problem, katki, teknik yaklasim ve sonuc.'}
+                ? 'Production systems with architecture, scale, technical focus, and real delivery context.'
+                : 'Production sistemler: mimari, ölçek, teknik odak ve gerçek ürün bağlamıyla.'}
             </p>
             <span className="metric-chip">
               {projects.length} {lang === 'en' ? 'projects' : 'proje'} / {featured.length} {lang === 'en' ? 'featured' : 'one cikan'}

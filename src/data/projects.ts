@@ -64,7 +64,7 @@ export const projects: Project[] = [
         'A multi-tenant workforce analytics platform that turns psychometric and HR assessment data into secure, role-isolated dashboards embedded inside a SaaS product. The stack combines a 100+ model dbt transformation layer, PostgreSQL row-level security, and customized Apache Superset delivery for production BI workflows.',
       focusTitle: 'My focus — dbt correctness, RLS security & embedded BI',
       focusSummary:
-        'I worked where data correctness, tenant isolation, and embedded dashboard reliability meet. My contributions focused on fixing dbt mart logic, turning benchmark parity into automated data contracts, validating cross-tenant RLS behavior, and resolving Superset embedding issues that directly affected production dashboards. The broader platform was a team effort; my strongest footprint is in the analytics layer and the BI delivery path that made the product trustworthy for real users.',
+        'I worked where data correctness, tenant isolation, and embedded dashboard reliability meet. My strongest footprint is in dbt mart fixes, benchmark parity tests, cross-tenant RLS validation, and Superset embedding issues that affected production dashboard behavior.',
       metrics: [
         { value: '100+', label: 'dbt models' },
         { value: 'RLS', label: 'tenant isolation' },
@@ -114,7 +114,7 @@ export const projects: Project[] = [
         'Psikometrik ve HR assessment verisini, SaaS ürününün içine gömülü güvenli dashboard deneyimine taşıyan multi-tenant workforce analytics platformu. 100+ dbt modelden oluşan transformation layer, PostgreSQL row-level security ve özelleştirilmiş Apache Superset akışıyla production BI ihtiyaçlarını karşılayacak şekilde tasarlandı.',
       focusTitle: 'Odağım — dbt doğruluğu, RLS security ve embedded BI',
       focusSummary:
-        'Bu projede veri doğruluğu, tenant izolasyonu ve dashboard güvenilirliğinin kesiştiği analitik katmanda çalıştım. Katkılarım dbt mart logic düzeltmeleri, benchmark parity için otomatik data contract testleri, cross-tenant RLS kontrolleri ve production dashboard davranışını etkileyen Superset embedding problemlerine odaklandı. Platformun tamamı ekip işi; benim en güçlü izim analytics layer ve ürüne güvenilir BI deneyimi taşıyan delivery tarafında.',
+        'Veri doğruluğu, tenant izolasyonu ve dashboard güvenilirliğinin kesiştiği analitik katmanda çalıştım. En güçlü izim dbt mart fixes, benchmark parity testleri, cross-tenant RLS validation ve production dashboard davranışını etkileyen Superset embedding problemlerinde.',
       metrics: [
         { value: '100+', label: 'dbt model' },
         { value: 'RLS', label: 'tenant isolation' },
@@ -173,7 +173,7 @@ export const projects: Project[] = [
         'A conversational AI platform that lets HR and managers ask natural-language questions over pre-modeled workforce and psychometric analytics. The system combines a LangChain analysis engine, a LangGraph/FastAPI conversation layer, WebSocket streaming, JWT authentication, and PostgreSQL RLS-aligned querying.',
       focusTitle: 'My focus — secure context propagation, prompts-as-config & observability',
       focusSummary:
-        'My work sat in the production-hardening layer of the AI analytics stack: auth consistency, user context propagation, RLS-aware SQL execution, prompt/config maintainability, and operational logging. I helped make the agent runtime safer and easier to debug without over-claiming ownership of the full dual-service architecture. The result is a stronger bridge between LLM reasoning and governed analytics data.',
+        'My work sat in the production-hardening layer of the AI analytics stack: auth consistency, user context propagation, RLS-aware SQL execution, prompt/config maintainability, and operational logging. The goal was a safer, easier-to-debug bridge between LLM reasoning and governed analytics data.',
       metrics: [
         { value: 'HTTP + WS', label: 'auth paths' },
         { value: 'RLS', label: 'SQL access' },
@@ -223,7 +223,7 @@ export const projects: Project[] = [
         'HR ve manager kullanıcılarının pre-modeled workforce ve psychometric analytics verisine doğal dille soru sorabildiği conversational AI platformu. Sistem; LangChain analysis engine, LangGraph/FastAPI conversation layer, WebSocket streaming, JWT authentication ve PostgreSQL RLS-aligned SQL execution parçalarını bir araya getiriyor.',
       focusTitle: 'Odağım — secure context propagation, prompts-as-config ve observability',
       focusSummary:
-        'Bu projede AI analytics stack’in production-hardening katmanında çalıştım: auth tutarlılığı, user context propagation, RLS-aware SQL execution, prompt/config maintainability ve operational logging. Tüm dual-service mimarinin tek sahibi gibi anlatmadan, agent runtime’ı daha güvenli ve debug edilebilir hale getiren parçalara odaklandım. Buradaki ana değer, LLM reasoning ile governed analytics data arasında sağlam bir köprü kurmak.',
+        'AI analytics stack’in production-hardening katmanında çalıştım: auth tutarlılığı, user context propagation, RLS-aware SQL execution, prompt/config maintainability ve operational logging. Ana hedef, LLM reasoning ile governed analytics data arasında daha güvenli ve debug edilebilir bir köprü kurmaktı.',
       metrics: [
         { value: 'HTTP + WS', label: 'auth paths' },
         { value: 'RLS', label: 'SQL access' },
@@ -282,7 +282,7 @@ export const projects: Project[] = [
         'A FastAPI monorepo that standardizes how multiple LLM-backed microservices are exposed through one invoke surface. Instead of every agent reinventing auth, routing, logging, configuration, and container startup, the gateway provides shared platform mechanics and thin downstream agent handlers.',
       focusTitle: 'My focus — shared gateway mechanics for AI microservices',
       focusSummary:
-        'I focused on the platform layer that makes AI services easier to expose, operate, and onboard. My work covered shared environment-based configuration, structured JSON logging, correlation IDs, a reusable FastAPI gateway factory, automated agent registration, and production-minded scaffolding for new agents. The value is not a single prompt or model; it is the repeatable service pattern around LLM-backed products.',
+        'I focused on the platform layer that makes AI services easier to expose, operate, and onboard. My work covered shared configuration, structured JSON logging, correlation IDs, a reusable FastAPI gateway factory, automated registration, and production-minded scaffolding for new agents.',
       metrics: [
         { value: '1', label: 'invoke surface' },
         { value: 'Factory', label: 'FastAPI apps' },
@@ -332,7 +332,7 @@ export const projects: Project[] = [
         'Birden fazla LLM-backed microservice’i tek bir invoke surface üzerinden expose eden FastAPI monorepo. Her agent’ın auth, routing, logging, config ve container startup işlerini yeniden yazması yerine, gateway shared platform mechanics ve ince downstream agent handler’ları sağlıyor.',
       focusTitle: 'Odağım — AI microservice’ler için shared gateway mechanics',
       focusSummary:
-        'Bu projede AI servislerini expose etmeyi, operate etmeyi ve yeni agent onboarding sürecini kolaylaştıran platform katmanına odaklandım. Shared environment-based config, structured JSON logging, correlation ID’ler, reusable FastAPI gateway factory, automated agent registration ve production-minded agent scaffolding üzerinde çalıştım. Buradaki değer tek bir prompt ya da model değil; LLM-backed ürünlerin etrafındaki tekrarlanabilir service pattern.',
+        'AI servislerini expose etmeyi, operate etmeyi ve yeni agent onboarding sürecini kolaylaştıran platform katmanına odaklandım. Shared config, structured JSON logging, correlation ID’ler, reusable FastAPI gateway factory, automated registration ve production-minded agent scaffolding üzerinde çalıştım.',
       metrics: [
         { value: '1', label: 'invoke surface' },
         { value: 'Factory', label: 'FastAPI apps' },
@@ -391,7 +391,7 @@ export const projects: Project[] = [
         'An LLM microservice that recommends role-specific KPIs with structured JSON output, framework-grounded retrieval, schema validation, and an offline quality loop. It is designed around repeatable quality control: generate candidates, evaluate them, export for human review, and feed accepted examples back into a golden dataset.',
       focusTitle: 'My focus — eval-ready generation, datasets & deployment workflow',
       focusSummary:
-        'My work helped move the KPI advisor from prompt-driven generation toward a more operable AI service. I worked on containerization, position catalog data, anonymization for safer demos/evals, environment-based configuration, stricter prompt/schema design, Excel review exports, and shared observability. The retrieval and evaluation architecture is broader team/product work; my footprint is strongest in making the service deployable, reviewable, and safer to iterate.',
+        'My work helped move the KPI advisor from prompt-driven generation toward a more operable AI service. I worked on containerization, position catalog data, anonymization, environment-based configuration, stricter prompt/schema design, Excel review exports, and shared observability.',
       metrics: [
         { value: 'JSON', label: 'structured output' },
         { value: 'LLM', label: 'judge eval' },
@@ -441,7 +441,7 @@ export const projects: Project[] = [
         'Role-specific KPI önerileri üreten, structured JSON output, framework-grounded retrieval, schema validation ve offline quality loop üzerine kurulu LLM microservice. Akış sadece “KPI üret” değil; candidate üret, değerlendir, human review için export et ve kabul edilen örnekleri golden dataset’e geri besle mantığıyla tasarlandı.',
       focusTitle: 'Odağım — eval-ready generation, datasets ve deployment workflow',
       focusSummary:
-        'Bu projede KPI advisor’ın prompt-driven bir prototipten daha operable bir AI service’e yaklaşmasına katkı verdim. Containerization, position catalog data, safer demo/eval için anonymization, environment-based configuration, daha sıkı prompt/schema tasarımı, Excel review export ve shared observability tarafında çalıştım. Retrieval ve full eval architecture daha geniş bir ekip/product işi; benim en net izim servisi deploy edilebilir, review edilebilir ve güvenli iterasyon yapılabilir hale getiren katmanlarda.',
+        'KPI advisor’ın prompt-driven bir prototipten daha operable bir AI service’e yaklaşmasına katkı verdim. Containerization, position catalog data, anonymization, environment-based configuration, daha sıkı prompt/schema tasarımı, Excel review export ve shared observability tarafında çalıştım.',
       metrics: [
         { value: 'JSON', label: 'structured output' },
         { value: 'LLM', label: 'judge eval' },

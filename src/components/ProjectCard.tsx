@@ -18,6 +18,11 @@ function StatusBadge({ status }: { status: Project['status'] }) {
 function ProjectLinks({ project }: { project: Project }) {
   const { lang } = useLang();
   const t = translations[lang];
+  const hasVisibleLinks = project.links.github || project.links.demo || project.links.article;
+
+  if (!hasVisibleLinks) {
+    return null;
+  }
 
   return (
     <div className="flex flex-wrap justify-start gap-2 md:justify-end">
@@ -78,11 +83,11 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
   return (
     <article className="group relative overflow-hidden rounded-[1.35rem] border border-border bg-surface/95 shadow-card-md transition-all duration-300 hover:-translate-y-1 hover:shadow-card-lg">
       <div className="absolute inset-y-0 left-0 hidden w-1 bg-[linear-gradient(to_bottom,#0F3248,#2D607D,#A06448)] md:block" />
-      <div className="grid md:grid-cols-[0.82fr_1.18fr] xl:grid-cols-[0.76fr_1.24fr]">
-        <div className="relative overflow-hidden bg-accent-dark p-6 text-white md:p-8">
+      <div className="grid md:grid-cols-[0.82fr_1.18fr] xl:grid-cols-[0.75fr_1.25fr]">
+        <div className="relative overflow-hidden bg-accent-dark p-6 text-white md:p-7 xl:p-8">
           <div className="tech-grid absolute inset-0 opacity-[0.16]" />
           <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/30 blur-3xl" />
-          <div className="relative flex h-full flex-col">
+          <div className="relative">
             <div className="mb-5 flex flex-wrap items-center gap-2">
               <StatusBadge status={project.status} />
               <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-2xs font-mono font-semibold uppercase tracking-[0.16em] text-white/80">
@@ -92,7 +97,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
 
             <ProjectType project={project} />
             {c.subtitle && <p className="mt-3 font-mono text-2xs uppercase leading-5 tracking-[0.16em] text-white/58">{c.subtitle}</p>}
-            <h3 className="mt-3 font-display text-3xl font-semibold leading-tight text-white md:text-4xl">{c.title}</h3>
+            <h3 className="mt-3 font-display text-3xl font-semibold leading-tight text-white xl:text-4xl">{c.title}</h3>
             <p className="mt-5 text-sm leading-7 text-white/76 md:text-base">{c.summary}</p>
 
             <div className="mt-7 grid grid-cols-2 gap-2">
@@ -101,7 +106,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
               ))}
             </div>
 
-            <div className="mt-auto pt-7">
+            <div className="mt-7">
               <p className="mb-3 font-mono text-2xs uppercase tracking-[0.16em] text-white/50">
                 {lang === 'en' ? 'Core stack' : 'Core stack'}
               </p>
@@ -116,21 +121,24 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        <div className="relative p-6 md:p-8">
+        <div className="relative p-6 md:p-7 xl:p-8">
           {(c.focusTitle || c.focusSummary) && (
-            <div className="rounded-2xl border border-coffee/20 bg-coffee-soft/65 p-5">
-              {c.focusTitle && <p className="font-display text-xl font-semibold leading-snug text-text-primary">{c.focusTitle}</p>}
-              {c.focusSummary && <p className="mt-3 text-sm leading-7 text-text-secondary">{c.focusSummary}</p>}
+            <div className="rounded-2xl border border-coffee/20 bg-coffee-soft/65 p-4 xl:p-5">
+              {c.focusTitle && <p className="font-display text-lg font-semibold leading-snug text-text-primary xl:text-xl">{c.focusTitle}</p>}
+              {c.focusSummary && <p className="mt-2 text-sm leading-6 text-text-secondary xl:leading-7">{c.focusSummary}</p>}
             </div>
           )}
 
           {c.contributions && c.contributions.length > 0 ? (
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <div className="mt-5 grid auto-rows-fr gap-3 lg:grid-cols-2 xl:grid-cols-3">
               {c.contributions.map((item) => (
-                <div key={`${item.module}-${item.title}`} className="rounded-2xl border border-border bg-surface-2/80 p-4">
+                <div
+                  key={`${item.module}-${item.title}`}
+                  className="h-full rounded-xl border border-border bg-surface-2/80 p-3.5"
+                >
                   <p className="mb-2 font-mono text-2xs uppercase tracking-[0.16em] text-coffee">{item.module}</p>
-                  <h4 className="text-base font-semibold leading-snug text-text-primary">{item.title}</h4>
-                  <p className="mt-2 text-sm leading-7 text-text-secondary">{item.description}</p>
+                  <h4 className="text-sm font-semibold leading-snug text-text-primary">{item.title}</h4>
+                  <p className="mt-2 text-[0.82rem] leading-6 text-text-secondary">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -160,19 +168,11 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
             </div>
           )}
 
-          <div className="mt-5 flex flex-col gap-4 border-t border-border pt-5 md:flex-row md:items-end md:justify-between">
-            {c.impact ? (
-              <div className="max-w-2xl">
-                <p className="mb-2 font-mono text-2xs uppercase tracking-[0.16em] text-text-muted">
-                  {lang === 'en' ? 'Production value' : 'Production değeri'}
-                </p>
-                <p className="text-sm leading-7 text-text-secondary">{c.impact}</p>
-              </div>
-            ) : (
-              <span />
-            )}
-            <ProjectLinks project={project} />
-          </div>
+          {(project.links.github || project.links.demo || project.links.article) && (
+            <div className="mt-5 flex justify-end">
+              <ProjectLinks project={project} />
+            </div>
+          )}
         </div>
       </div>
     </article>
