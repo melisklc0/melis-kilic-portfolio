@@ -50,7 +50,7 @@ function ProjectLinks({ project }: { project: Project }) {
   );
 }
 
-function ProjectType({ project }: { project: Project }) {
+function ProjectType({ project, tone = 'light' }: { project: Project; tone?: 'light' | 'dark' }) {
   const { lang } = useLang();
   const text = [
     project.status === 'academic' ? (lang === 'en' ? 'Applied ML research' : 'Uygulamali ML arastirma') : null,
@@ -59,14 +59,37 @@ function ProjectType({ project }: { project: Project }) {
     project.techStack.some((tech) => tech.toLowerCase().includes('fastapi')) ? 'Backend platform' : null,
   ].filter(Boolean)[0] ?? (lang === 'en' ? 'Engineering project' : 'Muhendislik projesi');
 
-  return <span className="font-mono text-2xs uppercase tracking-[0.18em] text-coffee">{text}</span>;
+  const cls = tone === 'dark' ? 'text-[#D79A73]' : 'text-coffee';
+
+  return <span className={`font-mono text-xs font-medium uppercase tracking-[0.09em] ${cls}`}>{text}</span>;
 }
 
 function FeaturedMetric({ value, label }: { value: string; label: string }) {
   return (
     <div className="min-h-[5.4rem] rounded-xl border border-white/10 bg-white/10 p-3 backdrop-blur">
       <div className="font-display text-2xl font-semibold leading-none text-white">{value}</div>
-      <div className="mt-2 text-[0.62rem] font-mono uppercase leading-4 tracking-[0.14em] text-white/60">{label}</div>
+      <div className="mt-2 font-mono text-[0.7rem] font-medium uppercase leading-4 tracking-[0.08em] text-[#E7B08A]">{label}</div>
+    </div>
+  );
+}
+
+function RoleFocus({ value }: { value: string }) {
+  const [rolePart, focusPart] = value.split(' · Focus: ');
+  const role = rolePart.replace(/^Role:\s*/, '');
+  const focus = focusPart ?? '';
+
+  return (
+    <div className="mb-4 flex flex-wrap gap-x-5 gap-y-2 border-b border-coffee/20 pb-4 text-sm leading-5">
+      <p className="text-text-primary">
+        <span className="mr-2 font-mono text-[0.68rem] font-medium uppercase tracking-[0.1em] text-coffee">Role</span>
+        <span className="font-semibold">{role}</span>
+      </p>
+      {focus && (
+        <p className="text-text-primary">
+          <span className="mr-2 font-mono text-[0.68rem] font-medium uppercase tracking-[0.1em] text-coffee">Focus</span>
+          <span className="font-semibold">{focus}</span>
+        </p>
+      )}
     </div>
   );
 }
@@ -74,6 +97,8 @@ function FeaturedMetric({ value, label }: { value: string; label: string }) {
 export function FeaturedProjectCard({ project }: { project: Project }) {
   const { lang } = useLang();
   const c = project[lang];
+  const primaryContributions = c.contributions?.slice(0, 3) ?? [];
+  const platformExtensions = c.contributions?.slice(3) ?? [];
   const metrics = c.metrics ?? [
     { value: String(project.techStack.length), label: lang === 'en' ? 'tools' : 'arac' },
     { value: String(c.highlights?.length ?? 0), label: lang === 'en' ? 'highlights' : 'odak' },
@@ -90,13 +115,13 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
           <div className="relative">
             <div className="mb-5 flex flex-wrap items-center gap-2">
               <StatusBadge status={project.status} />
-              <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-2xs font-mono font-semibold uppercase tracking-[0.16em] text-white/80">
+              <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 font-mono text-xs font-medium text-white/88">
                 {c.badge ?? (lang === 'en' ? 'Featured' : 'One cikan')}
               </span>
             </div>
 
-            <ProjectType project={project} />
-            {c.subtitle && <p className="mt-3 font-mono text-2xs uppercase leading-5 tracking-[0.16em] text-white/58">{c.subtitle}</p>}
+            <ProjectType project={project} tone="dark" />
+            {c.subtitle && <p className="mt-3 font-mono text-xs font-medium uppercase leading-5 tracking-[0.09em] text-white/82">{c.subtitle}</p>}
             <h3 className="mt-3 font-display text-3xl font-semibold leading-tight text-white xl:text-4xl">{c.title}</h3>
             <p className="mt-5 text-sm leading-7 text-white/76 md:text-base">{c.summary}</p>
 
@@ -107,12 +132,12 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
             </div>
 
             <div className="mt-7">
-              <p className="mb-3 font-mono text-2xs uppercase tracking-[0.16em] text-white/50">
+              <p className="mb-3 font-mono text-xs font-medium uppercase tracking-[0.09em] text-[#D79A73]">
                 {lang === 'en' ? 'Core stack' : 'Core stack'}
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {project.techStack.slice(0, 8).map((tech) => (
-                  <span key={tech} className="rounded-full border border-white/12 bg-white/10 px-2.5 py-1 text-2xs font-mono text-white/70">
+                  <span key={tech} className="rounded-full border border-white/18 bg-white/10 px-2.5 py-1 font-mono text-xs font-medium leading-5 text-white/82">
                     {tech}
                   </span>
                 ))}
@@ -124,24 +149,43 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
         <div className="relative p-6 md:p-7 xl:p-8">
           {(c.focusTitle || c.focusSummary) && (
             <div className="rounded-2xl border border-coffee/20 bg-coffee-soft/65 p-4 xl:p-5">
+              {c.roleLine && <RoleFocus value={c.roleLine} />}
               {c.focusTitle && <p className="font-display text-lg font-semibold leading-snug text-text-primary xl:text-xl">{c.focusTitle}</p>}
               {c.focusSummary && <p className="mt-2 text-sm leading-6 text-text-secondary xl:leading-7">{c.focusSummary}</p>}
             </div>
           )}
 
-          {c.contributions && c.contributions.length > 0 ? (
-            <div className="mt-5 grid auto-rows-fr gap-3 lg:grid-cols-2 xl:grid-cols-3">
-              {c.contributions.map((item) => (
-                <div
-                  key={`${item.module}-${item.title}`}
-                  className="h-full rounded-xl border border-border bg-surface-2/80 p-3.5"
-                >
-                  <p className="mb-2 font-mono text-2xs uppercase tracking-[0.16em] text-coffee">{item.module}</p>
-                  <h4 className="text-sm font-semibold leading-snug text-text-primary">{item.title}</h4>
-                  <p className="mt-2 text-[0.82rem] leading-6 text-text-secondary">{item.description}</p>
+          {primaryContributions.length > 0 ? (
+            <>
+              <div className="mt-5 grid auto-rows-fr gap-3 lg:grid-cols-3">
+                {primaryContributions.map((item) => (
+                  <div
+                    key={`${item.module}-${item.title}`}
+                    className="h-full rounded-xl border border-border bg-surface-2/80 p-4"
+                  >
+                    <h4 className="text-base font-semibold capitalize leading-snug text-text-primary">{item.module}</h4>
+                    <p className="mt-2 text-sm font-semibold leading-snug text-coffee">{item.title}</p>
+                    <p className="mt-2 text-[0.82rem] leading-6 text-text-secondary">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              {platformExtensions.length > 0 && (
+                <div className="mt-4 border-t border-border pt-4">
+                  <p className="mb-3 font-mono text-2xs uppercase tracking-[0.16em] text-coffee">
+                    {lang === 'en' ? 'Platform extensions' : 'Platform genişletmeleri'}
+                  </p>
+                  <div className="grid gap-3 md:grid-cols-2">
+                    {platformExtensions.map((item) => (
+                      <div key={`${item.module}-${item.title}`} className="border-l border-coffee/25 pl-3">
+                        <h4 className="text-sm font-semibold leading-snug text-text-primary">{item.title}</h4>
+                        <p className="mt-1 text-[0.8rem] leading-5 text-text-muted">{item.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           ) : (
             <div className="mt-5 grid gap-5 lg:grid-cols-[0.88fr_1.12fr]">
               {c.impact && (

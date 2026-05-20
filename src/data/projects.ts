@@ -27,6 +27,7 @@ export interface ProjectContent {
   subtitle?: string;
   badge?: string;
   summary: string;
+  roleLine?: string;
   focusTitle?: string;
   focusSummary?: string;
   metrics?: ProjectMetric[];
@@ -62,9 +63,10 @@ export const projects: Project[] = [
       badge: 'Production · Embedded BI',
       summary:
         'A multi-tenant workforce analytics platform that turns psychometric and HR assessment data into secure, role-isolated dashboards embedded inside a SaaS product. The stack combines a 100+ model dbt transformation layer, PostgreSQL row-level security, and customized Apache Superset delivery for production BI workflows.',
-      focusTitle: 'My focus — dbt correctness, RLS security & embedded BI',
+      roleLine: 'Role: Data Platform & Backend Contributor · Focus: dbt reliability, RLS validation, Superset embedding',
+      focusTitle: 'I owned the reliability layer of an embedded analytics platform.',
       focusSummary:
-        'I worked where data correctness, tenant isolation, and embedded dashboard reliability meet. My strongest footprint is in dbt mart fixes, benchmark parity tests, cross-tenant RLS validation, and Superset embedding issues that affected production dashboard behavior.',
+        'My work connected data correctness, tenant-safe access, and production dashboard stability. I focused on making dashboard numbers trustworthy, making RLS behavior testable, and removing embedding issues before they affected users.',
       metrics: [
         { value: '100+', label: 'dbt models' },
         { value: 'RLS', label: 'tenant isolation' },
@@ -73,32 +75,32 @@ export const projects: Project[] = [
       ],
       contributions: [
         {
-          module: 'dbt marts',
-          title: 'Benchmark correctness & data contracts',
+          module: 'Data correctness',
+          title: 'Caught benchmark mismatches before production',
           description:
-            'Fixed systematic selection-vs-benchmark mismatches caused by null-score handling, population drift, and average-of-averages patterns. Added a reusable dbt test so benchmark parity is checked automatically before dashboard changes reach users.',
+            'Improved dashboard trust by fixing selection-vs-benchmark mismatches caused by null scores, population drift, and average-of-averages logic. Added reusable dbt parity checks so the same class of bug is caught automatically.',
         },
         {
-          module: 'security',
-          title: 'Cross-tenant RLS validation',
+          module: 'Tenant-safe analytics',
+          title: 'Turned RLS behavior into a testable contract',
           description:
-            'Added dbt tests that simulate dashboard read access and block cross-tenant leakage regressions. This made PostgreSQL RLS behavior testable in the analytics pipeline instead of relying only on manual dashboard checks.',
+            'Strengthened tenant-boundary validation by adding dbt tests that simulate dashboard read access. PostgreSQL RLS checks became part of the analytics pipeline instead of a manual dashboard-only verification step.',
         },
         {
-          module: 'Superset',
-          title: 'Embedded dashboard reliability',
+          module: 'Embedded BI reliability',
+          title: 'Stabilized production Superset embedding',
           description:
-            'Resolved iframe embedding blockers around CSRF, guest-token flows, export behavior, and transaction-scoped session variables used for per-query RLS enforcement.',
+            'Resolved iframe blockers around CSRF, guest tokens, exports, and transaction-scoped session variables. This protected the embedded dashboard experience and kept per-query RLS enforcement aligned with user context.',
         },
         {
-          module: 'data modeling',
-          title: 'Behavioral and competency mart fixes',
+          module: 'platform extension',
+          title: 'Behavioral & competency marts',
           description:
             'Refactored behavioral score pipelines for canonical psychometric dimensions and tenant-configurable leadership competency logic across staging, intermediate, and mart layers.',
         },
         {
-          module: 'localization',
-          title: 'Turkish embedded BI experience',
+          module: 'platform extension',
+          title: 'Turkish embedded BI',
           description:
             'Delivered Turkish localization and upgrade-resilient frontend patching for Superset, including locale-aware filter search and automated translation build steps.',
         },
@@ -112,9 +114,10 @@ export const projects: Project[] = [
       badge: 'Production · Embedded BI',
       summary:
         'Psikometrik ve HR assessment verisini, SaaS ürününün içine gömülü güvenli dashboard deneyimine taşıyan multi-tenant workforce analytics platformu. 100+ dbt modelden oluşan transformation layer, PostgreSQL row-level security ve özelleştirilmiş Apache Superset akışıyla production BI ihtiyaçlarını karşılayacak şekilde tasarlandı.',
-      focusTitle: 'Odağım — dbt doğruluğu, RLS security ve embedded BI',
+      roleLine: 'Role: Data Platform & Backend Contributor · Focus: dbt reliability, RLS validation, Superset embedding',
+      focusTitle: 'Embedded analytics platformunun reliability katmanını üstlendim.',
       focusSummary:
-        'Veri doğruluğu, tenant izolasyonu ve dashboard güvenilirliğinin kesiştiği analitik katmanda çalıştım. En güçlü izim dbt mart fixes, benchmark parity testleri, cross-tenant RLS validation ve production dashboard davranışını etkileyen Superset embedding problemlerinde.',
+        'Çalışmam data correctness, tenant-safe access ve production dashboard stability noktalarını birleştirdi. Dashboard sayılarının güvenilir kalmasına, RLS davranışının testlenebilir olmasına ve embedding problemlerinin kullanıcıya ulaşmadan çözülmesine odaklandım.',
       metrics: [
         { value: '100+', label: 'dbt model' },
         { value: 'RLS', label: 'tenant isolation' },
@@ -123,32 +126,32 @@ export const projects: Project[] = [
       ],
       contributions: [
         {
-          module: 'dbt marts',
-          title: 'Benchmark correctness & data contracts',
+          module: 'Data correctness',
+          title: 'Benchmark hatalarını production öncesi yakalama',
           description:
-            'Selection ve benchmark metrikleri arasındaki sistematik farkları düzelttim: null-score davranışı, population drift ve average-of-averages kaynaklı sapmalar SQL model seviyesinde temizlendi. Aynı problemin tekrar kaçmaması için benchmark parity kontrolünü reusable dbt testine çevirdim.',
+            'Dashboard güvenini artırmak için selection ve benchmark metrikleri arasındaki farkları düzelttim: null-score davranışı, population drift ve average-of-averages kaynaklı sapmalar temizlendi. Aynı hata sınıfı tekrar kaçmasın diye reusable dbt parity testleri ekledim.',
         },
         {
-          module: 'security',
-          title: 'Cross-tenant RLS validation',
+          module: 'Tenant-safe analytics',
+          title: 'RLS davranışını testlenebilir kontrata çevirme',
           description:
-            'Dashboard read role davranışını simüle eden dbt testleriyle cross-tenant veri sızıntısı riskini CI’da yakalanabilir hale getirdim. Böylece RLS sadece “dashboard’da doğru görünüyor” seviyesinde kalmadı, pipeline içinde testlenen bir güvenlik kontratına dönüştü.',
+            'Dashboard read role davranışını simüle eden dbt testleriyle tenant-boundary validation sürecini güçlendirdim. Böylece PostgreSQL RLS kontrolü manual dashboard doğrulamasından çıkıp analytics pipeline içinde testlenen bir güvenlik kontratına dönüştü.',
         },
         {
-          module: 'Superset',
-          title: 'Embedded dashboard reliability',
+          module: 'Embedded BI reliability',
+          title: 'Production Superset embedding stabilitesi',
           description:
-            'Iframe embedding tarafında CSRF, guest-token, export flow ve per-query RLS için kullanılan session variable problemlerini çözdüm. Bu işler doğrudan production dashboard erişimini ve kullanıcı bazlı görünürlüğü etkiliyordu.',
+            'Iframe tarafında CSRF, guest-token, export flow ve transaction-scoped session variable problemlerini çözdüm. Bu çalışma embedded dashboard deneyimini korudu ve per-query RLS enforcement davranışını user context ile hizalı tuttu.',
         },
         {
-          module: 'data modeling',
-          title: 'Behavioral ve competency mart düzeltmeleri',
+          module: 'platform extension',
+          title: 'Behavioral & competency marts',
           description:
             'Davranışsal skor pipeline’larında canonical psychometric dimension mantığını ve tenant-configurable leadership competency kurgusunu staging, intermediate ve mart katmanlarında daha doğru hale getirdim.',
         },
         {
-          module: 'localization',
-          title: 'Türkçe embedded BI deneyimi',
+          module: 'platform extension',
+          title: 'Türkçe embedded BI',
           description:
             'Superset için Türkçe localization akışını, upgrade’e daha dayanıklı frontend patch sürecini ve tr-TR filter search davranışını iyileştirdim.',
         },
@@ -171,6 +174,7 @@ export const projects: Project[] = [
       badge: 'Production · LLM Analytics',
       summary:
         'A conversational AI platform that lets HR and managers ask natural-language questions over pre-modeled workforce and psychometric analytics. The system combines a LangChain analysis engine, a LangGraph/FastAPI conversation layer, WebSocket streaming, JWT authentication, and PostgreSQL RLS-aligned querying.',
+      roleLine: 'Role: AI Backend Contributor · Focus: auth, governed SQL, prompt configuration, observability',
       focusTitle: 'My focus — secure context propagation, prompts-as-config & observability',
       focusSummary:
         'My work sat in the production-hardening layer of the AI analytics stack: auth consistency, user context propagation, RLS-aware SQL execution, prompt/config maintainability, and operational logging. The goal was a safer, easier-to-debug bridge between LLM reasoning and governed analytics data.',
@@ -221,6 +225,7 @@ export const projects: Project[] = [
       badge: 'Production · LLM Analytics',
       summary:
         'HR ve manager kullanıcılarının pre-modeled workforce ve psychometric analytics verisine doğal dille soru sorabildiği conversational AI platformu. Sistem; LangChain analysis engine, LangGraph/FastAPI conversation layer, WebSocket streaming, JWT authentication ve PostgreSQL RLS-aligned SQL execution parçalarını bir araya getiriyor.',
+      roleLine: 'Role: AI Backend Contributor · Focus: auth, governed SQL, prompt configuration, observability',
       focusTitle: 'Odağım — secure context propagation, prompts-as-config ve observability',
       focusSummary:
         'AI analytics stack’in production-hardening katmanında çalıştım: auth tutarlılığı, user context propagation, RLS-aware SQL execution, prompt/config maintainability ve operational logging. Ana hedef, LLM reasoning ile governed analytics data arasında daha güvenli ve debug edilebilir bir köprü kurmaktı.',
@@ -280,6 +285,7 @@ export const projects: Project[] = [
       badge: 'Production · Platform',
       summary:
         'A FastAPI monorepo that standardizes how multiple LLM-backed microservices are exposed through one invoke surface. Instead of every agent reinventing auth, routing, logging, configuration, and container startup, the gateway provides shared platform mechanics and thin downstream agent handlers.',
+      roleLine: 'Role: AI Platform Contributor · Focus: gateway factory, service scaffolding, structured operations',
       focusTitle: 'My focus — shared gateway mechanics for AI microservices',
       focusSummary:
         'I focused on the platform layer that makes AI services easier to expose, operate, and onboard. My work covered shared configuration, structured JSON logging, correlation IDs, a reusable FastAPI gateway factory, automated registration, and production-minded scaffolding for new agents.',
@@ -330,6 +336,7 @@ export const projects: Project[] = [
       badge: 'Production · Platform',
       summary:
         'Birden fazla LLM-backed microservice’i tek bir invoke surface üzerinden expose eden FastAPI monorepo. Her agent’ın auth, routing, logging, config ve container startup işlerini yeniden yazması yerine, gateway shared platform mechanics ve ince downstream agent handler’ları sağlıyor.',
+      roleLine: 'Role: AI Platform Contributor · Focus: gateway factory, service scaffolding, structured operations',
       focusTitle: 'Odağım — AI microservice’ler için shared gateway mechanics',
       focusSummary:
         'AI servislerini expose etmeyi, operate etmeyi ve yeni agent onboarding sürecini kolaylaştıran platform katmanına odaklandım. Shared config, structured JSON logging, correlation ID’ler, reusable FastAPI gateway factory, automated registration ve production-minded agent scaffolding üzerinde çalıştım.',
@@ -389,6 +396,7 @@ export const projects: Project[] = [
       badge: 'Production-oriented · LLM Service',
       summary:
         'An LLM microservice that recommends role-specific KPIs with structured JSON output, framework-grounded retrieval, schema validation, and an offline quality loop. It is designed around repeatable quality control: generate candidates, evaluate them, export for human review, and feed accepted examples back into a golden dataset.',
+      roleLine: 'Role: LLM Service Contributor · Focus: structured output, eval workflow, deployment readiness',
       focusTitle: 'My focus — eval-ready generation, datasets & deployment workflow',
       focusSummary:
         'My work helped move the KPI advisor from prompt-driven generation toward a more operable AI service. I worked on containerization, position catalog data, anonymization, environment-based configuration, stricter prompt/schema design, Excel review exports, and shared observability.',
@@ -439,6 +447,7 @@ export const projects: Project[] = [
       badge: 'Production-oriented · LLM Service',
       summary:
         'Role-specific KPI önerileri üreten, structured JSON output, framework-grounded retrieval, schema validation ve offline quality loop üzerine kurulu LLM microservice. Akış sadece “KPI üret” değil; candidate üret, değerlendir, human review için export et ve kabul edilen örnekleri golden dataset’e geri besle mantığıyla tasarlandı.',
+      roleLine: 'Role: LLM Service Contributor · Focus: structured output, eval workflow, deployment readiness',
       focusTitle: 'Odağım — eval-ready generation, datasets ve deployment workflow',
       focusSummary:
         'KPI advisor’ın prompt-driven bir prototipten daha operable bir AI service’e yaklaşmasına katkı verdim. Containerization, position catalog data, anonymization, environment-based configuration, daha sıkı prompt/schema tasarımı, Excel review export ve shared observability tarafında çalıştım.',
