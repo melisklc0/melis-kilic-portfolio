@@ -2,7 +2,6 @@ import { useLang } from '../hooks/useLang';
 import { translations } from '../data/translations';
 import { education } from '../data/experience';
 import type { Lang } from '../data/translations';
-import { profile } from '../data/profile';
 
 function TimelineMarker({ label }: { label: string }) {
   return (
