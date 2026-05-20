@@ -34,7 +34,7 @@ export function Experience() {
                 </span>
               </div>
 
-              <div className="rounded-2xl border border-border bg-surface/72 p-5 shadow-card backdrop-blur md:p-6">
+              <div className="rounded-2xl border border-border bg-surface/72 p-5 shadow-card backdrop-blur transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-card-md md:p-6">
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold text-text-primary">{entry.role[l]}</h3>
                   <p className="text-sm font-medium text-accent">{entry.company}</p>

@@ -8,7 +8,7 @@ export const translations = {
     hero: {
       role: 'AI & Data Engineer',
       tagline: 'Building intelligent systems with LLMs, AI agents, RAG pipelines, and data analytics. Focused on production-ready AI backends and applied machine learning.',
-      cta_projects: 'View Projects', cta_cv: 'Download CV', cta_github: 'GitHub', cta_linkedin: 'LinkedIn',
+      cta_projects: 'View Projects', cta_cv: 'View CV', cta_github: 'GitHub', cta_linkedin: 'LinkedIn',
     },
     about: {
       label: 'About',
@@ -65,7 +65,7 @@ Currently building AI-powered healthcare products at Qkare Bilgi Teknolojileri.`
     hero: {
       role: 'Yapay Zeka & Veri Mühendisi',
       tagline: 'LLM\'ler, yapay zeka ajanları, RAG pipeline\'ları ve veri analitiği ile akıllı sistemler geliştiriyorum. Üretime hazır AI backend\'leri ve uygulamalı makine öğrenmesine odaklanıyorum.',
-      cta_projects: 'Projeleri Gör', cta_cv: 'CV İndir', cta_github: 'GitHub', cta_linkedin: 'LinkedIn',
+      cta_projects: 'Projeleri Gör', cta_cv: 'CV\'yi Gör', cta_github: 'GitHub', cta_linkedin: 'LinkedIn',
     },
     about: {
       label: 'Hakkımda',

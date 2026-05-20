@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="16" fill="#0F3248"/>
-  <path fill="#FFFFFF" d="M16 46V18h8l8 13.6L40 18h8v28h-7.2V30.4l-6.9 11h-3.8l-6.9-11V46H16Z"/>
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="#FFFFFF" font-family="Fraunces, Georgia, serif" font-weight="500" font-size="38">M</text>
 </svg>

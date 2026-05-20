@@ -27,7 +27,7 @@ export function Education() {
 
         <div className="grid gap-5 md:grid-cols-3">
           {education.map((entry) => (
-            <article key={entry.id} className="rounded-2xl border border-border bg-surface/72 p-5 shadow-card">
+            <article key={entry.id} className="rounded-2xl border border-border bg-surface/72 p-5 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-card-md">
               <div className="mb-5 flex items-start justify-between gap-4">
                 <TimelineMarker label={entry.company.slice(0, 2).toUpperCase()} />
                 <span className="rounded-full border border-border bg-surface-2 px-3 py-1 text-2xs font-mono text-text-muted">
@@ -45,20 +45,6 @@ export function Education() {
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-6 rounded-2xl border border-border bg-accent-dark p-6 text-white shadow-card-lg">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="mb-2 font-mono text-2xs uppercase tracking-[0.18em] text-white/55">{t.cv.label}</p>
-              <h3 className="text-lg font-semibold text-white">{t.cv.heading}</h3>
-              <p className="mt-1 text-sm text-white/68">{t.cv.body}</p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <a href={profile.cv_url} download="melis-kilic-cv.pdf" className="btn bg-white text-accent-dark text-xs py-2 px-4 hover:bg-accent-light">{t.cv.download}</a>
-              <a href={profile.cv_url} target="_blank" rel="noopener noreferrer" className="btn border border-white/20 text-white text-xs py-2 px-4 hover:bg-white/10">{t.cv.view}</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>

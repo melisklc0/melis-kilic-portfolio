@@ -26,14 +26,13 @@ export function Hero() {
 
             <div className="mb-8 flex flex-wrap items-center gap-3">
               <a href="#projects" className="btn-primary">
-                <span>{t.hero.cta_projects}</span>
-                <span aria-hidden="true">-&gt;</span>
+                {t.hero.cta_projects}
+              </a>
+              <a href={profile.cv_url[lang]} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                {t.hero.cta_cv}
               </a>
               <a href="#contact" className="btn-ghost">
                 {lang === 'en' ? 'Get in touch' : 'Iletisime gec'}
-              </a>
-              <a href={profile.cv_url} download="melis-kilic-cv.pdf" className="btn-link">
-                {t.hero.cta_cv}
               </a>
             </div>
           </div>

@@ -6,5 +6,8 @@ export const profile = {
   phone: '+905337375803',
   github: 'https://github.com/melisklc0',
   linkedin: 'https://linkedin.com/in/melisklc0',
-  cv_url: `${import.meta.env.BASE_URL}cv/melis-kilic-cv.pdf`,
+  cv_url: {
+    en: `${import.meta.env.BASE_URL}cv/melis-kilic-cv-EN.pdf`,
+    tr: `${import.meta.env.BASE_URL}cv/melis-kilic-cv-TR.pdf`
+  },
 };
