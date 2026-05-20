@@ -51,7 +51,7 @@ export default {
         '2xl': '1.25rem',
       },
       maxWidth: {
-        'content': '1120px',
+        'content': '1230px',
       },
     },
   },

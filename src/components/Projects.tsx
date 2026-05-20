@@ -13,7 +13,7 @@ export function Projects() {
   return (
     <section id="projects" className="relative overflow-hidden border-t border-border bg-page py-20 md:py-28">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-[linear-gradient(to_bottom,rgba(15,50,72,0.06),transparent)]" />
-      <div className="mx-auto max-w-[1320px] px-5 md:px-8">
+      <div className="container-main">
         <div className="relative mb-12">
           <h2 className="section-title">{t.projects.heading}</h2>
         </div>
