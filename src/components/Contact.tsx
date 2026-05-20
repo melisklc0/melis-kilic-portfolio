@@ -28,7 +28,6 @@ export function Contact() {
         <div className="relative overflow-hidden rounded-[1.6rem] border border-border bg-page/90 shadow-card-lg">
           <div className="grid gap-0 lg:grid-cols-[1fr_430px]">
             <div className="p-6 md:p-10">
-              <p className="section-eyebrow">{lang === 'en' ? 'Contact' : 'Iletisim'}</p>
               <h2 className="section-title mb-4">{lang === 'en' ? 'Get in touch' : 'Iletisime gec'}</h2>
               <p className="mb-7 max-w-md text-base leading-8 text-text-secondary">{tc.body}</p>
 

@@ -20,7 +20,6 @@ export function Experience() {
     <section id="experience" className="relative overflow-hidden border-t border-border bg-page py-20 md:py-24 scroll-mt-24">
       <div className="container-main">
         <div className="mb-12">
-          <p className="section-eyebrow">{t.experience.label}</p>
           <h2 className="section-title">{t.experience.heading}</h2>
         </div>
 

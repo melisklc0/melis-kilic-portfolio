@@ -11,16 +11,8 @@ export function Skills() {
     <section id="skills" className="relative overflow-hidden border-t border-border bg-surface py-20 md:py-24">
       <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[linear-gradient(90deg,transparent,rgba(220,236,242,0.5))] lg:block" />
       <div className="container-main">
-        <div className="relative mb-10 grid gap-5 md:grid-cols-[0.8fr_1fr] md:items-end">
-          <div>
-            <p className="section-eyebrow">{t.skills.label}</p>
-            <h2 className="section-title">{t.skills.heading}</h2>
-          </div>
-          <p className="max-w-xl text-sm leading-7 text-text-secondary md:justify-self-end md:text-right">
-            {lang === 'en'
-              ? 'Grouped by the way I build: models, services, data layers, observability, and the product surfaces around them.'
-              : 'Gelistirme bicimime gore gruplandi: modeller, servisler, veri katmanlari, gozlemlenebilirlik ve urun arayuzleri.'}
-          </p>
+        <div className="relative mb-10">
+          <h2 className="section-title">{t.skills.heading}</h2>
         </div>
 
         <div className="relative grid gap-4 md:grid-cols-2 lg:grid-cols-3">

@@ -40,7 +40,6 @@ export function About() {
       <div className="container-main">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div>
-            <p className="section-eyebrow">{c.label}</p>
             <h2 className="section-title mb-8">{c.heading}</h2>
             <div className="relative space-y-5 border-l border-border pl-5 md:pl-7">
               {c.body.map((paragraph, index) => (
