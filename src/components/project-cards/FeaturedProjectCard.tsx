@@ -104,7 +104,11 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
               {c.impact && (
                 <div className="rounded-2xl border border-coffee/20 bg-coffee-soft/65 p-4">
                   <p className="mb-2 font-mono text-2xs uppercase tracking-[0.16em] text-coffee">{translations[lang].projects.impact}</p>
-                  <p className="text-sm leading-7 text-text-secondary">{c.impact}</p>
+                  <div className="space-y-2 text-sm leading-7 text-text-secondary">
+                    {c.impact.split('\n\n').map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
               )}
               {c.highlights && c.highlights.length > 0 && (

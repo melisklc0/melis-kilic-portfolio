@@ -26,6 +26,8 @@ export interface ProjectContent {
   title: string;
   subtitle?: string;
   badge?: string;
+  supportingSummary?: string;
+  supportingImpact?: string;
   summary: string;
   roleLine?: string;
   focusTitle?: string;
@@ -171,8 +173,12 @@ export const projects: Project[] = [
       title: 'Analyzer Platform',
       subtitle: 'LLM analytics over governed data',
       badge: 'LLM Analytics',
+      supportingSummary:
+        'A governed LLM analytics backend over workforce and psychometric data that lets HR and managers ask natural-language questions without bypassing tenant boundaries. Instead of navigating complex dashboards or waiting for data teams to write SQL reports, leaders can query their own data directly and instantly receive reliable, data-backed insights.',
+      supportingImpact:
+        'Cleaned up & stabilized the analyzer backend: Removed duplicated enums/dataclasses and consolidated shared domain concepts into cleaner single sources of truth.\n\nMoved prompt assembly toward maintainable YAML config and fixed critical edge cases around auth, user context, RLS-aware SQL, and observability.',
       summary:
-        'A governed LLM analytics service that lets HR and managers ask natural-language questions over workforce and psychometric data without bypassing tenant boundaries. I worked on the production layer that makes this safe to operate: aligned REST/WebSocket auth, request-scoped user context, RLS-aware SQL paths, YAML-backed prompt configuration, and structured logging.',
+        'A governed LLM analytics service that lets HR and managers ask natural-language questions over workforce and psychometric data without bypassing tenant boundaries. Instead of navigating complex dashboards or waiting for data teams to write SQL reports, leaders can query their own data directly and instantly receive reliable, data-backed insights.',
       roleLine: 'Role: AI Backend Contributor · Focus: auth, governed SQL, prompt configuration, observability',
       focusTitle: 'My focus — secure context propagation, prompts-as-config & observability',
       focusSummary:
@@ -216,14 +222,18 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'Made natural-language analytics safer to ship by tightening the points where identity, SQL access, prompt behavior, streaming, and observability meet.',
+        'Cleaned up & stabilized the analyzer backend: Removed duplicated enums/dataclasses and consolidated shared domain concepts into cleaner single sources of truth.\n\nMoved prompt assembly toward maintainable YAML config and fixed critical edge cases around auth, user context, RLS-aware SQL, and observability.',
     },
     tr: {
       title: 'Analyzer Platform',
       subtitle: 'Governed data üzerinde LLM analytics',
       badge: 'LLM Analytics',
+      supportingSummary:
+        'HR ve manager kullanıcılarının workforce ve psychometric analytics verisine tenant boundary’leri aşmadan doğal dille soru sorabildiği governed LLM analytics servisi. Karmaşık dashboard\'lar içinde kaybolmak veya veri ekiplerinden SQL raporları beklemek yerine, yöneticilerin kendi verilerine doğrudan sorular sorarak saniyeler içinde güvenilir analizler elde etmesini sağlar.',
+      supportingImpact:
+        'Ciddi bir cleanup ve stabilization eforu ile duplicate enum, dataclass ve YAML loader’ları temizledim; shared domain kavramlarını daha net single source of truth yapılarına topladım.\n\nPrompt akışını maintainable YAML config tarafına taşıdım; auth, user context, RLS-aware SQL, logging ve eksik metadata edge case’lerini çözerek sistemi production’a hazırladım.',
       summary:
-        'HR ve manager kullanıcılarının workforce ve psychometric analytics verisine tenant boundary’leri aşmadan doğal dille soru sorabildiği governed LLM analytics servisi. REST/WebSocket auth hizalama, request-scoped user context, RLS-aware SQL path’leri, YAML-backed prompt configuration ve structured logging ile production katmanını güçlendirdim.',
+        'HR ve manager kullanıcılarının workforce ve psychometric analytics verisine tenant boundary’leri aşmadan doğal dille soru sorabildiği governed LLM analytics servisi. Karmaşık dashboard\'lar içinde kaybolmak veya veri ekiplerinden SQL raporları beklemek yerine, yöneticilerin kendi verilerine doğrudan sorular sorarak saniyeler içinde güvenilir analizler elde etmesini sağlar.',
       roleLine: 'Role: AI Backend Contributor · Focus: auth, governed SQL, prompt configuration, observability',
       focusTitle: 'Odağım — secure context propagation, prompts-as-config ve observability',
       focusSummary:
@@ -267,7 +277,7 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'Identity, SQL access, prompt behavior, streaming ve observability’nin kesiştiği noktaları sıkılaştırarak natural-language analytics akışını daha güvenli ve debug edilebilir hale getirdi.',
+        'Ciddi bir cleanup ve stabilization eforu ile duplicate enum, dataclass ve YAML loader’ları temizledim; shared domain kavramlarını daha net single source of truth yapılarına topladım.\n\nPrompt akışını maintainable YAML config tarafına taşıdım; auth, user context, RLS-aware SQL, logging ve eksik metadata edge case’lerini çözerek sistemi production’a hazırladım.',
     },
   },
   {
@@ -393,9 +403,9 @@ export const projects: Project[] = [
       subtitle: 'AI platform infrastructure',
       badge: 'Platform',
       summary:
-        'A FastAPI platform layer that prevents every LLM-backed microservice from rebuilding auth, routing, logging, configuration, and container startup from scratch. I helped define the shared gateway mechanics: environment-driven settings, structured JSON logs, request correlation IDs, reusable app factories, automated agent registration, and Docker scaffolding.',
+        'A FastAPI platform layer that prevents every LLM-backed microservice from rebuilding auth, routing, logging, configuration, and container startup from scratch.',
       roleLine: 'Role: AI Platform Contributor · Focus: gateway factory, service scaffolding, structured operations',
-      focusTitle: 'My focus — shared gateway mechanics for AI microservices',
+      focusTitle: 'My focus — shared gateway mechanics for AI microservices',      
       focusSummary:
         'I focused on the platform layer that makes AI services easier to expose, operate, and onboard. My work covered shared configuration, structured JSON logging, correlation IDs, a reusable FastAPI gateway factory, automated registration, and production-minded scaffolding for new agents.',
       metrics: [
@@ -437,14 +447,14 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'Turned one-off AI service wiring into a repeatable platform pattern for exposing, observing, and onboarding LLM-backed microservices.',
+        'Defined the shared gateway mechanics (environment-driven settings, JSON logs, request IDs, reusable app factories, Docker scaffolding). Turned one-off AI service wiring into a repeatable platform pattern for exposing and onboarding LLM-backed microservices.',
     },
     tr: {
       title: 'AI Agent API Gateway',
       subtitle: 'AI platform infrastructure',
       badge: 'Platform',
       summary:
-        'Her LLM-backed microservice’in auth, routing, logging, configuration ve container startup işlerini yeniden yazmasını engelleyen FastAPI platform katmanı. Environment-driven settings, structured JSON logs, request correlation ID, reusable app factory, automated agent registration ve Docker scaffolding tarafında shared gateway mechanics kurmaya katkı verdim.',
+        'Her LLM-backed microservice’in auth, routing, logging, configuration ve container startup işlerini yeniden yazmasını engelleyen FastAPI platform katmanı.',
       roleLine: 'Role: AI Platform Contributor · Focus: gateway factory, service scaffolding, structured operations',
       focusTitle: 'Odağım — AI microservice’ler için shared gateway mechanics',
       focusSummary:
@@ -488,7 +498,7 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'Tekil AI service wiring’lerini; expose edilebilir, observe edilebilir ve yeni agent onboarding’i için tekrar kullanılabilir bir platform pattern’ine yaklaştırdı.',
+        'Gateway akışlarını (environment settings, JSON logs, request ID, app factory, agent registration) standartlaştırarak, AI platformunu güvenli, yönetilebilir ve tekrar kullanılabilir bir yapıya kavuşturdum.',
     },
   },
   {
@@ -503,44 +513,52 @@ export const projects: Project[] = [
       subtitle: 'Jira work-item automation POC',
       badge: 'Agentic Workflow',
       summary:
-        'A proof-of-concept AI assistant for turning messy collaboration context into structured Jira work items and sprint actions. I contributed the sprint-management tool suite, typed Jira request/response models, terminology cleanup across services and UI, meeting-transcript processing flows, Docker/auth fixes, and uv-based service setup.',
+        'A proof-of-concept AI assistant for turning messy collaboration context into structured Jira work items and sprint actions.',
       impact:
-        'Moved the assistant from chat-driven task capture toward reliable workflow automation with validated tool calls, sprint lifecycle support, and cleaner local/service operations.',
+        'Contributed the sprint-management tool suite, typed Jira request/response models, and meeting-transcript processing flows. Moved the assistant from chat-driven task capture toward reliable workflow automation with validated tool calls, sprint lifecycle support, and cleaner local/service operations.',
     },
     tr: {
       title: 'Task Manager Agent',
       subtitle: 'Jira work-item automation POC',
       badge: 'Agentic Workflow',
       summary:
-        'Dağınık collaboration context ve doğal dil girdilerini structured Jira work item ve sprint aksiyonlarına çeviren proof-of-concept AI assistant. Sprint-management tool suite, typed Jira request/response modelleri, servis/UI genelinde terminology cleanup, meeting-transcript processing akışları, Docker/auth fixleri ve uv-based service setup tarafında katkı verdim.',
+        'Dağınık collaboration context ve doğal dil girdilerini structured Jira work item ve sprint aksiyonlarına çeviren proof-of-concept AI assistant.',
       impact:
-        'Chat-driven task capture fikrini validated tool call’lar, sprint lifecycle desteği ve daha temiz local/service operasyonlarıyla güvenilir workflow automation yönüne taşıdı.',
+        'Sprint-management tool suite, typed Jira modelleri, transcript processing ve terminology cleanup tarafında katkı verdim. Chat-driven task capture fikrini validated tool call’lar, sprint lifecycle desteği ve daha temiz local/service operasyonlarıyla güvenilir workflow automation yönüne taşıdı.',
     },
   },
   {
     id: 'cv-validation-platform',
     status: 'company',
-    techStack: ['LangChain', 'OpenAI API', 'FastAPI', 'Pydantic', 'PDF Validation', 'Prompt Security', 'Structured Outputs'],
+    techStack: ['LangChain', 'OpenAI API', 'FastAPI', 'Pydantic', 'PDF Validation', 'Security Chain', 'Structured Outputs'],
     links: {
       private_note: 'Built at QKare; source code is private.',
     },
     en: {
       title: 'CV Validation Platform',
-      subtitle: 'LLM document validation pipeline',
-      badge: 'Document AI',
+      subtitle: 'LLM validation and safety chain',
+      badge: 'LLM Safety',
+      supportingSummary:
+        'An LLM-powered resume validation and safety pipeline focused on protecting the document-ingest boundary before downstream search or matching workflows.',
+      supportingImpact:
+        'Built the CV validation chain and added a security guard layer. By adding PDF file-type checks and converting LLM responses into safer typed objects, we filter non-CV, abusive, off-topic, and prompt-injection-style uploads—making resume ingestion safer before heavier AI processing.',
       summary:
-        'An LLM-powered resume validation pipeline focused on protecting the document-ingest boundary before downstream search or matching workflows. I built the initial CV validation chain, added PDF file-type checks, converted LLM responses into safer typed objects, reduced token waste in validation endpoints, and hardened rejection rules for non-CV and prompt-injection-style uploads.',
+        'An LLM-powered resume validation and safety pipeline focused on protecting the document-ingest boundary before downstream search or matching workflows.',
       impact:
-        'Made resume ingestion more reviewable and safer by combining structured outputs, file validation, token discipline, and early AI-safety guardrails.',
+        'Built the CV validation chain and added a security guard layer. By adding PDF file-type checks, converting LLM responses into safer typed objects, and adding token discipline, we filter non-CV, abusive, off-topic, and prompt-injection-style uploads—making resume ingestion safer before heavier AI processing.',
     },
     tr: {
       title: 'CV Validation Platform',
-      subtitle: 'LLM document validation pipeline',
-      badge: 'Document AI',
+      subtitle: 'LLM validation and safety chain',
+      badge: 'LLM Safety',
+      supportingSummary:
+        'Downstream search veya matching akislarindan once document-ingest boundarysini korumaya odaklanan LLM-powered resume validation ve safety pipeline.',
+      supportingImpact:
+        'CV validation chain ve security guard layer kurarak resume ingestion akisini daha guvenli hale getirdim. PDF file-type check ekleme, LLM responselarini typed objectlere tasima islemleri sayesinde non-CV, abusive, off-topic ve prompt-injection tarzi uploadlar agir AI processing oncesinde filtrelendi.',
       summary:
-        'Downstream search veya matching akışlarından önce document-ingest boundary’sini korumaya odaklanan LLM-powered resume validation pipeline. İlk CV validation chain’i kurdum, PDF file-type check ekledim, LLM response’larını daha güvenli typed object’lere taşıdım, validation endpoint’lerinde token israfını azalttım ve non-CV / prompt-injection tarzı upload’lara karşı rejection kurallarını güçlendirdim.',
+        'Downstream search veya matching akışlarından önce document-ingest boundary’sini korumaya odaklanan LLM-powered resume validation pipeline.',
       impact:
-        'Structured outputs, file validation, token discipline ve erken AI-safety guardrail’leriyle resume ingestion akışını daha reviewable ve güvenli hale getirdi.',
+        'CV validation chain ve security guard layer kurarak resume ingestion akışını daha güvenli hale getirdim. PDF file-type check ekleme, LLM response’larını typed object’lere taşıma ve token israfını azaltma işlemleri sayesinde non-CV, abusive, off-topic ve prompt-injection tarzı upload’lar ağır AI processing öncesinde filtrelendi.',
     },
   },
   {
