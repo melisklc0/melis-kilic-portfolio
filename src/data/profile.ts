@@ -3,7 +3,6 @@ export const profile = {
   role: { en: 'AI & Data Engineer', tr: 'Yapay Zeka & Veri Mühendisi' },
   location: 'Sivas, Türkiye',
   email: 'klmelis@hotmail.com',
-  phone: '+905337375803',
   github: 'https://github.com/melisklc0',
   linkedin: 'https://linkedin.com/in/melisklc0',
   cv_url: {
