@@ -43,7 +43,7 @@ Currently building AI-powered healthcare products at Qkare Bilgi Teknolojileri.`
       capability_6_title: 'Agent Orchestration',
       capability_6_body: 'LangChain LCEL pipelines coordinating retrieval, reasoning, tool use, and response in a coherent loop.',
     },
-    experience: { label: 'Experience', heading: 'Work History' },
+    experience: { label: 'Experience', heading: 'Experience' },
     education: { label: 'Education', heading: 'Academic Background' },
     cv: {
       label: 'Resume',
