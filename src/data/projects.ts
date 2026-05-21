@@ -512,107 +512,108 @@ export const projects: Project[] = [
       private_note: 'Built at QKare; source code is private.',
     },
     en: {
-      title: 'KPI Advisor Platform',
-      subtitle: 'Production-oriented · Quality-gated LLM service',
-      badge: 'LLM KPI Advisor',
+      title: 'KPI Advisor',
+      subtitle: 'Position-based KPI recommendation AI',
+      badge: 'Production - B2B SaaS',
       summary:
-        'An enterprise KPI advisor that turns role context into structured, reviewable KPI recommendations for HR and performance teams. Instead of treating KPI generation as a one-shot prompt, the system grounds outputs in a process-framework corpus, validates JSON with Pydantic, scores candidates with an LLM-as-judge loop, exports them for business review, and feeds approved examples back into a golden dataset.',
+        'A position-based KPI recommendation service for HR and performance teams, powered by APQC/PCF metrics and a curated golden dataset. It can generate useful KPI suggestions from sparse role context, even a short position description or basic role fields, and returns reviewable JSON outputs with measurement logic, benchmarks, frequency, indicator type, and rationale.',
       roleLine:
-        'Role: AI & Backend Engineer · Focus: golden dataset loop, eval-ready schema, anonymized data, deployment workflow',
-      focusTitle: 'I helped turn KPI generation into a quality-gated AI workflow.',
+        'Role: AI & Backend Engineer · Focus: KPI recommendation quality, prompt rules, eval workflow, service readiness',
+      focusTitle: 'I helped turn KPI drafting into a grounded recommendation workflow.',
       focusSummary:
-        'I drove the practical quality loop around the service: building and anonymizing the position catalog, tightening prompts and KPI schemas for good-vs-bad KPI evaluation, exporting candidates to OpenAI Evals-compatible JSONL and Excel review flows, importing feedback into the golden dataset, and making the API/UI stack repeatable with Docker, environment config, and shared observability.',
+        'The problem was not dataset creation by itself: teams needed reliable KPI suggestions from sparse position context without losing business meaning. I worked on the recommendation layer, prompt/schema constraints, APQC/PCF grounding, golden-dataset-backed review loops, LLM-as-judge scoring, and the FastAPI/Streamlit service path that made the system repeatable.',
       metrics: [
-        { value: '100', label: 'position contexts' },
-        { value: '2,680', label: 'framework metrics' },
-        { value: '4', label: 'quality stages' },
-        { value: '3', label: 'eval scores' },
+        { value: '2,680', label: 'APQC metrics' },
+        { value: '1,631', label: 'PCF nodes' },
+        { value: '9', label: 'prompt rules' },
+        { value: '4', label: 'pipeline steps' },
       ],
       contributions: [
         {
-          module: 'quality loop',
-          title: 'Built a good-vs-bad KPI feedback flywheel',
+          module: 'Problem',
+          title: 'Position-specific KPI suggestions were hard to standardize',
           description:
-            'Structured the offline workflow around candidate generation, LLM-as-judge scoring, Excel-based business review, and feedback import. Approved examples become golden dataset material, while NOK feedback becomes prompt and schema improvement input.',
+            'Different roles needed measurable KPI recommendations, but manual spreadsheet drafting was slow, inconsistent, and hard to review. The service needed to preserve role context while grounding suggestions in a recognized process framework.',
         },
         {
-          module: 'evaluation',
-          title: 'Made KPI quality measurable instead of subjective',
+          module: 'My contribution',
+          title: 'Designed the recommendation output around usable KPI objects',
           description:
-            'Prepared OpenAI Evals-compatible JSONL exports and a model-graded evaluation path that scores generated KPIs on SMART alignment, role relevance, and clarity/applicability, with thresholding before human review.',
+            'Tightened prompts and response schemas so the model produced more than KPI names: each recommendation carries measurement logic, data-source guidance, leading/lagging type, baseline or benchmark, frequency, performance area, and rationale.',
         },
         {
-          module: 'prompt and schema',
-          title: 'Tightened generation rules for reviewable KPI objects',
+          module: 'Solution',
+          title: 'Connected generation, grounding, and review into one loop',
           description:
-            'Refined the prompt and Pydantic-aligned schema so each KPI carries measurement logic, concrete data sources, leading/lagging type, benchmark or baseline guidance, frequency, performance area, and rationale.',
+            'Prepared anonymized position context, aligned generation with APQC/PCF retrieval, exported results for business review, and added LLM-as-judge checks for SMART alignment, role relevance, and clarity.',
         },
         {
-          module: 'data safety',
-          title: 'Created an anonymized position catalog for realistic evals',
+          module: 'Quality loop',
+          title: 'Made recommendation quality measurable',
           description:
-            'Introduced a 100-row position catalog and anonymized organizational fields so batch generation, demos, and review handoffs could preserve useful job context without exposing sensitive internal structure.',
+            'Built OpenAI Evals-compatible JSONL paths and score-based review outputs so KPI candidates could be compared, filtered, and improved instead of accepted as opaque LLM responses.',
         },
         {
-          module: 'service operations',
+          module: 'Service',
           title: 'Packaged the advisor as an operable AI microservice',
           description:
-            'Added Docker setup for the FastAPI API and Streamlit review UI, externalized ports and OpenAI settings, integrated Redis caching, and aligned logging/metrics with the shared observability approach used by AI services.',
+            'Supported the FastAPI API, Streamlit review UI, Docker setup, environment-based OpenAI configuration, Redis caching path, and shared logging/metrics expectations for AI services.',
         },
       ],
       impact:
-        'Helped move KPI advisory work from manual, inconsistent spreadsheet drafting toward a repeatable AI workflow with grounded generation, measurable quality gates, human-in-the-loop review, safer demo data, and production-minded service operations.',
+        'Moved KPI design toward a repeatable AI recommendation service: grounded in process-framework metrics, constrained by schema and prompt rules, measurable through evals, and usable by reviewers before business adoption.',
     },
     tr: {
-      title: 'LLM-Powered KPI Recommendation Service',
-      subtitle: 'Production-oriented · Structured LLM service',
-      badge: 'Production-oriented · LLM Service',
+      title: 'KPI Advisor',
+      subtitle: 'Position-based KPI recommendation AI',
+      badge: 'Production - B2B SaaS',
       summary:
-        'Role-specific KPI önerileri üreten, structured JSON output, framework-grounded retrieval, schema validation ve offline quality loop üzerine kurulu LLM microservice. Akış sadece “KPI üret” değil; candidate üret, değerlendir, human review için export et ve kabul edilen örnekleri golden dataset’e geri besle mantığıyla tasarlandı.',
-      roleLine: 'Role: LLM Service Contributor · Focus: structured output, eval workflow, deployment readiness',
-      focusTitle: 'Odağım — eval-ready generation, datasets ve deployment workflow',
+        'HR ve performance ekipleri için pozisyona göre structured KPI önerileri üreten, APQC/PCF metrics ve curated golden dataset ile güçlenen bir KPI Advisor servisi. Kısa bir position description ya da temel role field’ları gibi az context ile bile kullanılabilir KPI candidate’ları üretir; measurement logic, benchmark, frequency, indicator type ve rationale taşıyan reviewable JSON çıktılar döndürür.',
+      roleLine:
+        'Role: AI & Backend Engineer · Focus: KPI recommendation quality, prompt rules, eval workflow, service readiness',
+      focusTitle: 'KPI yazımını grounded bir öneri akışına çevirmeye katkı verdim.',
       focusSummary:
-        'KPI advisor’ın prompt-driven bir prototipten daha operable bir AI service’e yaklaşmasına katkı verdim. Containerization, position catalog data, anonymization, environment-based configuration, daha sıkı prompt/schema tasarımı, Excel review export ve shared observability tarafında çalıştım.',
+        'Buradaki ana iş dataset üretmek değil, az position context ile bile güvenilir KPI önerileri çıkarabilen bir akış kurmaktı. Recommendation layer, prompt/schema kuralları, APQC/PCF grounding, golden-dataset-backed review loop, LLM-as-judge scoring ve FastAPI/Streamlit servis yolunda çalıştım.',
       metrics: [
-        { value: 'JSON', label: 'structured output' },
-        { value: 'LLM', label: 'judge eval' },
-        { value: 'Excel', label: 'human review' },
-        { value: 'Redis', label: 'cache path' },
+        { value: '2,680', label: 'APQC metrics' },
+        { value: '1,631', label: 'PCF nodes' },
+        { value: '9', label: 'prompt rules' },
+        { value: '4', label: 'pipeline steps' },
       ],
       contributions: [
         {
-          module: 'service stack',
-          title: 'Containerized API ve review UI',
+          module: 'Problem',
+          title: 'Pozisyona özel KPI önerilerini standardize etmek zordu',
           description:
-            'FastAPI recommendation service ve Streamlit review surface için Docker setup ekledim; API, UI ve destek servislerinin local/deployment workflow’larda tekrar üretilebilir şekilde ayağa kalkmasını hedefledim.',
+            'Farklı roller için ölçülebilir KPI önerileri gerekiyordu; manuel spreadsheet hazırlığı yavaş, tutarsız ve review etmesi zor bir süreçti. Servisin role context’i korurken önerileri tanınan bir process framework ile ground etmesi gerekiyordu.',
         },
         {
-          module: 'data',
-          title: 'Position catalog ve anonymization',
+          module: 'Katkım',
+          title: 'Recommendation output’u kullanılabilir KPI objeleri etrafında tasarlama',
           description:
-            'Batch KPI generation için structured position catalog ekledim; realistic job context korunurken hassas organization detail paylaşılmasın diye catalog alanlarını demo/eval kullanımına daha güvenli hale getirdim.',
+            'Promptları ve response schema’yı sıkılaştırdım; model yalnızca KPI ismi değil, measurement logic, data-source guidance, leading/lagging type, baseline veya benchmark, frequency, performance area ve rationale içeren öneriler üretir hale geldi.',
         },
         {
-          module: 'LLM output',
-          title: 'Daha sıkı prompt ve schema design',
+          module: 'Çözüm',
+          title: 'Generation, grounding ve review adımlarını tek döngüde bağlama',
           description:
-            'Generation prompt’larını ve Pydantic-aligned response schema’yı sıkılaştırdım; KPI çıktılarının benchmark, indicator type, measurement logic ve review edilebilir kalite alanları taşımasını sağladım.',
+            'Anonymized position context hazırladım, generation akışını APQC/PCF retrieval ile hizaladım, sonuçları business review için export ettim ve SMART alignment, role relevance, clarity için LLM-as-judge kontrolleri ekledim.',
         },
         {
-          module: 'quality loop',
-          title: 'Human review export alignment',
+          module: 'Quality loop',
+          title: 'Recommendation quality’i ölçülebilir hale getirme',
           description:
-            'Updated evaluation schema ile uyumlu Excel export adımını refactor ettim; offline LLM-as-judge ve reviewer workflow’unun structured KPI formatı değişirken kullanılabilir kalmasını sağladım.',
+            'OpenAI Evals-compatible JSONL path’leri ve score-based review çıktıları kurdum; KPI candidate’ları opaque LLM response olarak kalmadan karşılaştırılabilir, filtrelenebilir ve iyileştirilebilir hale geldi.',
         },
         {
-          module: 'operations',
-          title: 'Environment config ve observability',
+          module: 'Service',
+          title: 'Advisor’ı operable AI microservice olarak paketleme',
           description:
-            'Port ve LLM ayarlarını environment üzerinden yönetilebilir hale getirdim; logging/metrics tarafını QKare AI servislerinde kullanılan shared observability yaklaşımıyla hizaladım.',
+            'FastAPI API, Streamlit review UI, Docker setup, environment-based OpenAI config, Redis cache path ve AI servislerinde kullanılan shared logging/metrics beklentilerini destekledim.',
         },
       ],
       impact:
-        'KPI generation workflow’unu daha production-minded hale getirdi: structured output, daha güvenli data handling, review edilebilir artifact’ler, repeatable container akışı ve pahalı LLM çağrıları için operational visibility.',
+        'KPI tasarımını manuel spreadsheet hazırlığından repeatable AI recommendation service yönüne taşıdı: process-framework metrics ile grounded, prompt/schema kurallarıyla constrained, eval’lerle ölçülebilir ve business review öncesi denetlenebilir.',
     },
   },
 ];
