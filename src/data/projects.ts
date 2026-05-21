@@ -162,18 +162,17 @@ export const projects: Project[] = [
   },
   {
     id: 'conversational-behavioral-analytics',
-    featured: true,
     status: 'company',
     techStack: ['LangChain', 'LangGraph', 'FastAPI', 'WebSocket', 'PostgreSQL RLS', 'OpenAI', 'YAML'],
     links: {
       private_note: 'Built at QKare; source code is private.',
     },
     en: {
-      title: 'Enterprise Conversational Behavioral Analytics Platform',
-      subtitle: 'Production · LLM analytics over governed data',
-      badge: 'Production · LLM Analytics',
+      title: 'Analyzer Platform',
+      subtitle: 'LLM analytics over governed data',
+      badge: 'LLM Analytics',
       summary:
-        'A conversational AI platform that lets HR and managers ask natural-language questions over pre-modeled workforce and psychometric analytics. The system combines a LangChain analysis engine, a LangGraph/FastAPI conversation layer, WebSocket streaming, JWT authentication, and PostgreSQL RLS-aligned querying.',
+        'A governed LLM analytics service that lets HR and managers ask natural-language questions over workforce and psychometric data without bypassing tenant boundaries. I worked on the production layer that makes this safe to operate: aligned REST/WebSocket auth, request-scoped user context, RLS-aware SQL paths, YAML-backed prompt configuration, and structured logging.',
       roleLine: 'Role: AI Backend Contributor · Focus: auth, governed SQL, prompt configuration, observability',
       focusTitle: 'My focus — secure context propagation, prompts-as-config & observability',
       focusSummary:
@@ -217,14 +216,14 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'Made a governed LLM analytics system more production-ready by tightening the paths where identity, SQL access, prompts, streaming, and logs meet.',
+        'Made natural-language analytics safer to ship by tightening the points where identity, SQL access, prompt behavior, streaming, and observability meet.',
     },
     tr: {
-      title: 'Enterprise Conversational Behavioral Analytics Platform',
-      subtitle: 'Production · Governed data üzerinde LLM analytics',
-      badge: 'Production · LLM Analytics',
+      title: 'Analyzer Platform',
+      subtitle: 'Governed data üzerinde LLM analytics',
+      badge: 'LLM Analytics',
       summary:
-        'HR ve manager kullanıcılarının pre-modeled workforce ve psychometric analytics verisine doğal dille soru sorabildiği conversational AI platformu. Sistem; LangChain analysis engine, LangGraph/FastAPI conversation layer, WebSocket streaming, JWT authentication ve PostgreSQL RLS-aligned SQL execution parçalarını bir araya getiriyor.',
+        'HR ve manager kullanıcılarının workforce ve psychometric analytics verisine tenant boundary’leri aşmadan doğal dille soru sorabildiği governed LLM analytics servisi. REST/WebSocket auth hizalama, request-scoped user context, RLS-aware SQL path’leri, YAML-backed prompt configuration ve structured logging ile production katmanını güçlendirdim.',
       roleLine: 'Role: AI Backend Contributor · Focus: auth, governed SQL, prompt configuration, observability',
       focusTitle: 'Odağım — secure context propagation, prompts-as-config ve observability',
       focusSummary:
@@ -268,7 +267,7 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'Identity, SQL access, prompt lifecycle, streaming ve logların birleştiği noktalarda sistemi daha production-ready hale getirdi; LLM analytics tarafının güvenilirliğini artırdı.',
+        'Identity, SQL access, prompt behavior, streaming ve observability’nin kesiştiği noktaları sıkılaştırarak natural-language analytics akışını daha güvenli ve debug edilebilir hale getirdi.',
     },
   },
   {
@@ -384,18 +383,17 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-agent-api-gateway',
-    featured: true,
     status: 'company',
     techStack: ['Python', 'FastAPI', 'Pydantic', 'Docker', 'Cookiecutter', 'Structured Logging', 'OpenTelemetry'],
     links: {
       private_note: 'Built at QKare; source code is private.',
     },
     en: {
-      title: 'Enterprise AI Agent API Gateway',
-      subtitle: 'Production · AI platform infrastructure',
-      badge: 'Production · Platform',
+      title: 'AI Agent API Gateway',
+      subtitle: 'AI platform infrastructure',
+      badge: 'Platform',
       summary:
-        'A FastAPI monorepo that standardizes how multiple LLM-backed microservices are exposed through one invoke surface. Instead of every agent reinventing auth, routing, logging, configuration, and container startup, the gateway provides shared platform mechanics and thin downstream agent handlers.',
+        'A FastAPI platform layer that prevents every LLM-backed microservice from rebuilding auth, routing, logging, configuration, and container startup from scratch. I helped define the shared gateway mechanics: environment-driven settings, structured JSON logs, request correlation IDs, reusable app factories, automated agent registration, and Docker scaffolding.',
       roleLine: 'Role: AI Platform Contributor · Focus: gateway factory, service scaffolding, structured operations',
       focusTitle: 'My focus — shared gateway mechanics for AI microservices',
       focusSummary:
@@ -439,14 +437,14 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'Helped turn one-off AI service integrations into a reusable platform contract for deploying and operating LLM-backed microservices at QKare.',
+        'Turned one-off AI service wiring into a repeatable platform pattern for exposing, observing, and onboarding LLM-backed microservices.',
     },
     tr: {
-      title: 'Enterprise AI Agent API Gateway',
-      subtitle: 'Production · AI platform infrastructure',
-      badge: 'Production · Platform',
+      title: 'AI Agent API Gateway',
+      subtitle: 'AI platform infrastructure',
+      badge: 'Platform',
       summary:
-        'Birden fazla LLM-backed microservice’i tek bir invoke surface üzerinden expose eden FastAPI monorepo. Her agent’ın auth, routing, logging, config ve container startup işlerini yeniden yazması yerine, gateway shared platform mechanics ve ince downstream agent handler’ları sağlıyor.',
+        'Her LLM-backed microservice’in auth, routing, logging, configuration ve container startup işlerini yeniden yazmasını engelleyen FastAPI platform katmanı. Environment-driven settings, structured JSON logs, request correlation ID, reusable app factory, automated agent registration ve Docker scaffolding tarafında shared gateway mechanics kurmaya katkı verdim.',
       roleLine: 'Role: AI Platform Contributor · Focus: gateway factory, service scaffolding, structured operations',
       focusTitle: 'Odağım — AI microservice’ler için shared gateway mechanics',
       focusSummary:
@@ -490,7 +488,59 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'QKare’de tekil AI service entegrasyonlarını, LLM-backed microservice’leri deploy ve operate etmek için tekrar kullanılabilir bir platform contract’a yaklaştırdı.',
+        'Tekil AI service wiring’lerini; expose edilebilir, observe edilebilir ve yeni agent onboarding’i için tekrar kullanılabilir bir platform pattern’ine yaklaştırdı.',
+    },
+  },
+  {
+    id: 'task-manager-poc',
+    status: 'company',
+    techStack: ['OpenAI API', 'LangGraph', 'LangChain', 'MCP', 'FastAPI', 'Pydantic', 'Jira API', 'uv'],
+    links: {
+      private_note: 'Built at QKare; source code is private.',
+    },
+    en: {
+      title: 'Task Manager Agent',
+      subtitle: 'Jira work-item automation POC',
+      badge: 'Agentic Workflow',
+      summary:
+        'A proof-of-concept AI assistant for turning messy collaboration context into structured Jira work items and sprint actions. I contributed the sprint-management tool suite, typed Jira request/response models, terminology cleanup across services and UI, meeting-transcript processing flows, Docker/auth fixes, and uv-based service setup.',
+      impact:
+        'Moved the assistant from chat-driven task capture toward reliable workflow automation with validated tool calls, sprint lifecycle support, and cleaner local/service operations.',
+    },
+    tr: {
+      title: 'Task Manager Agent',
+      subtitle: 'Jira work-item automation POC',
+      badge: 'Agentic Workflow',
+      summary:
+        'Dağınık collaboration context ve doğal dil girdilerini structured Jira work item ve sprint aksiyonlarına çeviren proof-of-concept AI assistant. Sprint-management tool suite, typed Jira request/response modelleri, servis/UI genelinde terminology cleanup, meeting-transcript processing akışları, Docker/auth fixleri ve uv-based service setup tarafında katkı verdim.',
+      impact:
+        'Chat-driven task capture fikrini validated tool call’lar, sprint lifecycle desteği ve daha temiz local/service operasyonlarıyla güvenilir workflow automation yönüne taşıdı.',
+    },
+  },
+  {
+    id: 'cv-validation-platform',
+    status: 'company',
+    techStack: ['LangChain', 'OpenAI API', 'FastAPI', 'Pydantic', 'PDF Validation', 'Prompt Security', 'Structured Outputs'],
+    links: {
+      private_note: 'Built at QKare; source code is private.',
+    },
+    en: {
+      title: 'CV Validation Platform',
+      subtitle: 'LLM document validation pipeline',
+      badge: 'Document AI',
+      summary:
+        'An LLM-powered resume validation pipeline focused on protecting the document-ingest boundary before downstream search or matching workflows. I built the initial CV validation chain, added PDF file-type checks, converted LLM responses into safer typed objects, reduced token waste in validation endpoints, and hardened rejection rules for non-CV and prompt-injection-style uploads.',
+      impact:
+        'Made resume ingestion more reviewable and safer by combining structured outputs, file validation, token discipline, and early AI-safety guardrails.',
+    },
+    tr: {
+      title: 'CV Validation Platform',
+      subtitle: 'LLM document validation pipeline',
+      badge: 'Document AI',
+      summary:
+        'Downstream search veya matching akışlarından önce document-ingest boundary’sini korumaya odaklanan LLM-powered resume validation pipeline. İlk CV validation chain’i kurdum, PDF file-type check ekledim, LLM response’larını daha güvenli typed object’lere taşıdım, validation endpoint’lerinde token israfını azalttım ve non-CV / prompt-injection tarzı upload’lara karşı rejection kurallarını güçlendirdim.',
+      impact:
+        'Structured outputs, file validation, token discipline ve erken AI-safety guardrail’leriyle resume ingestion akışını daha reviewable ve güvenli hale getirdi.',
     },
   },
   {

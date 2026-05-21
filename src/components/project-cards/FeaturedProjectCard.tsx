@@ -1,95 +1,13 @@
-import { useLang } from '../hooks/useLang';
-import { translations } from '../data/translations';
-import type { Project } from '../data/projects';
-
-function StatusBadge({ status }: { status: Project['status'] }) {
-  const { lang } = useLang();
-  const t = translations[lang];
-  const map: Record<Project['status'], { label: string; cls: string }> = {
-    public: { label: t.projects.status_public, cls: 'badge-green' },
-    private: { label: t.projects.status_private, cls: 'badge-amber' },
-    company: { label: 'QKare', cls: 'badge-blue' },
-    academic: { label: t.projects.status_academic, cls: 'badge-purple' },
-  };
-  const s = map[status];
-  return <span className={s.cls}>{s.label}</span>;
-}
-
-function ProjectLinks({ project }: { project: Project }) {
-  const { lang } = useLang();
-  const t = translations[lang];
-  const hasVisibleLinks = project.links.github || project.links.demo || project.links.article;
-
-  if (!hasVisibleLinks) {
-    return null;
-  }
-
-  return (
-    <div className="flex flex-wrap justify-start gap-2 md:justify-end">
-      {project.links.github && (
-        <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="rounded-full border border-accent/25 px-3 py-1 text-xs font-semibold text-accent hover:bg-accent-light">
-          GitHub {'->'}
-        </a>
-      )}
-      {project.links.demo && (
-        <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="rounded-full border border-accent/25 px-3 py-1 text-xs font-semibold text-accent hover:bg-accent-light">
-          Demo {'->'}
-        </a>
-      )}
-      {project.links.article && (
-        <a href={project.links.article} target="_blank" rel="noopener noreferrer" className="rounded-full border border-accent/25 px-3 py-1 text-xs font-semibold text-accent hover:bg-accent-light">
-          {t.projects.article} {'->'}
-        </a>
-      )}
-      {project.links.private_note && (
-        <span className="rounded-full border border-border bg-surface px-3 py-1 text-2xs font-mono text-text-faint">
-          {lang === 'en' ? project.links.private_note : 'QKare’de geliştirildi; kaynak kod private.'}
-        </span>
-      )}
-    </div>
-  );
-}
-
-function ProjectType({ project, tone = 'light' }: { project: Project; tone?: 'light' | 'dark' }) {
-  const { lang } = useLang();
-  const text = [
-    project.status === 'academic' ? (lang === 'en' ? 'Applied ML research' : 'Uygulamali ML arastirma') : null,
-    project.techStack.some((tech) => tech.toLowerCase().includes('langchain') || tech.toLowerCase().includes('openai')) ? 'LLM system' : null,
-    project.techStack.some((tech) => tech.toLowerCase().includes('dbt') || tech.toLowerCase().includes('superset')) ? 'Data platform' : null,
-    project.techStack.some((tech) => tech.toLowerCase().includes('fastapi')) ? 'Backend platform' : null,
-  ].filter(Boolean)[0] ?? (lang === 'en' ? 'Engineering project' : 'Muhendislik projesi');
-
-  const cls = tone === 'dark' ? 'text-[#D79A73]' : 'text-coffee';
-
-  return <span className={`font-mono text-xs font-medium uppercase tracking-[0.09em] ${cls}`}>{text}</span>;
-}
+import { useLang } from '../../hooks/useLang';
+import { translations } from '../../data/translations';
+import type { Project } from '../../data/projects';
+import { ProjectLinks, ProjectType, RoleFocus, StatusBadge } from './ProjectShared';
 
 function FeaturedMetric({ value, label }: { value: string; label: string }) {
   return (
     <div className="min-h-[5.4rem] rounded-xl border border-white/10 bg-white/10 p-3 backdrop-blur">
       <div className="font-display text-2xl font-semibold leading-none text-white">{value}</div>
       <div className="mt-2 font-mono text-[0.7rem] font-medium uppercase leading-4 tracking-[0.08em] text-[#E7B08A]">{label}</div>
-    </div>
-  );
-}
-
-function RoleFocus({ value }: { value: string }) {
-  const [rolePart, focusPart] = value.split(' · Focus: ');
-  const role = rolePart.replace(/^Role:\s*/, '');
-  const focus = focusPart ?? '';
-
-  return (
-    <div className="mb-4 flex flex-wrap gap-x-5 gap-y-2 border-b border-coffee/20 pb-4 text-sm leading-5">
-      <p className="text-text-primary">
-        <span className="mr-2 font-mono text-[0.68rem] font-medium uppercase tracking-[0.1em] text-coffee">Role</span>
-        <span className="font-semibold">{role}</span>
-      </p>
-      {focus && (
-        <p className="text-text-primary">
-          <span className="mr-2 font-mono text-[0.68rem] font-medium uppercase tracking-[0.1em] text-coffee">Focus</span>
-          <span className="font-semibold">{focus}</span>
-        </p>
-      )}
     </div>
   );
 }
@@ -132,9 +50,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
             </div>
 
             <div className="mt-7">
-              <p className="mb-3 font-mono text-xs font-medium uppercase tracking-[0.09em] text-[#D79A73]">
-                {lang === 'en' ? 'Core stack' : 'Core stack'}
-              </p>
+              <p className="mb-3 font-mono text-xs font-medium uppercase tracking-[0.09em] text-[#D79A73]">Core stack</p>
               <div className="flex flex-wrap gap-1.5">
                 {project.techStack.slice(0, 8).map((tech) => (
                   <span key={tech} className="rounded-full border border-white/18 bg-white/10 px-2.5 py-1 font-mono text-xs font-medium leading-5 text-white/82">
@@ -159,10 +75,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
             <>
               <div className="mt-5 grid auto-rows-fr gap-3 lg:grid-cols-3">
                 {primaryContributions.map((item) => (
-                  <div
-                    key={`${item.module}-${item.title}`}
-                    className="h-full rounded-xl border border-border bg-surface-2/80 p-4"
-                  >
+                  <div key={`${item.module}-${item.title}`} className="h-full rounded-xl border border-border bg-surface-2/80 p-4">
                     <h4 className="text-base font-semibold capitalize leading-snug text-text-primary">{item.module}</h4>
                     <p className="mt-2 text-sm font-semibold leading-snug text-coffee">{item.title}</p>
                     <p className="mt-2 text-[0.82rem] leading-6 text-text-secondary">{item.description}</p>
@@ -173,7 +86,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
               {platformExtensions.length > 0 && (
                 <div className="mt-4 border-t border-border pt-4">
                   <p className="mb-3 font-mono text-2xs uppercase tracking-[0.16em] text-coffee">
-                    {lang === 'en' ? 'Platform extensions' : 'Platform genişletmeleri'}
+                    {lang === 'en' ? 'Platform extensions' : 'Platform genisletmeleri'}
                   </p>
                   <div className="grid gap-3 md:grid-cols-2">
                     {platformExtensions.map((item) => (
@@ -217,50 +130,6 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
               <ProjectLinks project={project} />
             </div>
           )}
-        </div>
-      </div>
-    </article>
-  );
-}
-
-export function ProjectCard({ project }: { project: Project }) {
-  const { lang } = useLang();
-  const t = translations[lang];
-  const c = project[lang];
-
-  return (
-    <article className="relative flex min-h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/80 p-5 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-card-md">
-      <div className="absolute inset-x-5 top-0 h-px bg-[linear-gradient(90deg,transparent,#2D607D,#A06448,transparent)]" />
-      <div className="mb-4 flex items-start justify-between gap-3">
-        <div>
-          <StatusBadge status={project.status} />
-          <div className="mt-3">
-            <ProjectType project={project} />
-          </div>
-        </div>
-        <span className="rounded-full bg-accent-light px-2.5 py-1 text-2xs font-mono uppercase text-accent-dark">{project.techStack[0]}</span>
-      </div>
-
-      <h3 className="mb-3 text-xl font-semibold leading-snug text-text-primary">{c.title}</h3>
-      {c.subtitle && <p className="mb-3 font-mono text-2xs uppercase leading-5 tracking-[0.14em] text-text-faint">{c.subtitle}</p>}
-      <p className="mb-4 flex-1 text-sm leading-7 text-text-muted">{c.summary}</p>
-
-      {c.impact && (
-        <div className="mb-5 rounded-xl border border-border bg-surface-2/80 px-3 py-2 text-sm leading-6 text-text-secondary">
-          <span className="mb-1 block font-mono text-[0.62rem] uppercase tracking-[0.14em] text-coffee">{t.projects.impact}</span>
-          {c.impact}
-        </div>
-      )}
-
-      <div className="mt-auto border-t border-border pt-4">
-        <div className="mb-4 flex flex-wrap gap-1.5">
-          {project.techStack.slice(0, 5).map((tech) => (
-            <span key={tech} className="chip">{tech}</span>
-          ))}
-        </div>
-        <div className="flex items-center justify-between gap-3">
-          <span className="text-2xs font-mono uppercase text-text-faint">{t.projects.highlights}</span>
-          <ProjectLinks project={project} />
         </div>
       </div>
     </article>

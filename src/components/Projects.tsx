@@ -1,7 +1,7 @@
 import { useLang } from '../hooks/useLang';
 import { translations } from '../data/translations';
 import { projects } from '../data/projects';
-import { FeaturedProjectCard, ProjectCard } from './ProjectCard';
+import { FeaturedProjectCard, ProjectCard } from './project-cards';
 
 export function Projects() {
   const { lang } = useLang();
@@ -31,7 +31,14 @@ export function Projects() {
               <div className="h-px flex-1 bg-border" />
             </div>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {rest.map((p) => <ProjectCard key={p.id} project={p} />)}
+              {rest.map((p, index) => (
+                <ProjectCard
+                  key={p.id}
+                  project={p}
+                  variant={rest.length === 4 && index === 0 ? 'wide' : 'default'}
+                  className={rest.length === 4 && index === 0 ? 'sm:col-span-2 lg:col-span-3' : ''}
+                />
+              ))}
             </div>
           </>
         )}
