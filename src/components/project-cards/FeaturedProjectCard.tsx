@@ -24,7 +24,11 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
   ];
 
   return (
-    <article className="group relative overflow-hidden rounded-[1.35rem] border border-border bg-surface/95 shadow-card-md transition-all duration-300 hover:-translate-y-1 hover:shadow-card-lg">
+    <article 
+      id={project.id} 
+      onClick={() => { window.history.replaceState(null, '', `#${project.id}`); }}
+      className="group relative cursor-pointer overflow-hidden rounded-[1.35rem] border border-border bg-surface/95 shadow-card-md transition-all duration-300 hover:-translate-y-1 hover:shadow-card-lg"
+    >
       <div className="absolute inset-y-0 left-0 hidden w-1 bg-[linear-gradient(to_bottom,#0F3248,#2D607D,#A06448)] md:block" />
       <div className="grid md:grid-cols-[0.82fr_1.18fr] xl:grid-cols-[0.75fr_1.25fr]">
         <div className="relative overflow-hidden bg-accent-dark p-6 text-white md:p-7 xl:p-8">

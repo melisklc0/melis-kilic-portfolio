@@ -52,7 +52,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'embedded-workforce-analytics',
+    id: 'analytics-platform',
     featured: true,
     status: 'company',
     techStack: ['dbt Core', 'PostgreSQL RLS', 'Apache Superset', 'FastAPI', 'Docker', 'SQL', 'Python'],
@@ -163,7 +163,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'conversational-behavioral-analytics',
+    id: 'analyzer-platform',
     featured: true,
     status: 'company',
     techStack: ['LangChain', 'LangGraph', 'Langfuse', 'FastAPI', 'PostgreSQL RLS', 'OpenTelemetry', 'WebSocket', 'YAML'],
@@ -282,7 +282,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'multi-agent-ai-employee-coach',
+    id: 'ai-coach-platform',
     featured: true,
     status: 'company',
     techStack: ['LangGraph', 'POML', 'OpenAI Evals', 'LLM-as-Judge', 'FastAPI', 'CopilotKit', 'JSONL'],
@@ -506,7 +506,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'task-manager-poc',
+    id: 'task-manager-agent',
     status: 'company',
     techStack: ['Jira MCP', 'Transcript Processing', 'Voice Models', 'LangGraph', 'FastAPI', 'Pydantic', 'OpenAI API', 'uv'],
     links: {
@@ -540,14 +540,14 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'cv-validation-platform',
+    id: 'cv-parsing-platform',
     status: 'company',
     techStack: ['LLM Security', 'OpenAI API', 'LangChain', 'PDF Guard', 'Structured Outputs', 'Pydantic', 'FastAPI'],
     links: {
       private_note: 'Built at QKare; source code is private.',
     },
     en: {
-      title: 'CV Validation Platform',
+      title: 'CV Parsing Platform',
       subtitle: 'LLM validation and safety chain',
       badge: 'LLM Safety',
       supportingSummary:
@@ -574,7 +574,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'kpi-recommendation-service',
+    id: 'kpi-advisor',
     featured: true,
     status: 'company',
     techStack: [
@@ -697,7 +697,7 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'stroke-classification-kd',
+    id: 'stroke-classification',
     featured: true,
     status: 'academic',
     techStack: [
