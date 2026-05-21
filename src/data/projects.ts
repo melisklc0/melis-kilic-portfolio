@@ -164,8 +164,9 @@ export const projects: Project[] = [
   },
   {
     id: 'conversational-behavioral-analytics',
+    featured: true,
     status: 'company',
-    techStack: ['LangChain', 'LangGraph', 'FastAPI', 'WebSocket', 'PostgreSQL RLS', 'OpenAI', 'YAML'],
+    techStack: ['LangChain', 'LangGraph', 'Langfuse', 'FastAPI', 'PostgreSQL RLS', 'OpenTelemetry', 'WebSocket', 'YAML'],
     links: {
       private_note: 'Built at QKare; source code is private.',
     },
@@ -174,110 +175,110 @@ export const projects: Project[] = [
       subtitle: 'LLM analytics over governed data',
       badge: 'LLM Analytics',
       supportingSummary:
-        'A governed LLM analytics backend over workforce and psychometric data that lets HR and managers ask natural-language questions without bypassing tenant boundaries. Instead of navigating complex dashboards or waiting for data teams to write SQL reports, leaders can query their own data directly and instantly receive reliable, data-backed insights.',
+        'A governed conversational analytics platform that lets HR and managers ask natural-language questions over workforce and psychometric data through secure APIs, streaming agents, and voice/chat orchestration. The system connects LangChain analysis skills, a LangGraph gateway, dbt-backed PostgreSQL marts, tenant-safe RLS, and Langfuse/OpenTelemetry observability so business users can get reliable insights without writing SQL.',
       supportingImpact:
-        'Cleaned up & stabilized the analyzer backend: Removed duplicated enums/dataclasses and consolidated shared domain concepts into cleaner single sources of truth.\n\nMoved prompt assembly toward maintainable YAML config and fixed critical edge cases around auth, user context, RLS-aware SQL, and observability.',
+        'Helped mature the analyzer into a platform-style AI service rather than a set of isolated analysis modules. The work clarified shared domain contracts, made prompt behavior easier to review through YAML configuration, and strengthened the path between LLM reasoning and tenant-safe analytics data.\n\nThe result was a more production-minded analyzer layer: consistent auth across REST and streaming flows, request-scoped user context for governed tool calls, Langfuse-aware operational visibility, and more resilient handling of incomplete analytics metadata.',
       summary:
-        'A governed LLM analytics service that lets HR and managers ask natural-language questions over workforce and psychometric data without bypassing tenant boundaries. Instead of navigating complex dashboards or waiting for data teams to write SQL reports, leaders can query their own data directly and instantly receive reliable, data-backed insights.',
-      roleLine: 'Role: AI Backend Contributor · Focus: auth, governed SQL, prompt configuration, observability',
-      focusTitle: 'My focus — secure context propagation, prompts-as-config & observability',
+        'A governed conversational analytics platform that turns workforce and psychometric marts into natural-language insights through secure APIs, streaming agents, and voice/chat orchestration. The architecture separates analytics modeling, LLM interpretation, and real-time delivery while preserving tenant boundaries through RLS-aware execution.',
+      roleLine: 'Role: AI & Backend Engineer · Focus: architecture refactor, governed SQL, prompts-as-config, observability',
+      focusTitle: 'I helped turn the analyzer into a maintainable, production-minded AI platform.',
       focusSummary:
-        'My work sat in the production-hardening layer of the AI analytics stack: auth consistency, user context propagation, RLS-aware SQL execution, prompt/config maintainability, and operational logging. The goal was a safer, easier-to-debug bridge between LLM reasoning and governed analytics data.',
+        'My work focused on the parts that make an LLM analytics system dependable after the prototype stage: clear domain contracts, reviewable prompt configuration, tenant-aware execution context, and Langfuse/OpenTelemetry signals that help engineers understand what happened during an agent-driven analysis run.',
       metrics: [
-        { value: 'HTTP + WS', label: 'auth paths' },
-        { value: 'RLS', label: 'SQL access' },
-        { value: 'YAML', label: 'prompt config' },
-        { value: 'Logs', label: 'observability' },
+        { value: '18', label: 'YAML configs' },
+        { value: '8+', label: 'analysis skills' },
+        { value: '4', label: 'security layers' },
+        { value: '2', label: 'service layers' },
       ],
       contributions: [
         {
-          module: 'auth',
-          title: 'JWT and WebSocket hardening',
+          module: 'Architecture',
+          title: 'Clarified the shared analytics domain model',
           description:
-            'Aligned REST and WebSocket token handling so streaming analysis requests follow the same trust model as HTTP endpoints, with improved Swagger support for secured local testing.',
+            'Turned repeated enum and result-shape definitions into shared contracts used across competency, risk, impact, pattern, and nine-box analysis modules. This reduced semantic drift in a codebase where several domain concepts appear in multiple analysis paths.',
         },
         {
-          module: 'agent context',
-          title: 'User context for governed tool calls',
+          module: 'Prompt System',
+          title: 'Made prompt behavior easier to review and evolve',
           description:
-            'Added request-scoped user context for agent tool execution and improved SQL paths to align identity and tenant constraints with PostgreSQL row-level security expectations.',
+            'Shifted core prompt structure and result-chat rules out of scattered Python strings and into YAML-backed configuration. Prompt changes became closer to product configuration: visible in review, versioned in Git, and less tangled with service code.',
         },
         {
-          module: 'prompts',
-          title: 'YAML-driven prompt and config refactor',
+          module: 'Governed Data Access',
+          title: 'Kept agent tool calls aligned with tenant-safe data access',
           description:
-            'Moved hardcoded prompt assembly toward YAML-backed configuration, centralized loading/caching, and plain-text operational output so prompt changes are easier to review and version.',
+            'Worked on request-scoped user context and RLS-aware SQL execution so agent tools could query analytics marts through the same tenant and identity constraints expected by the rest of the platform.',
         },
         {
-          module: 'operations',
-          title: 'Structured logging and connector reliability',
+          module: 'Operations',
+          title: 'Made analysis runs traceable with LLM observability',
           description:
-            'Integrated shared structured logging around AI skill entry points and cleaned database connector behavior so health checks and system probes do not create misleading tenant-scoped noise.',
+            'Improved structured logging and tracing context around skill entry points, database access, and operational probes, with Langfuse/OpenTelemetry in the platform observability path. This made real user analysis activity easier to separate from health checks and startup noise.',
         },
         {
-          module: 'gateway',
-          title: 'Conversation API debugging',
+          module: 'Gateway Reliability',
+          title: 'Stabilized the chat and voice orchestration boundary',
           description:
-            'Improved logging and context parsing around the chat/voice gateway boundary, including role routing diagnostics and safer employee identity extraction for downstream analysis context.',
+            'Improved the handoff between the conversational gateway and the analysis engine, including auth consistency, role-routing diagnostics, and employee identity parsing for downstream analysis context.',
         },
       ],
       impact:
-        'Cleaned up & stabilized the analyzer backend: Removed duplicated enums/dataclasses and consolidated shared domain concepts into cleaner single sources of truth.\n\nMoved prompt assembly toward maintainable YAML config and fixed critical edge cases around auth, user context, RLS-aware SQL, and observability.',
+        'The Analyzer Platform became easier to trust, change, and operate: domain logic was less duplicated, prompt behavior was more reviewable, governed SQL paths were clearer, and Langfuse/OpenTelemetry observability gave engineers better visibility into how real analysis requests moved through the system.',
     },
     tr: {
       title: 'Analyzer Platform',
       subtitle: 'Governed data üzerinde LLM analytics',
       badge: 'LLM Analytics',
       supportingSummary:
-        'HR ve manager kullanıcılarının workforce ve psychometric analytics verisine tenant boundary’leri aşmadan doğal dille soru sorabildiği governed LLM analytics servisi. Karmaşık dashboard\'lar içinde kaybolmak veya veri ekiplerinden SQL raporları beklemek yerine, yöneticilerin kendi verilerine doğrudan sorular sorarak saniyeler içinde güvenilir analizler elde etmesini sağlar.',
+        'HR ve manager kullanıcılarının workforce ve psychometric analytics verisine secure API’ler, streaming agent’lar ve voice/chat orchestration üzerinden doğal dille soru sorabildiği governed conversational analytics platformu. LangChain analysis skill’leri, LangGraph gateway, dbt-backed PostgreSQL mart’lar, tenant-safe RLS ve Langfuse/OpenTelemetry observability birlikte çalışarak SQL yazmadan güvenilir insight alınmasını sağlar.',
       supportingImpact:
-        'Ciddi bir cleanup ve stabilization eforu ile duplicate enum, dataclass ve YAML loader’ları temizledim; shared domain kavramlarını daha net single source of truth yapılarına topladım.\n\nPrompt akışını maintainable YAML config tarafına taşıdım; auth, user context, RLS-aware SQL, logging ve eksik metadata edge case’lerini çözerek sistemi production’a hazırladım.',
+        'Analyzer’ın izole analysis modülleri gibi çalışmasından çıkıp platform-style bir AI servisine dönüşmesine katkı verdim. Çalışma; shared domain contract’ları netleştirdi, prompt davranışını YAML config üzerinden daha reviewable hale getirdi ve LLM reasoning ile tenant-safe analytics data arasındaki yolu güçlendirdi.\n\nSonuç daha production-minded bir analyzer katmanı oldu: REST ve streaming flow’larda tutarlı auth, governed tool call’lar için request-scoped user context, Langfuse-aware operational visibility ve eksik analytics metadata karşısında daha dayanıklı çalışma.',
       summary:
-        'HR ve manager kullanıcılarının workforce ve psychometric analytics verisine tenant boundary’leri aşmadan doğal dille soru sorabildiği governed LLM analytics servisi. Karmaşık dashboard\'lar içinde kaybolmak veya veri ekiplerinden SQL raporları beklemek yerine, yöneticilerin kendi verilerine doğrudan sorular sorarak saniyeler içinde güvenilir analizler elde etmesini sağlar.',
-      roleLine: 'Role: AI Backend Contributor · Focus: auth, governed SQL, prompt configuration, observability',
-      focusTitle: 'Odağım — secure context propagation, prompts-as-config ve observability',
+        'Workforce ve psychometric mart’ları secure API’ler, streaming agent’lar ve voice/chat orchestration ile natural-language insight’a çeviren governed conversational analytics platformu. Mimari; analytics modeling, LLM interpretation ve real-time delivery katmanlarını ayırırken tenant boundary’leri RLS-aware execution ile korur.',
+      roleLine: 'Role: AI & Backend Engineer · Focus: architecture refactor, governed SQL, prompts-as-config, observability',
+      focusTitle: 'Analyzer’ı maintainable ve production-minded bir AI platformuna taşımaya katkı verdim.',
       focusSummary:
-        'AI analytics stack’in production-hardening katmanında çalıştım: auth tutarlılığı, user context propagation, RLS-aware SQL execution, prompt/config maintainability ve operational logging. Ana hedef, LLM reasoning ile governed analytics data arasında daha güvenli ve debug edilebilir bir köprü kurmaktı.',
+        'Odağım prototip sonrası bir LLM analytics sistemini güvenilir yapan katmandı: net domain contract’ları, review edilebilir prompt configuration, tenant-aware execution context ve agent-driven analysis run sırasında ne olduğunu anlamayı kolaylaştıran Langfuse/OpenTelemetry signal’ları.',
       metrics: [
-        { value: 'HTTP + WS', label: 'auth paths' },
-        { value: 'RLS', label: 'SQL access' },
-        { value: 'YAML', label: 'prompt config' },
-        { value: 'Logs', label: 'observability' },
+        { value: '18', label: 'YAML configs' },
+        { value: '8+', label: 'analysis skills' },
+        { value: '4', label: 'security layers' },
+        { value: '2', label: 'service layers' },
       ],
       contributions: [
         {
-          module: 'auth',
-          title: 'JWT ve WebSocket hardening',
+          module: 'Architecture',
+          title: 'Shared analytics domain modelini netleştirme',
           description:
-            'REST ve WebSocket token handling akışlarını hizaladım; streaming analysis isteklerinin HTTP endpoint’lerle aynı trust model üzerinden çalışmasını sağladım. Secured local testing için Swagger tarafını da daha kullanılabilir hale getirdim.',
+            'Competency, risk, impact, pattern ve nine-box analysis modüllerinde tekrar eden enum ve result-shape tanımlarını ortak contract’lara taşıdım. Aynı domain kavramının farklı yerlerde farklı anlamlara kayması riskini azalttım.',
         },
         {
-          module: 'agent context',
-          title: 'Governed tool calls için user context',
+          module: 'Prompt System',
+          title: 'Prompt davranışını daha reviewable hale getirme',
           description:
-            'Agent tool execution sırasında request-scoped user context taşıyan yapıyı ekledim ve SQL execution path’lerini tenant/identity kısıtlarıyla PostgreSQL RLS beklentilerine daha uyumlu hale getirdim.',
+            'Core prompt structure ve result-chat rule’larını dağınık Python string’lerinden çıkarıp YAML-backed configuration’a taşıdım. Prompt değişiklikleri servis koduna gömülü olmaktan çıkıp Git üzerinde görülebilen, review edilebilen product configuration’a yaklaştı.',
         },
         {
-          module: 'prompts',
-          title: 'YAML-driven prompt ve config refactor',
+          module: 'Governed Data Access',
+          title: 'Agent tool call’larını tenant-safe data access ile hizalama',
           description:
-            'Hardcoded prompt assembly yerine YAML-backed configuration yaklaşımını güçlendirdim; loader/cache yapısını sadeleştirdim ve prompt/log output’larını operational olarak daha okunabilir hale getirdim.',
+            'Agent tool’larının analytics mart’ları sorgularken platformun tenant ve identity kısıtlarıyla uyumlu kalması için request-scoped user context ve RLS-aware SQL execution tarafında çalıştım.',
         },
         {
-          module: 'operations',
-          title: 'Structured logging ve connector reliability',
+          module: 'Operations',
+          title: 'Analysis run’ları LLM observability ile trace edilebilir kılma',
           description:
-            'AI skill entry point’leri etrafında shared structured logging entegrasyonu yaptım; health check ve system probe davranışlarının gereksiz tenant log noise üretmemesi için database connector tarafını temizledim.',
+            'Skill entry point, database access ve operational probe çevresindeki structured logging ve tracing context akışını iyileştirdim; platform observability path’inde Langfuse/OpenTelemetry sinyalini güçlendirdim. Böylece gerçek user analysis activity’si health check ve startup noise’dan daha net ayrılabilir hale geldi.',
         },
         {
-          module: 'gateway',
-          title: 'Conversation API debugging',
+          module: 'Gateway Reliability',
+          title: 'Chat ve voice orchestration boundary’sini stabilize etme',
           description:
-            'Chat/voice gateway sınırında role routing loglarını ve context parsing davranışını iyileştirdim; nested payload’lardan employee identity çıkarımı gibi production debug sürecini etkileyen edge case’lere dokundum.',
+            'Conversational gateway ile analysis engine arasındaki handoff’u güçlendirdim; auth tutarlılığı, role-routing diagnostics ve downstream analysis context için employee identity parsing edge case’lerine dokundum.',
         },
       ],
       impact:
-        'Ciddi bir cleanup ve stabilization eforu ile duplicate enum, dataclass ve YAML loader’ları temizledim; shared domain kavramlarını daha net single source of truth yapılarına topladım.\n\nPrompt akışını maintainable YAML config tarafına taşıdım; auth, user context, RLS-aware SQL, logging ve eksik metadata edge case’lerini çözerek sistemi production’a hazırladım.',
+        'Analyzer Platform daha güvenilir, değiştirilebilir ve operate edilebilir hale geldi: domain logic daha az tekrar ediyor, prompt davranışı daha görünür ilerliyor, governed SQL path’leri netleşiyor ve Langfuse/OpenTelemetry observability sayesinde mühendisler gerçek analysis request’lerinin sistem içinde nasıl aktığını daha iyi izleyebiliyor.',
     },
   },
   {
