@@ -394,118 +394,121 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-agent-api-gateway',
+    featured: true,
     status: 'company',
-    techStack: ['Python', 'FastAPI', 'Pydantic', 'Docker', 'Cookiecutter', 'Structured Logging', 'OpenTelemetry'],
+    techStack: ['FastAPI', 'Cookiecutter', 'Docker', 'GitLab CI', 'OpenTelemetry', 'Pydantic', 'uv', 'Structured JSON Logs'],
     links: {
       private_note: 'Built at QKare; source code is private.',
     },
     en: {
       title: 'AI Agent API Gateway',
-      subtitle: 'AI platform infrastructure',
+      subtitle: 'Monorepo platform for AI microservices',
       badge: 'Platform',
       summary:
-        'A FastAPI platform layer that prevents every LLM-backed microservice from rebuilding auth, routing, logging, configuration, and container startup from scratch.',
-      roleLine: 'Role: AI Platform Contributor · Focus: gateway factory, service scaffolding, structured operations',
-      focusTitle: 'My focus — shared gateway mechanics for AI microservices',      
+        'A FastAPI monorepo that standardizes how LLM-backed microservices are exposed through one invoke API instead of each agent rebuilding auth, payload contracts, observability, Docker setup, and CI wiring from scratch. Existing AI agents can plug into a shared gateway pattern while keeping their domain logic in separate services.',
+      roleLine:
+        'Role: AI Platform Contributor · Focus: monorepo architecture, gateway factory, agent scaffolding, observability contracts',
+      focusTitle: 'I helped turn one-off AI service wiring into a reusable gateway pattern.',
       focusSummary:
-        'I focused on the platform layer that makes AI services easier to expose, operate, and onboard. My work covered shared configuration, structured JSON logging, correlation IDs, a reusable FastAPI gateway factory, automated registration, and production-minded scaffolding for new agents.',
+        'My work focused on the platform mechanics that make new AI agents easier to expose and operate: shared configuration, structured request logging, correlation IDs, a reusable FastAPI app factory, automated agent registration, environment-driven CORS, and cookiecutter templates that generate deployment-ready agent shells.',
       metrics: [
-        { value: '1', label: 'invoke surface' },
-        { value: 'Factory', label: 'FastAPI apps' },
-        { value: 'JSON', label: 'structured logs' },
-        { value: 'Docker', label: 'agent scaffold' },
+        { value: '4', label: 'agent defaults' },
+        { value: '2', label: 'run modes' },
+        { value: '1', label: 'gateway contract' },
+        { value: '1', label: 'pipeline generator' },
       ],
       contributions: [
         {
-          module: 'core',
-          title: 'Shared config and structured logging',
+          module: 'Gateway Architecture',
+          title: 'Built a reusable FastAPI app factory for agent services',
           description:
-            'Introduced centralized environment-driven settings, structured JSON logs, request/correlation IDs, and dynamic service naming so agent services behave consistently across local and containerized runs.',
+            'Introduced a create_gateway_app-style factory and per-agent app entrypoints so the monorepo gateway and standalone agent containers share the same middleware, system routes, health behavior, and startup conventions.',
         },
         {
-          module: 'gateway factory',
-          title: 'Reusable FastAPI app factory',
+          module: 'Agent Onboarding',
+          title: 'Automated registration into shared config and routing',
           description:
-            'Built a create_gateway_app-style factory and per-agent entrypoints so monorepo and standalone agent containers inherit the same middleware, system routes, and startup behavior.',
+            'Reduced scattered manual edits when adding agents by extending post-generation flows that update core configuration and application routing. New agent handlers can plug into the same invoke surface with fewer integration mistakes.',
         },
         {
-          module: 'agent onboarding',
-          title: 'Automated registration and routing',
+          module: 'Scaffolding',
+          title: 'Standardized production-ready agent templates',
           description:
-            'Reduced manual wiring for new agents by updating shared configuration and application routing through scaffolding/post-generation flows instead of scattered edits.',
+            'Hardened cookiecutter-generated agents with multi-stage Docker builds, non-root runtime patterns, uv lockfile installs, compose files, and health checks aligned with the gateway entrypoint.',
         },
         {
-          module: 'templates',
-          title: 'Production-ready Docker scaffolding',
+          module: 'Operations',
+          title: 'Created shared configuration and observability conventions',
           description:
-            'Hardened generated agent templates with multi-stage Docker builds, non-root runtime patterns, uv lockfile installs, and health checks aligned with the gateway entrypoint.',
+            'Added environment-driven core settings, structured JSON logging, request/correlation IDs, dynamic service naming, and OpenTelemetry-oriented hooks so agent calls are easier to debug across local and containerized environments.',
         },
         {
-          module: 'frontend integration',
-          title: 'Environment-configurable CORS',
+          module: 'Integration Contract',
+          title: 'Kept agents thin by standardizing the gateway boundary',
           description:
-            'Moved browser origin configuration into core settings so local, staged, and embedded frontend consumers can call the gateway without hardcoded origin lists.',
+            'Positioned agents as lightweight HTTP integration shells: validate the shared request envelope, attach operational context, and delegate to downstream LLM-backed domain services without duplicating gateway concerns.',
         },
       ],
       impact:
-        'Defined the shared gateway mechanics (environment-driven settings, JSON logs, request IDs, reusable app factories, Docker scaffolding). Turned one-off AI service wiring into a repeatable platform pattern for exposing and onboarding LLM-backed microservices.',
+        'The monorepo gave AI services a common operating model: one invoke contract, shared auth and observability expectations, repeatable Docker/CI scaffolding, and a cleaner path for connecting existing agents to frontend and platform consumers.',
     },
     tr: {
       title: 'AI Agent API Gateway',
-      subtitle: 'AI platform infrastructure',
+      subtitle: 'AI microservice’ler için monorepo platformu',
       badge: 'Platform',
       summary:
-        'Her LLM-backed microservice’in auth, routing, logging, configuration ve container startup işlerini yeniden yazmasını engelleyen FastAPI platform katmanı.',
-      roleLine: 'Role: AI Platform Contributor · Focus: gateway factory, service scaffolding, structured operations',
-      focusTitle: 'Odağım — AI microservice’ler için shared gateway mechanics',
+        'LLM-backed microservice’lerin tek tek auth, payload contract, observability, Docker setup ve CI wiring yazmasını engelleyen FastAPI monorepo platformu. Var olan AI agent’lar shared gateway pattern’e bağlanabilirken domain logic ayrı servislerde kalır.',
+      roleLine:
+        'Role: AI Platform Contributor · Focus: monorepo architecture, gateway factory, agent scaffolding, observability contracts',
+      focusTitle: 'One-off AI service wiring’i reusable gateway pattern’e çevirmeye katkı verdim.',
       focusSummary:
-        'AI servislerini expose etmeyi, operate etmeyi ve yeni agent onboarding sürecini kolaylaştıran platform katmanına odaklandım. Shared config, structured JSON logging, correlation ID’ler, reusable FastAPI gateway factory, automated registration ve production-minded agent scaffolding üzerinde çalıştım.',
+        'Odağım yeni AI agent’ları expose etmeyi ve operate etmeyi kolaylaştıran platform mechanics tarafıydı: shared configuration, structured request logging, correlation ID’ler, reusable FastAPI app factory, automated agent registration, environment-driven CORS ve deployment-ready agent shell üreten cookiecutter template’ler.',
       metrics: [
-        { value: '1', label: 'invoke surface' },
-        { value: 'Factory', label: 'FastAPI apps' },
-        { value: 'JSON', label: 'structured logs' },
-        { value: 'Docker', label: 'agent scaffold' },
+        { value: '4', label: 'agent defaults' },
+        { value: '2', label: 'run modes' },
+        { value: '1', label: 'gateway contract' },
+        { value: '1', label: 'pipeline generator' },
       ],
       contributions: [
         {
-          module: 'core',
-          title: 'Shared config ve structured logging',
+          module: 'Gateway Architecture',
+          title: 'Agent servisleri için reusable FastAPI app factory',
           description:
-            'Centralized environment-driven settings, structured JSON logs, request/correlation ID ve dynamic service naming yapısını ekledim; agent servislerinin local ve containerized ortamlarda tutarlı davranmasını hedefledim.',
+            'create_gateway_app tarzı factory ve per-agent app entrypoint yapısını kurdum; monorepo gateway ve standalone agent container’larının aynı middleware, system route, health behavior ve startup convention’larını paylaşmasını sağladım.',
         },
         {
-          module: 'gateway factory',
-          title: 'Reusable FastAPI app factory',
+          module: 'Agent Onboarding',
+          title: 'Shared config ve routing’e automated registration',
           description:
-            'create_gateway_app tarzı factory ve per-agent entrypoint yapısını kurdum; monorepo ve standalone agent container’larının aynı middleware, system route ve startup davranışını paylaşmasını sağladım.',
+            'Yeni agent eklerken scattered manual edit ihtiyacını azalttım; post-generation flow’lar core configuration ve application routing’i güncelleyerek agent handler’ların aynı invoke surface’e daha az hata riskiyle bağlanmasını sağladı.',
         },
         {
-          module: 'agent onboarding',
-          title: 'Automated registration ve routing',
+          module: 'Scaffolding',
+          title: 'Production-ready agent template standardı',
           description:
-            'Yeni agent eklerken scattered manual edit ihtiyacını azalttım; scaffolding/post-generation flow ile shared config ve application routing güncellemelerini daha güvenilir hale getirdim.',
+            'Cookiecutter-generated agent’ları multi-stage Docker build, non-root runtime, uv lockfile install, compose file ve gateway entrypoint ile hizalı health check pattern’leriyle güçlendirdim.',
         },
         {
-          module: 'templates',
-          title: 'Production-ready Docker scaffolding',
+          module: 'Operations',
+          title: 'Shared configuration ve observability convention’ları',
           description:
-            'Generated agent template’lerini multi-stage Docker build, non-root runtime, uv lockfile install ve gateway entrypoint ile hizalı health check pattern’leriyle güçlendirdim.',
+            'Environment-driven core settings, structured JSON logging, request/correlation ID, dynamic service naming ve OpenTelemetry-oriented hook’lar ekledim; agent call’larının local ve containerized ortamlarda debug edilmesini kolaylaştırdım.',
         },
         {
-          module: 'frontend integration',
-          title: 'Environment-configurable CORS',
+          module: 'Integration Contract',
+          title: 'Agent’ları thin gateway boundary etrafında standardize etme',
           description:
-            'Browser origin ayarlarını core settings içine taşıdım; local, staged ve embedded frontend consumer’ların gateway’e hardcoded origin list olmadan bağlanmasını kolaylaştırdım.',
+            'Agent’ları lightweight HTTP integration shell olarak konumlandırdım: shared request envelope validate edilir, operational context eklenir ve iş domain logic’i tekrar yazılmadan downstream LLM-backed servise delege edilir.',
         },
       ],
       impact:
-        'Gateway akışlarını (environment settings, JSON logs, request ID, app factory, agent registration) standartlaştırarak, AI platformunu güvenli, yönetilebilir ve tekrar kullanılabilir bir yapıya kavuşturdum.',
+        'Monorepo, AI servisleri için ortak bir operating model sağladı: tek invoke contract, shared auth ve observability beklentileri, repeatable Docker/CI scaffolding ve mevcut agent’ları frontend/platform consumer’lara bağlamak için daha temiz bir yol.',
     },
   },
   {
     id: 'task-manager-poc',
     status: 'company',
-    techStack: ['OpenAI API', 'LangGraph', 'LangChain', 'MCP', 'FastAPI', 'Pydantic', 'Jira API', 'uv'],
+    techStack: ['Jira MCP', 'Transcript Processing', 'Voice Models', 'LangGraph', 'FastAPI', 'Pydantic', 'OpenAI API', 'uv'],
     links: {
       private_note: 'Built at QKare; source code is private.',
     },
@@ -513,25 +516,33 @@ export const projects: Project[] = [
       title: 'Task Manager Agent',
       subtitle: 'Jira work-item automation POC',
       badge: 'Agentic Workflow',
+      supportingSummary:
+        'AI assistant POC that turns meeting transcripts, voice inputs, and messy collaboration context into structured Jira work items and sprint actions.',
+      supportingImpact:
+        'Built transcript-processing flows, configured voice model paths, and added Jira tools beyond the MCP baseline for more reliable sprint automation.',
       summary:
-        'A proof-of-concept AI assistant for turning messy collaboration context into structured Jira work items and sprint actions.',
+        'A proof-of-concept AI assistant for turning meeting transcripts, voice inputs, and messy collaboration context into structured Jira work items and sprint actions.',
       impact:
-        'Contributed the sprint-management tool suite, typed Jira request/response models, and meeting-transcript processing flows. Moved the assistant from chat-driven task capture toward reliable workflow automation with validated tool calls, sprint lifecycle support, and cleaner local/service operations.',
+        'Built meeting-transcript processing flows, configured voice model paths, and extended the Jira MCP integration with additional tools and typed request/response models. This moved task capture toward reliable workflow automation with validated tool calls, sprint lifecycle support, and cleaner local/service operations.',
     },
     tr: {
       title: 'Task Manager Agent',
       subtitle: 'Jira work-item automation POC',
       badge: 'Agentic Workflow',
+      supportingSummary:
+        'Meeting transcript, ses girdisi ve dağınık collaboration context’i structured Jira work item ve sprint aksiyonlarına çeviren AI assistant POC.',
+      supportingImpact:
+        'Transcript processing akışlarını kurdum, voice model path’lerini ayarladım ve Jira MCP baseline’ına ek tool’lar yazarak sprint automation tarafını güçlendirdim.',
       summary:
-        'Dağınık collaboration context ve doğal dil girdilerini structured Jira work item ve sprint aksiyonlarına çeviren proof-of-concept AI assistant.',
+        'Meeting transcript, ses girdisi ve dağınık collaboration context’i structured Jira work item ve sprint aksiyonlarına çeviren proof-of-concept AI assistant.',
       impact:
-        'Sprint-management tool suite, typed Jira modelleri, transcript processing ve terminology cleanup tarafında katkı verdim. Chat-driven task capture fikrini validated tool call’lar, sprint lifecycle desteği ve daha temiz local/service operasyonlarıyla güvenilir workflow automation yönüne taşıdı.',
+        'Meeting-transcript processing akışlarını kurdum, voice model path’lerini ayarladım ve Jira MCP entegrasyonunu ek tool’lar ile typed request/response modelleriyle genişlettim. Bu çalışma task capture fikrini validated tool call’lar, sprint lifecycle desteği ve daha temiz local/service operasyonlarıyla güvenilir workflow automation yönüne taşıdı.',
     },
   },
   {
     id: 'cv-validation-platform',
     status: 'company',
-    techStack: ['LangChain', 'OpenAI API', 'FastAPI', 'Pydantic', 'PDF Validation', 'Security Chain', 'Structured Outputs'],
+    techStack: ['LLM Security', 'OpenAI API', 'LangChain', 'PDF Guard', 'Structured Outputs', 'Pydantic', 'FastAPI'],
     links: {
       private_note: 'Built at QKare; source code is private.',
     },
@@ -542,7 +553,7 @@ export const projects: Project[] = [
       supportingSummary:
         'An LLM-powered resume validation and safety pipeline focused on protecting the document-ingest boundary before downstream search or matching workflows.',
       supportingImpact:
-        'Built the CV validation chain and added a security guard layer. By adding PDF file-type checks and converting LLM responses into safer typed objects, we filter non-CV, abusive, off-topic, and prompt-injection-style uploads—making resume ingestion safer before heavier AI processing.',
+        'Made resume ingestion safer by filtering non-CV, abusive, off-topic, and prompt-injection-style uploads before heavier AI processing.',
       summary:
         'An LLM-powered resume validation and safety pipeline focused on protecting the document-ingest boundary before downstream search or matching workflows.',
       impact:
@@ -553,9 +564,9 @@ export const projects: Project[] = [
       subtitle: 'LLM validation and safety chain',
       badge: 'LLM Safety',
       supportingSummary:
-        'Downstream search veya matching akislarindan once document-ingest boundarysini korumaya odaklanan LLM-powered resume validation ve safety pipeline.',
+        'Downstream search veya matching akışlarından önce document-ingest boundary’sini korumaya odaklanan LLM-powered resume validation ve safety pipeline.',
       supportingImpact:
-        'CV validation chain ve security guard layer kurarak resume ingestion akisini daha guvenli hale getirdim. PDF file-type check ekleme, LLM responselarini typed objectlere tasima islemleri sayesinde non-CV, abusive, off-topic ve prompt-injection tarzi uploadlar agir AI processing oncesinde filtrelendi.',
+        'Non-CV, abusive, off-topic ve prompt-injection tarzı upload’ları ağır AI processing öncesinde filtreleyerek resume ingestion akışını daha güvenli hale getirdi.',
       summary:
         'Downstream search veya matching akışlarından önce document-ingest boundary’sini korumaya odaklanan LLM-powered resume validation pipeline.',
       impact:
