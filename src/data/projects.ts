@@ -290,10 +290,10 @@ export const projects: Project[] = [
       focusSummary:
         'My work focused on the parts that decide how the AI coach behaves: orchestrator POML prompts, role/mode/style routing, prompt library quality, simulated coachee scenarios, and an evaluation loop where generated coaching conversations are scored across concrete dimensions instead of judged by vibes.',
       metrics: [
-        { value: '4', label: 'AI agents' },
-        { value: '43', label: 'coaching modes' },
         { value: '49', label: 'POML prompts' },
+        { value: '43', label: 'coaching modes' },
         { value: '5', label: 'eval dimensions' },
+        { value: '4', label: 'AI agents' },
       ],
       contributions: [
         {
@@ -341,10 +341,10 @@ export const projects: Project[] = [
       focusSummary:
         'Odağım AI coach’un nasıl davranacağını belirleyen katmandı: orchestrator POML prompts, role/mode/style routing, prompt library quality, simulated coachee scenarios ve generated coaching conversations için somut dimension’larla çalışan evaluation loop.',
       metrics: [
-        { value: '4', label: 'AI agents' },
-        { value: '43', label: 'coaching modes' },
         { value: '49', label: 'POML prompts' },
+        { value: '43', label: 'coaching modes' },
         { value: '5', label: 'eval dimensions' },
+        { value: '4', label: 'AI agents' },
       ],
       contributions: [
         {
@@ -614,6 +614,133 @@ export const projects: Project[] = [
       ],
       impact:
         'KPI tasarımını manuel spreadsheet hazırlığından repeatable AI recommendation service yönüne taşıdı: process-framework metrics ile grounded, prompt/schema kurallarıyla constrained, eval’lerle ölçülebilir ve business review öncesi denetlenebilir.',
+    },
+  },
+  {
+    id: 'stroke-classification-kd',
+    featured: true,
+    status: 'academic',
+    techStack: [
+      'PyTorch',
+      'Computer Vision',
+      'Medical Imaging',
+      'MLOps',
+      'Knowledge Distillation',
+      'Hugging Face',
+      'Streamlit',
+      'ONNX',
+      'Torchvision',
+      'Soft-Voting Ensemble',
+    ],
+    links: {
+      github: 'https://github.com/melisklc0/Stroke-Classification',
+      demo: 'https://huggingface.co/spaces/melisklc0/stroke-classification',
+      article:
+        'https://github.com/melisklc0/Stroke-Classification/blob/main/thesis/Stroke_Classification_Thesis_Report.pdf',
+    },
+    en: {
+      title: 'Stroke Classification',
+      subtitle: 'CT image classification with KD',
+      badge: 'Open source capstone',
+      summary:
+        'An open-source stroke classification system for head CT scans, built around the question: can a lightweight student model outperform a heavier teacher? Using knowledge distillation, EfficientNet-B0 surpassed the InceptionV3 teacher while staying cheaper to run, and a soft-voting ensemble pushed prediction stability to 98.2% accuracy/F1.',
+      roleLine:
+        'Role: ML Engineer & Researcher · Focus: data pipeline, CNN baselines, knowledge distillation, public demo',
+      focusTitle: 'I built a lightweight clinical decision-support prototype from teacher-student deep learning.',
+      focusSummary:
+        'Medical imaging needs both speed and accuracy, so the core bet was to transfer the dark knowledge of a heavier InceptionV3 teacher into a more efficient EfficientNet-B0 student. I modernized the system with a YAML-driven data pipeline, uv-based environment setup, 3-fold CNN/KD evaluation, ensemble testing, published model/data artifacts, and a live Streamlit demo.',
+      metrics: [
+        { value: '98.2%', label: 'peak accuracy' },
+        { value: '49.5K', label: 'CT images' },
+        { value: '7', label: 'model families' },
+        { value: '3', label: 'CV folds' },
+      ],
+      contributions: [
+        {
+          module: 'Problem',
+          title: 'Fast CT inference needed lower model cost without losing accuracy',
+          description:
+            'Stroke screening is time-sensitive, but heavier CNN teachers can create inference cost and hardware bottlenecks. The project tested whether a smaller student model could preserve diagnostic signal while being easier to run.',
+        },
+        {
+          module: 'Data pipeline',
+          title: 'Rebuilt the project as a modular MLOps pipeline',
+          description:
+            'Moved the workflow beyond local research scripts with YAML configuration, uv dependency management, fold-based preprocessing, class balancing, augmentation, and dataset pull/push steps for repeatable experiments.',
+        },
+        {
+          module: 'Modeling',
+          title: 'Distilled InceptionV3 knowledge into EfficientNet students',
+          description:
+            'Compared multiple torchvision backbones, used InceptionV3 as the teacher baseline, and transferred its dark knowledge into lighter EfficientNet student models that reached 98.0% F1.',
+        },
+        {
+          module: 'Evaluation',
+          title: 'Used soft-voting to maximize prediction stability',
+          description:
+            'Evaluated fold-level metrics, loss curves, confusion matrices, and error reports, then combined distilled models with soft voting to reach 98.2% accuracy/F1 on the internal validation protocol.',
+        },
+        {
+          module: 'Publishing',
+          title: 'Published the system as a working public demo',
+          description:
+            'Published the model, dataset mirrors, and Streamlit demo on Hugging Face/Kaggle, with Hub loading and ONNX export paths so the classifier can be inspected and tried without local training.',
+        },
+      ],
+      impact:
+        'Showed that a compact student model can outperform a heavier teacher for CT stroke classification, reducing inference constraints while keeping the full system reproducible, inspectable, and publicly demoable.',
+    },
+    tr: {
+      title: 'Stroke Classification',
+      subtitle: 'CT image classification with KD',
+      badge: 'Open source capstone',
+      summary:
+        'Beyin BT görüntülerini Stroke / No-Stroke olarak sınıflandıran open-source medical imaging sistemi. Projenin ana sorusu şuydu: hafif bir student model, ağır bir teacher modeli geride bırakabilir mi? Knowledge distillation ile EfficientNet-B0, InceptionV3 teacher baseline’ını aşarken inference maliyetini düşürdü; soft-voting ensemble ise kararlılığı 98.2% accuracy/F1 seviyesine taşıdı.',
+      roleLine:
+        'Role: ML Engineer & Researcher · Focus: data pipeline, CNN baselines, knowledge distillation, public demo',
+      focusTitle: 'Teacher-student deep learning ile lightweight clinical decision-support prototype kurdum.',
+      focusSummary:
+        'Medikal görüntülemede hız ve doğruluk birlikte kritik olduğu için ana hedef, ağır InceptionV3 teacher modelin dark knowledge bilgisini daha verimli EfficientNet-B0 student modele aktarmaktı. Sistemi YAML-driven data pipeline, uv-based environment setup, 3-fold CNN/KD evaluation, ensemble testing, yayınlanmış model/data artifact’ları ve canlı Streamlit demo ile modernize ettim.',
+      metrics: [
+        { value: '98.2%', label: 'peak accuracy' },
+        { value: '49.5K', label: 'CT images' },
+        { value: '7', label: 'model families' },
+        { value: '3', label: 'CV folds' },
+      ],
+      contributions: [
+        {
+          module: 'Problem',
+          title: 'Fast CT inference için model maliyetini düşürmek gerekiyordu',
+          description:
+            'Stroke screening zaman hassas bir problem; ağır CNN teacher modelleri inference cost ve hardware bottleneck yaratabiliyor. Proje, daha küçük bir student modelin diagnostic signal’ı koruyup koruyamayacağını test etti.',
+        },
+        {
+          module: 'Data pipeline',
+          title: 'Projeyi modular MLOps pipeline olarak yeniden yapılandırma',
+          description:
+            'Workflow’u local research scriptlerinden çıkarıp YAML configuration, uv dependency management, fold-based preprocessing, class balancing, augmentation ve dataset pull/push adımlarıyla repeatable experiment yapısına taşıdım.',
+        },
+        {
+          module: 'Modeling',
+          title: 'InceptionV3 bilgisini EfficientNet student modellere distill etme',
+          description:
+            'Birden fazla torchvision backbone’u karşılaştırdım, InceptionV3’ü teacher baseline olarak konumlandırdım ve dark knowledge bilgisini 98.0% F1 seviyesine ulaşan EfficientNet student modellere aktardım.',
+        },
+        {
+          module: 'Evaluation',
+          title: 'Soft-voting ile prediction stability’i artırma',
+          description:
+            'Fold-level metrics, loss curve, confusion matrix ve error report çıktılarıyla modelleri ölçtüm; distilled modelleri soft voting ile birleştirerek internal validation protocol üzerinde 98.2% accuracy/F1 elde ettim.',
+        },
+        {
+          module: 'Publishing',
+          title: 'Sistemi çalışan public demo olarak yayınlama',
+          description:
+            'Modeli, dataset mirror’larını ve Streamlit demo’yu Hugging Face/Kaggle üzerinde yayınladım; Hub loading ve ONNX export path’leriyle classifier local training gerektirmeden incelenebilir ve denenebilir hale geldi.',
+        },
+      ],
+      impact:
+        'Compact student modelin CT stroke classification için ağır teacher baseline’ı aşabileceğini gösterdi; inference constraint’lerini azaltırken sistemi reproducible, inspectable ve public demo’ya uygun hale getirdi.',
     },
   },
 ];
