@@ -26,6 +26,11 @@ export interface ProjectContent {
   title: string;
   subtitle?: string;
   badge?: string;
+  recognition?: {
+    brand: string;
+    title: string;
+    detail: string;
+  };
   supportingSummary?: string;
   supportingImpact?: string;
   summary: string;
@@ -722,8 +727,13 @@ export const projects: Project[] = [
       title: 'Stroke Classification',
       subtitle: 'CT image classification with KD',
       badge: 'Open source capstone',
+      recognition: {
+        brand: 'TEKNOFEST',
+        title: 'Healthcare Artificial Intelligence Competition',
+        detail: 'Accepted',
+      },
       summary:
-        'An open-source stroke classification system for head CT scans, built around the question: can a lightweight student model outperform a heavier teacher? Using knowledge distillation, EfficientNet-B0 surpassed the InceptionV3 teacher while staying cheaper to run, and a soft-voting ensemble pushed prediction stability to 98.2% accuracy/F1.',
+        'An open-source stroke classification system for head CT scans, accepted to the TEKNOFEST Healthcare Artificial Intelligence Competition. Built around the question: can a lightweight student model outperform a heavier teacher? Using knowledge distillation, EfficientNet-B0 surpassed the InceptionV3 teacher while staying cheaper to run, and a soft-voting ensemble pushed prediction stability to 98.2% accuracy/F1.',
       roleLine:
         'Role: ML Engineer & Researcher · Focus: data pipeline, CNN baselines, knowledge distillation, public demo',
       focusTitle: 'I built a lightweight clinical decision-support prototype from teacher-student deep learning.',
@@ -768,14 +778,19 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'Showed that a compact student model can outperform a heavier teacher for CT stroke classification, reducing inference constraints while keeping the full system reproducible, inspectable, and publicly demoable.',
+        'Showed that a compact student model can outperform a heavier teacher for CT stroke classification, reducing inference constraints while keeping the full system reproducible, inspectable, publicly demoable, and externally validated through TEKNOFEST Healthcare AI acceptance.',
     },
     tr: {
       title: 'Stroke Classification',
       subtitle: 'CT image classification with KD',
       badge: 'Open source capstone',
+      recognition: {
+        brand: 'TEKNOFEST',
+        title: 'Sağlıkta Yapay Zeka Yarışması',
+        detail: 'Accepted',
+      },
       summary:
-        'Beyin BT görüntülerini Stroke / No-Stroke olarak sınıflandıran open-source medical imaging sistemi. Projenin ana sorusu şuydu: hafif bir student model, ağır bir teacher modeli geride bırakabilir mi? Knowledge distillation ile EfficientNet-B0, InceptionV3 teacher baseline’ını aşarken inference maliyetini düşürdü; soft-voting ensemble ise kararlılığı 98.2% accuracy/F1 seviyesine taşıdı.',
+        'Beyin BT görüntülerini Stroke / No-Stroke olarak sınıflandıran ve TEKNOFEST Sağlıkta Yapay Zeka Yarışması’na kabul alan open-source medical imaging sistemi. Projenin ana sorusu şuydu: hafif bir student model, ağır bir teacher modeli geride bırakabilir mi? Knowledge distillation ile EfficientNet-B0, InceptionV3 teacher baseline’ını aşarken inference maliyetini düşürdü; soft-voting ensemble ise kararlılığı 98.2% accuracy/F1 seviyesine taşıdı.',
       roleLine:
         'Role: ML Engineer & Researcher · Focus: data pipeline, CNN baselines, knowledge distillation, public demo',
       focusTitle: 'Teacher-student deep learning ile lightweight clinical decision-support prototype kurdum.',
@@ -820,7 +835,7 @@ export const projects: Project[] = [
         },
       ],
       impact:
-        'Compact student modelin CT stroke classification için ağır teacher baseline’ı aşabileceğini gösterdi; inference constraint’lerini azaltırken sistemi reproducible, inspectable ve public demo’ya uygun hale getirdi.',
+        'Compact student modelin CT stroke classification için ağır teacher baseline’ı aşabileceğini gösterdi; inference constraint’lerini azaltırken sistemi reproducible, inspectable, public demo’ya uygun ve TEKNOFEST Sağlıkta Yapay Zeka kabulüyle dış doğrulama almış hale getirdi.',
     },
   },
 ];

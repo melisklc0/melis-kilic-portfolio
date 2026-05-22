@@ -12,6 +12,24 @@ function FeaturedMetric({ value, label }: { value: string; label: string }) {
   );
 }
 
+function RecognitionBanner({ recognition }: { recognition: NonNullable<Project['en']['recognition']> }) {
+  return (
+    <div className="mt-5 flex items-center gap-3 rounded-xl border border-white/18 bg-white/10 p-3 shadow-sm backdrop-blur">
+      <div className="flex h-12 w-24 shrink-0 items-center justify-center rounded-lg bg-white px-3 text-center font-display text-base font-bold leading-none tracking-normal text-[#0F3248]">
+        {recognition.brand}
+      </div>
+      <div className="min-w-0">
+        <p className="text-sm font-semibold leading-snug text-white">
+          <span className="text-[#E7B08A]">{recognition.brand}:</span> {recognition.title}
+        </p>
+        <p className="mt-1 font-mono text-[0.68rem] font-medium uppercase leading-4 tracking-[0.08em] text-[#E7B08A]">
+          {recognition.detail}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function FeaturedProjectCard({ project }: { project: Project }) {
   const { lang } = useLang();
   const c = project[lang];
@@ -45,6 +63,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
             <ProjectType project={project} tone="dark" />
             {c.subtitle && <p className="mt-3 font-mono text-xs font-medium uppercase leading-5 tracking-[0.09em] text-white/82">{c.subtitle}</p>}
             <h3 className="mt-3 font-display text-3xl font-semibold leading-tight text-white xl:text-4xl">{c.title}</h3>
+            {c.recognition && <RecognitionBanner recognition={c.recognition} />}
             <p className="mt-5 text-sm leading-7 text-white/76 md:text-base">{c.summary}</p>
 
             <div className="mt-7 grid grid-cols-2 gap-2">

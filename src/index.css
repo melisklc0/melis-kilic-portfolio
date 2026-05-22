@@ -77,6 +77,10 @@
 
   /* Tech chip */
   .chip { @apply inline-flex items-center text-xs font-mono font-medium px-2.5 py-1 rounded-full bg-surface text-text-secondary border border-border; }
+  .chip-featured {
+    @apply border-transparent text-white shadow-sm;
+    background: var(--gradient);
+  }
 
   /* Divider */
   .divider { @apply border-t border-border; }
