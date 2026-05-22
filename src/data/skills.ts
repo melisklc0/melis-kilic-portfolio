@@ -1,99 +1,112 @@
 // src/data/skills.ts
 // Edit skill groups and items here.
-// Items are language-neutral (tool names). Category titles are in translations.ts.
+// Items are language-neutral tool, framework, platform, and library names.
 
 export interface SkillGroup {
   id: string;
   icon: string;
-  items: string[];
+  items: SkillItem[];
+}
+
+export interface SkillItem {
+  name: string;
+  featured?: boolean;
 }
 
 export const skillGroups: SkillGroup[] = [
   {
-    id: 'llm_engineering',
+    id: 'ai_agent_systems',
     icon: 'AI',
     items: [
-      'LLM Applications',
-      'AI Agents',
-      'RAG Systems',
-      'LangChain / LCEL',
-      'Prompt Engineering',
-      'OpenAI API',
-      'Vector Databases',
+      { name: 'LangGraph', featured: true },
+      { name: 'LangChain', featured: true },
+      { name: 'RAG', featured: true },
+      { name: 'Agentic AI' },
+      { name: 'OpenAI API' },
+      { name: 'Prompt Engineering' },
+      { name: 'MCP' },
+      { name: 'Structured Outputs' },
     ],
   },
   {
-    id: 'backend_apis',
-    icon: 'API',
-    items: [
-      'Python',
-      'FastAPI',
-      'REST APIs',
-      'Pydantic',
-      'Async Processing',
-      'PostgreSQL',
-      'TypeScript',
-    ],
-  },
-  {
-    id: 'data_analytics',
+    id: 'data_engineering',
     icon: 'SQL',
     items: [
-      'Data Analytics',
-      'SQL',
-      'Data Pipelines',
-      'ETL',
-      'Business Intelligence',
-      'Pandas',
-      'Superset',
+      { name: 'dbt Core', featured: true },
+      { name: 'PostgreSQL', featured: true },
+      { name: 'Apache Superset', featured: true },
+      { name: 'SQL' },
+      { name: 'Data Marts' },
+      { name: 'FDW' },
+      { name: 'ETL / ELT' },
+      { name: 'Data Modeling' },
+      { name: 'pandas' },
+      { name: 'Native RLS' },
     ],
   },
   {
-    id: 'ml_deep_learning',
+    id: 'backend_api_engineering',
+    icon: 'API',
+    items: [
+      { name: 'Python', featured: true },
+      { name: 'FastAPI', featured: true },
+      { name: 'Pydantic', featured: true },
+      { name: 'REST APIs' },
+      { name: 'WebSocket' },
+      { name: 'JWT' },
+      { name: 'httpx' },
+      { name: 'Redis' },
+    ],
+  },
+  {
+    id: 'llm_evaluation_trust',
+    icon: 'EVAL',
+    items: [
+      { name: 'LLM-as-Judge', featured: true },
+      { name: 'OpenAI Evals', featured: true },
+      { name: 'Langfuse', featured: true },
+      { name: 'JSONL Evals' },
+      { name: 'Eval Datasets' },
+      { name: 'Scenario Testing' },
+    ],
+  },
+  {
+    id: 'infrastructure_quality',
+    icon: 'INFRA',
+    items: [
+      { name: 'Docker', featured: true },
+      { name: 'uv', featured: true },
+      { name: 'pytest', featured: true },
+      { name: 'Ruff', featured: true },
+      { name: 'mypy', featured: true },
+      { name: 'Git' },
+      { name: 'pre-commit' },
+      { name: 'GitLab CI/CD' },
+      { name: 'Argo Workflows' },
+    ],
+  },
+  {
+    id: 'machine_learning_vision',
     icon: 'ML',
     items: [
-      'Deep Learning',
-      'Medical Image Classification',
-      'Knowledge Distillation',
-      'PyTorch',
-      'Scikit-learn',
-      'Transformers',
-      'Model Evaluation',
-    ],
-  },
-  {
-    id: 'mlops',
-    icon: 'OPS',
-    items: [
-      'Observability',
-      'LLM Tracing',
-      'Langfuse',
-      'Logging & Monitoring',
-      'MLOps',
-      'Docker',
-      'GitLab CI/CD',
-    ],
-  },
-  {
-    id: 'frontend_basics',
-    icon: 'UI',
-    items: [
-      'React',
-      'TypeScript',
-      'Vite',
-      'Dashboard UI',
-      'Charts',
-      'Responsive Layouts',
+      { name: 'PyTorch', featured: true },
+      { name: 'Knowledge Distillation', featured: true },
+      { name: 'ONNX', featured: true },
+      { name: 'Torchvision' },
+      { name: 'Hugging Face' },
+      { name: 'CNNs' },
+      { name: 'Medical Imaging' },
+      { name: 'Streamlit' },
     ],
   },
 ];
 
 // Skill group titles by language
 export const skillGroupTitles: Record<string, { en: string; tr: string }> = {
-  llm_engineering: { en: 'AI & LLM Engineering', tr: 'Yapay Zeka & LLM Muhendisligi' },
-  backend_apis: { en: 'Backend & APIs', tr: 'Backend & API' },
-  data_analytics: { en: 'Data & Analytics', tr: 'Veri & Analitik' },
-  ml_deep_learning: { en: 'Machine Learning / Deep Learning', tr: 'Makine Ogrenmesi / Derin Ogrenme' },
-  mlops: { en: 'DevOps / MLOps', tr: 'DevOps / MLOps' },
-  frontend_basics: { en: 'Frontend Basics', tr: 'Frontend Temelleri' },
+  ai_agent_systems: { en: 'AI Systems & Agents', tr: 'AI Sistemleri & Ajanlar' },
+  llm_evaluation_trust: { en: 'LLM Evaluation & Trust', tr: 'LLM Degerlendirme & Guven' },
+  backend_api_engineering: { en: 'Backend & API Engineering', tr: 'Backend & API Muhendisligi' },
+  data_engineering: { en: 'Data Engineering', tr: 'Veri Muhendisligi' },
+  infrastructure_quality: { en: 'Infrastructure & Quality', tr: 'Infrastructure & Quality' },
+  machine_learning_vision: { en: 'Machine Learning & Vision', tr: 'Makine Ogrenmesi & Goru' },
 };
