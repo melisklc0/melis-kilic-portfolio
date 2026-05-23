@@ -25,7 +25,7 @@ export function ProjectLinks({ project }: { project: Project }) {
   }
 
   return (
-    <div className="flex flex-wrap justify-start gap-2 md:justify-end">
+    <div className="flex flex-wrap justify-start gap-2 md:justify-end" onClick={(event) => event.stopPropagation()}>
       {project.links.github && (
         <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="rounded-full border border-accent/25 px-3 py-1 text-xs font-semibold text-accent hover:bg-accent-light">
           GitHub {'->'}

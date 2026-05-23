@@ -2,6 +2,7 @@ import { useLang } from '../../hooks/useLang';
 import { translations } from '../../data/translations';
 import type { Project } from '../../data/projects';
 import { ProjectLinks, ProjectType, StatusBadge } from './ProjectShared';
+import { setProjectUrl } from '../../utils/projectUrl';
 
 type ProjectCardProps = {
   project: Project;
@@ -21,7 +22,7 @@ export function ProjectCard({ project, className = '', variant = 'default' }: Pr
     return (
       <article 
         id={project.id} 
-        onClick={() => { window.history.replaceState(null, '', `#${project.id}`); }}
+        onClick={() => setProjectUrl(project.id)}
         className={`relative cursor-pointer overflow-hidden rounded-2xl border border-border bg-surface/80 p-5 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-card-md lg:grid lg:grid-cols-[0.7fr_0.9fr_1.6fr] lg:gap-6 ${className}`}
       >
         <div className="absolute inset-x-5 top-0 h-[2px] bg-[linear-gradient(90deg,transparent,#2D607D,#A06448,transparent)]" />
@@ -70,7 +71,7 @@ export function ProjectCard({ project, className = '', variant = 'default' }: Pr
   return (
     <article 
       id={project.id} 
-      onClick={() => { window.history.replaceState(null, '', `#${project.id}`); }}
+      onClick={() => setProjectUrl(project.id)}
       className={`relative cursor-pointer flex min-h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/80 p-6 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-card-md ${className}`}
     >
       <div className="mb-4 flex flex-wrap items-center gap-3">

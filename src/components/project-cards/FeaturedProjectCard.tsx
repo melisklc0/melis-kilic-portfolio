@@ -2,6 +2,7 @@ import { useLang } from '../../hooks/useLang';
 import { translations } from '../../data/translations';
 import type { Project } from '../../data/projects';
 import { ProjectLinks, ProjectType, RoleFocus, StatusBadge } from './ProjectShared';
+import { setProjectUrl } from '../../utils/projectUrl';
 
 function FeaturedMetric({ value, label }: { value: string; label: string }) {
   return (
@@ -44,7 +45,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
   return (
     <article 
       id={project.id} 
-      onClick={() => { window.history.replaceState(null, '', `#${project.id}`); }}
+      onClick={() => setProjectUrl(project.id)}
       className="group relative cursor-pointer overflow-hidden rounded-[1.35rem] border border-border bg-surface/95 shadow-card-md transition-all duration-300 hover:-translate-y-1 hover:shadow-card-lg"
     >
       <div className="absolute inset-y-0 left-0 hidden w-1 bg-[linear-gradient(to_bottom,#0F3248,#2D607D,#A06448)] md:block" />
