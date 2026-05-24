@@ -27,13 +27,13 @@ export function Education() {
           {education.map((entry) => (
             <article key={entry.id} className="rounded-2xl border border-border bg-surface/72 p-5 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-card-md">
               <div className="mb-5 flex items-start justify-between gap-4">
-                <TimelineMarker label={entry.company.slice(0, 2).toUpperCase()} />
+                <TimelineMarker label={entry.company[l].slice(0, 2).toUpperCase()} />
                 <span className="rounded-full border border-border bg-surface-2 px-3 py-1 text-2xs font-mono text-text-muted">
                   {entry.period}
                 </span>
               </div>
               <h3 className="text-lg font-semibold leading-snug text-text-primary">{entry.role[l]}</h3>
-              <p className="mt-1 text-sm text-accent">{entry.company}</p>
+              <p className="mt-1 text-sm text-accent">{entry.company[l]}</p>
               <p className="my-5 text-sm leading-7 text-text-secondary">{entry.description[l]}</p>
 
               <div className="flex flex-wrap gap-1.5 border-t border-border pt-4">

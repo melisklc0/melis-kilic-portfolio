@@ -116,55 +116,55 @@ export const projects: Project[] = [
         'Helped move analytics from fragile chart logic into a production-grade BI layer with correctly grained dynamic marts, repeatable data-quality checks, tenant-safe access, and a localized embedded dashboard experience.',
     },
     tr: {
-      title: 'Embedded Workforce Analytics Platform',
-      subtitle: 'Production · B2B SaaS analytics',
+      title: 'Analytics Platform',
+      subtitle: 'Production · B2B SaaS Analitiği',
       badge: 'Production · Embedded BI',
       summary:
-        'Psikometrik, yetkinlik ve HR assessment verisini SaaS ürününün içine gömülü güvenli dashboard deneyimine taşıyan multi-tenant workforce analytics platformu. 109 dbt modelden oluşan transformation layer, PostgreSQL row-level security ve özelleştirilmiş Apache Superset akışıyla production BI ihtiyaçlarını karşılayacak şekilde tasarlandı.',
-      roleLine: 'Role: Data / Analytics Engineer · Focus: mart correctness, dynamic dimensions, RLS validation, embedded BI',
-      focusTitle: 'Analytics doğruluğu, tenant isolation ve embedded BI kesişiminde hands-on çalıştım.',
+        'İş gücü verileri, psikometrik değerlendirmeler ve İK verilerini SaaS ürününün içine gömülü güvenli bir dashboard deneyimine taşıyan multi-tenant analitik platformu. 109 dbt modelinden oluşan veri dönüştürme katmanı, PostgreSQL row-level security (RLS) ve özelleştirilmiş Apache Superset akışıyla production BI ihtiyaçlarını karşılayacak şekilde tasarlandı.',
+      roleLine: 'Rol: Veri & Analitik Mühendisi · Odak: Veri doğruluğu, dinamik boyutlar, RLS doğrulaması, embedded BI',
+      focusTitle: 'Analitik doğruluğu, tenant izolasyonu ve embedded BI kesişiminde çalıştım.',
       focusSummary:
-        'Odağım dashboard sayılarının güvenilir kalmasıydı: benchmark mismatch problemlerini düzelttim, RLS davranışını dbt ile testlenen kontratlara çevirdim ve canonical dimension / competency mantığını hardcoded mapping yerine database-driven, tenant-aware konfigürasyonla çalışacak hale getirdim.',
+        'Odağım dashboard metriklerinin güvenilir kalmasını sağlamaktı: Benchmark uyumsuzluklarını düzelttim, RLS davranışını dbt ile test edilebilen kontratlara çevirdim ve psikometrik boyut/yetkinlik mantığını hardcoded eşlemeler yerine veritabanı kontrollü, tenant-safe yapılandırmalarla çalışacak hale getirdim.',
       metrics: [
-        { value: '109', label: 'dbt models' },
-        { value: '56', label: 'mart tables' },
-        { value: '13', label: 'AI precompute marts' },
-        { value: '4', label: 'security layers' },
+        { value: '109', label: 'dbt modeli' },
+        { value: '56', label: 'veri mart tablosu' },
+        { value: '13', label: 'AI precompute tablosu' },
+        { value: '4', label: 'güvenlik katmanı' },
       ],
       contributions: [
         {
-          module: 'Data correctness',
-          title: 'Dashboard sayılarını testlenen data contractlara çevirme',
+          module: 'Veri Doğruluğu',
+          title: 'Dashboard verilerini test edilebilir veri kontratlarına dönüştürme',
           description:
-            'Workforce martlarında selection ve benchmark metrikleri arasındaki farkları düzelttim: null-score distortion, benchmark population mismatch ve average-of-averages kaynaklı sapmalar temizlendi. Aynı chart bug sınıfı tekrar kaçmasın diye reusable dbt parity testleri ekledim.',
+            'İş gücü veri martlarındaki seçim ve benchmark metrikleri arasındaki farkları düzelttim: Eksik skor sapmaları, benchmark kitle uyumsuzluğu ve ortalamaların ortalaması kaynaklı hatalar temizlendi. Aynı tür grafik hatalarının tekrarlanmaması için yeniden kullanılabilir dbt testleri ekledim.',
         },
         {
-          module: 'Dynamic dimensions',
-          title: 'Behavioral ve competency martlarını database-driven hale getirme',
+          module: 'Dinamik Boyutlar',
+          title: 'Davranışsal ve yetkinlik martlarını veritabanı kontrollü hale getirme',
           description:
-            'Canonical psychometric dimension, score fact ve competency-group modellerini doğru grain üzerinde yeniden kurguladım; N:1 ve N:N mapping kaynaklı skor bozulmalarını düzelttim. Leadership ve core competency filtrelerini hardcoded canonical dimensionlardan çıkarıp tenant-aware database configuration üzerinden dashboardlara taşıdım.',
+            'Temel psikometrik boyut, skor doğrulama ve yetkinlik grubu modellerini doğru grain seviyesinde yeniden kurguladım; N:1 ve N:N eşlemelerden kaynaklı skor bozulmalarını çözdüm. Liderlik ve temel yetkinlik filtrelerini sabit boyutlardan çıkarıp tenant-aware veritabanı yapılandırmaları üzerinden dashboardlara taşıdım.',
         },
         {
-          module: 'Tenant-safe analytics',
-          title: 'RLS davranışını testlenebilir kontrata çevirme',
+          module: 'Tenant-Safe Analitik',
+          title: 'RLS kurallarını test edilebilir kontratlara çevirme',
           description:
-            'Dashboard read role davranışını simüle eden dbt testleriyle tenant-boundary validation sürecini güçlendirdim. Böylece PostgreSQL RLS kontrolü manual dashboard doğrulamasından çıkıp analytics pipeline içinde testlenen bir güvenlik kontratına dönüştü.',
+            'Dashboard okuma davranışını simüle eden dbt testleriyle tenant-boundary doğrulama sürecini güçlendirdim. Böylece PostgreSQL RLS kontrolleri manuel bir doğrulama olmaktan çıkıp, analitik pipeline içinde test edilen bir güvenlik kontratına dönüştü.',
         },
         {
-          module: 'Embedded BI reliability',
-          title: 'Production Superset embedding stabilitesi',
+          module: 'Embedded BI Güvenilirliği',
+          title: 'Production ortamında Superset entegrasyon stabilitesi',
           description:
-            'Iframe tarafında CSRF, guest-token, export flow ve transaction-scoped session variable problemlerini çözdüm. Bu çalışma embedded dashboard deneyimini korudu ve per-query RLS enforcement davranışını user context ile hizalı tuttu.',
+            'Iframe yapılandırmasındaki CSRF, misafir token, dışa aktarım akışı ve session değişkenleri ile ilgili problemleri çözdüm. Bu çalışma gömülü dashboard deneyimini güvence altına alırken, sorgu bazlı RLS uygulamasını kullanıcı bağlamıyla tutarlı hale getirdi.',
         },
         {
-          module: 'platform extension',
-          title: 'Türkçe embedded BI',
+          module: 'Platform Genişletmesi',
+          title: 'Türkçe Embedded BI Desteği',
           description:
-            'Superset için Türkçe localization akışını, upgrade’e daha dayanıklı frontend patch sürecini ve tr-TR filter search davranışını iyileştirdim.',
+            'Superset için Türkçe dil desteği akışını, sürüm güncellemelerine daha dayanıklı frontend yamalarını ve Türkçe filter search davranışını iyileştirdim.',
         },
       ],
       impact:
-        'Analytics tarafının kırılgan chart logic’ten production-ready BI layer’a evrilmesine katkı sağladı: doğru grain’de çalışan dynamic marts, data-quality testleri, tenant-safe erişim ve lokalize edilmiş embedded dashboard deneyimi aynı hikayede birleşti.',
+        'Analitik süreçlerin kırılgan grafik mantığından çıkıp, doğru verilerle çalışan, veri kalitesi testleriyle korunan, tenant-safe erişim sağlayan ve yerelleştirilmiş gömülü dashboard deneyimi sunan production kalitesinde bir BI katmanına evrilmesine katkı sağladım.',
     },
   },
   {
@@ -235,55 +235,55 @@ export const projects: Project[] = [
       subtitle: 'Governed data üzerinde LLM analytics',
       badge: 'LLM Analytics',
       supportingSummary:
-        'HR ve manager kullanıcılarının workforce ve psychometric analytics verisine secure API’ler, streaming agent’lar ve voice/chat orchestration üzerinden doğal dille soru sorabildiği governed conversational analytics platformu. LangChain analysis skill’leri, LangGraph gateway, dbt-backed PostgreSQL mart’lar, tenant-safe RLS ve Langfuse/OpenTelemetry observability birlikte çalışarak SQL yazmadan güvenilir insight alınmasını sağlar.',
+        'İnsan Kaynakları ve yöneticilerin iş gücü verileri ve psikometrik veriler üzerinde doğal dille sorgulama yapabildiği, API\'ler, streaming agent\'lar ve ses/sohbet orkestrasyonu içeren governed conversational analytics platformu. Sistem; LangChain analiz yeteneklerini, LangGraph gateway\'i, dbt tabanlı PostgreSQL martlarını, tenant-safe RLS yapısını ve Langfuse/OpenTelemetry gözlemlenebilirliğini bir araya getirerek SQL yazmadan güvenilir içgörüler sunar.',
       supportingImpact:
-        'Analyzer’ın izole analysis modülleri gibi çalışmasından çıkıp platform-style bir AI servisine dönüşmesine katkı verdim. Çalışma; shared domain contract’ları netleştirdi, prompt davranışını YAML config üzerinden daha reviewable hale getirdi ve LLM reasoning ile tenant-safe analytics data arasındaki yolu güçlendirdi.\n\nSonuç daha production-minded bir analyzer katmanı oldu: REST ve streaming flow’larda tutarlı auth, governed tool call’lar için request-scoped user context, Langfuse-aware operational visibility ve eksik analytics metadata karşısında daha dayanıklı çalışma.',
+        'Analyzer\'ın bağımsız analiz modülleri yerine bütünleşik bir AI servisi platformuna evrilmesine katkı sağladım. Bu çalışma; ortak domain sözleşmelerini netleştirdi, prompt davranışlarının YAML konfigürasyonu üzerinden kolayca incelenmesini sağladı ve LLM akıl yürütme süreci ile tenant-safe analitik veri arasındaki bağlantıyı güçlendirdi.\n\nSonuç olarak daha production-ready bir analyzer katmanı oluştu: REST ve streaming akışlarında tutarlı kimlik doğrulama, governed tool call\'lar için request-scoped kullanıcı bağlamı, Langfuse entegreli operasyonel izlenebilirlik ve eksik analitik metadatalarına karşı daha dayanıklı bir yapı.',
       summary:
-        'Workforce ve psychometric mart’ları secure API’ler, streaming agent’lar ve voice/chat orchestration ile natural-language insight’a çeviren governed conversational analytics platformu. Mimari; analytics modeling, LLM interpretation ve real-time delivery katmanlarını ayırırken tenant boundary’leri RLS-aware execution ile korur.',
-      roleLine: 'Role: AI & Backend Engineer · Focus: architecture refactor, governed SQL, prompts-as-config, observability',
-      focusTitle: 'Analyzer’ı maintainable ve production-minded bir AI platformuna taşımaya katkı verdim.',
+        'İş gücü ve psikometrik veri martlarını, API\'ler ve streaming agent\'lar ile doğal dil üzerinden içgörülere dönüştüren governed conversational analytics platformu. Mimari; analitik modelleme, LLM yorumlama ve gerçek zamanlı sunum katmanlarını birbirinden ayırırken, RLS destekli execution ile tenant sınırlarını korur.',
+      roleLine: 'Rol: AI & Backend Mühendisi · Odak: Mimari refactoring, governed SQL, prompt konfigürasyonları, observability',
+      focusTitle: 'Analyzer\'ı sürdürülebilir ve production-ready bir AI platformuna dönüştürmeye yardımcı oldum.',
       focusSummary:
-        'Odağım prototip sonrası bir LLM analytics sistemini güvenilir yapan katmandı: net domain contract’ları, review edilebilir prompt configuration, tenant-aware execution context ve agent-driven analysis run sırasında ne olduğunu anlamayı kolaylaştıran Langfuse/OpenTelemetry signal’ları.',
+        'Odağım, bir LLM analitik sistemini prototip aşamasından sonra güvenilir kılan bileşenlerdi: Net domain sözleşmeleri, incelenebilir prompt konfigürasyonları, tenant-aware execution bağlamı ve bir agent\'ın analizi sırasında neler olduğunu anlamayı sağlayan Langfuse/OpenTelemetry sinyalleri.',
       metrics: [
-        { value: '18', label: 'YAML configs' },
-        { value: '8+', label: 'analysis skills' },
-        { value: '4', label: 'security layers' },
-        { value: '2', label: 'service layers' },
+        { value: '18', label: 'YAML konfigürasyonu' },
+        { value: '8+', label: 'analiz yeteneği' },
+        { value: '4', label: 'güvenlik katmanı' },
+        { value: '2', label: 'servis katmanı' },
       ],
       contributions: [
         {
-          module: 'Architecture',
-          title: 'Shared analytics domain modelini netleştirme',
+          module: 'Mimari',
+          title: 'Ortak analitik domain modelini netleştirme',
           description:
-            'Competency, risk, impact, pattern ve nine-box analysis modüllerinde tekrar eden enum ve result-shape tanımlarını ortak contract’lara taşıdım. Aynı domain kavramının farklı yerlerde farklı anlamlara kayması riskini azalttım.',
+            'Yetkinlik, risk, etki, kalıp ve nine-box analiz modüllerinde tekrarlanan enum ve result-shape tanımlarını ortak sözleşmelere taşıdım. Böylece aynı domain kavramının farklı analiz yollarında anlam kaymasına uğramasını engelledim.',
         },
         {
-          module: 'Prompt System',
-          title: 'Prompt davranışını daha reviewable hale getirme',
+          module: 'Prompt Sistemi',
+          title: 'Prompt davranışlarını incelenebilir ve yönetilebilir hale getirme',
           description:
-            'Core prompt structure ve result-chat rule’larını dağınık Python string’lerinden çıkarıp YAML-backed configuration’a taşıdım. Prompt değişiklikleri servis koduna gömülü olmaktan çıkıp Git üzerinde görülebilen, review edilebilen product configuration’a yaklaştı.',
+            'Temel prompt yapısını ve result-chat kurallarını dağınık Python stringlerinden çıkarıp YAML tabanlı yapılandırmalara taşıdım. Prompt değişiklikleri ürün konfigürasyonuna yaklaşarak Git üzerinde versiyonlanabilir ve kolayca incelenebilir hale geldi.',
         },
         {
-          module: 'Governed Data Access',
-          title: 'Agent tool call’larını tenant-safe data access ile hizalama',
+          module: 'Governed Veri Erişimi',
+          title: 'Agent tool call\'larını tenant-safe veri erişimiyle uyumlu hale getirme',
           description:
-            'Agent tool’larının analytics mart’ları sorgularken platformun tenant ve identity kısıtlarıyla uyumlu kalması için request-scoped user context ve RLS-aware SQL execution tarafında çalıştım.',
+            'Agent araçlarının analitik martları sorgularken platformun geri kalanıyla aynı tenant ve kimlik kısıtlamalarına tabi olması için request-scoped kullanıcı bağlamı ve RLS-aware SQL çalıştırma altyapısı üzerinde çalıştım.',
         },
         {
-          module: 'Operations',
-          title: 'Analysis run’ları LLM observability ile trace edilebilir kılma',
+          module: 'Operasyon',
+          title: 'Analiz süreçlerini LLM observability ile izlenebilir kılma',
           description:
-            'Skill entry point, database access ve operational probe çevresindeki structured logging ve tracing context akışını iyileştirdim; platform observability path’inde Langfuse/OpenTelemetry sinyalini güçlendirdim. Böylece gerçek user analysis activity’si health check ve startup noise’dan daha net ayrılabilir hale geldi.',
+            'Tool başlangıç noktaları, veri tabanı erişimi ve operasyonel testler etrafındaki structured loglama ve tracing bağlamını iyileştirdim. Langfuse ve OpenTelemetry entegrasyonu sayesinde gerçek kullanıcı analiz aktiviteleri, sistem health check\'lerinden daha net ayrıştırılabilir hale geldi.',
         },
         {
-          module: 'Gateway Reliability',
-          title: 'Chat ve voice orchestration boundary’sini stabilize etme',
+          module: 'Gateway Güvenilirliği',
+          title: 'Sohbet ve ses orkestrasyon sınırını stabilize etme',
           description:
-            'Conversational gateway ile analysis engine arasındaki handoff’u güçlendirdim; auth tutarlılığı, role-routing diagnostics ve downstream analysis context için employee identity parsing edge case’lerine dokundum.',
+            'Conversational gateway ile analiz motoru arasındaki aktarımı güçlendirdim. Auth tutarlılığı, role-routing teşhisleri ve alt analiz bağlamları için çalışan kimliği ayrıştırma (identity parsing) adımlarını iyileştirdim.',
         },
       ],
       impact:
-        'Analyzer Platform daha güvenilir, değiştirilebilir ve operate edilebilir hale geldi: domain logic daha az tekrar ediyor, prompt davranışı daha görünür ilerliyor, governed SQL path’leri netleşiyor ve Langfuse/OpenTelemetry observability sayesinde mühendisler gerçek analysis request’lerinin sistem içinde nasıl aktığını daha iyi izleyebiliyor.',
+        'Analyzer Platform daha güvenilir, yönetilebilir ve operasyonel hale geldi: Domain mantığındaki tekrarlar azaldı, prompt davranışları görünür kılındı, governed SQL yolları netleşti ve Langfuse/OpenTelemetry observability sayesinde mühendislerin analiz isteklerinin sistemdeki akışını izlemeleri kolaylaştı.',
     },
   },
   {
@@ -347,54 +347,54 @@ export const projects: Project[] = [
     },
     tr: {
       title: 'AI Coach Platform',
-      subtitle: 'Multi-agent coaching system',
+      subtitle: 'Multi-agent coaching sistemi',
       badge: 'AI Coach',
       summary:
-        'Çalışan gelişim sohbetlerini LangGraph orchestration, modular POML prompts ve structured coaching taxonomy data ile farklı coaching agentlarına yönlendiren enterprise AI coaching platformu. Sistem, “sohbet iyi çalışıyor mu?” sorusunu subjektif bir yorum olmaktan çıkarıp simulated users, LLM-to-LLM conversations, OpenAI Evals export ve LLM-as-judge scoring ile scenario-driven evaluation workflow haline getiriyor.',
-      roleLine: 'Role: LLM Systems & Prompt Engineer · Focus: orchestrator prompts, scenario evals, prompt library, agent UI',
-      focusTitle: 'Coach davranışını testlenebilir yapan prompt ve orchestration katmanında çalıştım.',
+        'Çalışan gelişim sohbetlerini LangGraph orkestrasyonu, modüler POML promptları ve yapılandırılmış koçluk taksonomisi üzerinden farklı AI agent\'lara yönlendiren kurumsal bir coaching platformu. Sistem, “sohbet iyi çalışıyor mu?” sorusunu subjektif bir yorum olmaktan çıkarıp simüle edilmiş kullanıcılar, LLM-to-LLM sohbetler, OpenAI Evals uyumlu çıktılar ve LLM-as-judge puanlaması ile senaryo tabanlı bir evaluation workflow haline getiriyor.',
+      roleLine: 'Rol: LLM Sistemleri & Prompt Mühendisi · Odak: Orchestrator promptları, senaryo testleri, prompt library, agent UI',
+      focusTitle: 'AI Coach davranışını test edilebilir kılan prompt ve orkestrasyon katmanında çalıştım.',
       focusSummary:
-        'Odağım AI coach’un nasıl davranacağını belirleyen katmandı: orchestrator POML prompts, role/mode/style routing, prompt library quality, simulated coachee scenarios ve generated coaching conversations için somut dimension’larla çalışan evaluation loop.',
+        'Odağım AI Coach\'un nasıl davranacağını belirleyen altyapıydı: Orchestrator POML promptları, rol/mod/stil yönlendirmeleri, prompt kütüphanesinin kalitesi, simüle edilmiş kullanıcı senaryoları ve üretilen koçluk sohbetlerinin hislere göre değil somut boyutlara göre (LLM-as-judge) değerlendirildiği bir döngü.',
       metrics: [
-        { value: '49', label: 'POML prompts' },
-        { value: '43', label: 'coaching modes' },
-        { value: '5', label: 'eval dimensions' },
-        { value: '4', label: 'AI agents' },
+        { value: '49', label: 'POML prompt' },
+        { value: '43', label: 'koçluk modu' },
+        { value: '5', label: 'değerlendirme boyutu' },
+        { value: '4', label: 'AI agent' },
       ],
       contributions: [
         {
-          module: 'orchestration',
-          title: 'Agent routing için orchestrator promptları',
+          module: 'Orkestrasyon',
+          title: 'Agent yönlendirmeleri için orchestrator promptlarının yazılması',
           description:
-            'Conversation context üzerinden aktif coaching agent, mode, style ve relationship stage seçimini destekleyen orchestrator-layer POML assetleri hazırladım. Prompt loading ve multi-agent routing assetleri değişirken stack sessizce bozulmasın diye integration coverage ekledim.',
+            'Sohbet bağlamından yola çıkarak aktif coaching agent, mod, stil ve ilişki aşamasını belirleyen orchestrator-layer POML bileşenlerini hazırladım. Prompt yükleme ve multi-agent routing yapısı değişirken sistemin sessizce bozulmasını engellemek için entegrasyon testleri ekledim.',
         },
         {
-          module: 'evaluation',
-          title: 'Coaching kalitesini LLM-as-judge eval ile ölçülebilir hale getirme',
+          module: 'Değerlendirme',
+          title: 'Koçluk kalitesini LLM-as-judge eval ile ölçülebilir hale getirme',
           description:
-            'Conversational AI değerlendirmesi için workflow kurmaya katkı verdim: dikkatli kullanıcı senaryoları LLM-to-LLM coaching session üretir, ardından çıktılar role/style alignment, technique use, coaching principles, safety ve conversational flow dimensionlarında referee-style LLM judge ile skorlanır.',
+            'Conversational AI değerlendirmesi için bir akış kurmaya yardımcı oldum: Belirlenmiş kullanıcı senaryoları üzerinden LLM-to-LLM koçluk seansları üretilir, ardından çıktılar rol/stil uyumu, teknik kullanımı, koçluk prensipleri, güvenlik ve sohbet akışı gibi boyutlarda hakem tarzı bir LLM judge ile puanlanır.',
         },
         {
-          module: 'prompt system',
-          title: 'Modular POML prompt library genişletme',
+          module: 'Prompt Sistemi',
+          title: 'Modüler POML prompt kütüphanesinin genişletilmesi ve standartlaştırılması',
           description:
-            'Pattern-enhancement template’leri ekledim, prompt assetlerini daha tutarlı model davranışı için İngilizce standardize ettim ve Windows üzerinde UTF-8 POML compilation problemlerini düzelterek prompt iteration akışını güvenilir hale getirdim.',
+            'Desen geliştirme (pattern-enhancement) şablonları ekledim, daha tutarlı model davranışı için prompt bileşenlerini İngilizce olarak standartlaştırdım ve Windows üzerindeki UTF-8 POML derleme sorunlarını çözerek prompt iterasyon süreçlerini daha güvenilir hale getirdim.',
         },
         {
-          module: 'simulation data',
-          title: 'Gerçekçi coaching testleri için scenario datasets',
+          module: 'Simülasyon Verisi',
+          title: 'Gerçekçi koçluk testleri için senaryo veri setleri oluşturma',
           description:
-            'Discovery context üzerinden structured coaching scenarios ekleyip genişlettim; böylece agent davranışı ad hoc chat örnekleri yerine gerçekçi employee development durumlarıyla test edilebilir hale geldi.',
+            'Araştırma bulgularından yola çıkarak yapılandırılmış koçluk senaryoları (scenario datasets) ekledim; böylece agent davranışı rastgele sohbet örnekleri yerine gerçekçi çalışan gelişim durumlarıyla test edilebilir hale geldi.',
         },
         {
-          module: 'product surface',
-          title: 'LangGraph coach için streaming UI entegrasyonu',
+          module: 'Ürün Arayüzü',
+          title: 'LangGraph tabanlı koçluk yapısını streaming UI ile entegre etme',
           description:
-            'LangGraph coaching agentını CopilotKit/Next.js chat yüzeyine bağladım ve local stack’i Docker ile çalışabilir hale getirdim; multi-agent coaching session’ları demo, debug ve eval için daha erişilebilir oldu.',
+            'LangGraph coaching agent\'ını CopilotKit/Next.js sohbet arayüzüne bağladım ve lokal çalışma ortamını Docker ile paketleyerek multi-agent koçluk seanslarını demo, hata ayıklama ve değerlendirme için daha erişilebilir hale getirdim.',
         },
       ],
       impact:
-        'Coach projesinin promising chatbot prototipinden maintainable AI product yönüne ilerlemesine katkı sağladı: modular prompts, testable orchestration, scenario-based simulation, measurable coaching quality ve interactive agent surfaces aynı sistemde birleşti.',
+        'AI Coach projesinin gelecek vadeden bir chatbot prototipinden, sürdürülebilir bir AI ürününe dönüşmesine katkı sağladım: Modüler promptlar, test edilebilir orkestrasyon, senaryo tabanlı simülasyon, ölçülebilir koçluk kalitesi ve interaktif agent arayüzleri aynı sistemde birleşti.',
     },
   },
   {
@@ -459,55 +459,54 @@ export const projects: Project[] = [
     },
     tr: {
       title: 'AI Agent API Gateway',
-      subtitle: 'AI microservice’ler için monorepo platformu',
+      subtitle: 'AI microservice\'leri için monorepo platformu',
       badge: 'Platform',
       summary:
-        'LLM-backed microservice’lerin tek tek auth, payload contract, observability, Docker setup ve CI wiring yazmasını engelleyen FastAPI monorepo platformu. Var olan AI agent’lar shared gateway pattern’e bağlanabilirken domain logic ayrı servislerde kalır.',
-      roleLine:
-        'Role: AI Platform Contributor · Focus: monorepo architecture, gateway factory, agent scaffolding, observability contracts',
-      focusTitle: 'One-off AI service wiring’i reusable gateway pattern’e çevirmeye katkı verdim.',
+        'LLM destekli microservice\'lerin kimlik doğrulama, payload sözleşmeleri, observability, Docker kurulumu ve CI entegrasyonu gibi adımları sıfırdan kurmasını engelleyen FastAPI monorepo platformu. Mevcut AI agent\'ları, kendi iş mantıklarını ayrı servislerde tutarak ortak bir gateway üzerinden dışarı açılabilir.',
+      roleLine: 'Rol: AI Platform Geliştiricisi · Odak: Monorepo mimarisi, gateway factory, agent scaffolding, observability sözleşmeleri',
+      focusTitle: 'Tek seferlik AI servisi kurulumlarını yeniden kullanılabilir bir gateway mimarisine dönüştürdüm.',
       focusSummary:
-        'Odağım yeni AI agent’ları expose etmeyi ve operate etmeyi kolaylaştıran platform mechanics tarafıydı: shared configuration, structured request logging, correlation ID’ler, reusable FastAPI app factory, automated agent registration, environment-driven CORS ve deployment-ready agent shell üreten cookiecutter template’ler.',
+        'Odağım yeni AI agent\'larını yayına almayı ve yönetmeyi kolaylaştıran platform mekanikleriydi: Ortak konfigürasyon, yapılandırılmış request loglama, correlation ID\'ler, yeniden kullanılabilir FastAPI app factory, otomatik agent kaydı, ortam bazlı CORS yönetimi ve yayına hazır agent şablonları üreten cookiecutter yapıları.',
       metrics: [
-        { value: '4', label: 'agent defaults' },
-        { value: '2', label: 'run modes' },
-        { value: '1', label: 'gateway contract' },
-        { value: '1', label: 'pipeline generator' },
+        { value: '4', label: 'varsayılan agent ayarı' },
+        { value: '2', label: 'çalışma modu' },
+        { value: '1', label: 'gateway sözleşmesi' },
+        { value: '1', label: 'pipeline üreticisi' },
       ],
       contributions: [
         {
-          module: 'Gateway Architecture',
-          title: 'Agent servisleri için reusable FastAPI app factory',
+          module: 'Gateway Mimarisi',
+          title: 'Agent servisleri için yeniden kullanılabilir FastAPI app factory',
           description:
-            'create_gateway_app tarzı factory ve per-agent app entrypoint yapısını kurdum; monorepo gateway ve standalone agent container’larının aynı middleware, system route, health behavior ve startup convention’larını paylaşmasını sağladım.',
+            'create_gateway_app tarzı bir factory ve agent bazlı uygulama başlangıç noktaları kurdum. Böylece monorepo gateway ve bağımsız agent container\'ları aynı middleware, sistem yönlendirmeleri, health behavior ve başlangıç kurallarını paylaşır hale geldi.',
         },
         {
           module: 'Agent Onboarding',
-          title: 'Shared config ve routing’e automated registration',
+          title: 'Ortak konfigürasyon ve routing için otomatik kayıt sistemi',
           description:
-            'Yeni agent eklerken scattered manual edit ihtiyacını azalttım; post-generation flow’lar core configuration ve application routing’i güncelleyerek agent handler’ların aynı invoke surface’e daha az hata riskiyle bağlanmasını sağladı.',
+            'Yeni bir agent eklerken gereken dağınık manuel düzenlemeleri azalttım. Temel konfigürasyon ve yönlendirme işlemlerini güncelleyen otomasyon adımlarıyla, yeni agent\'ların aynı API yüzeyine daha az hatayla bağlanmasını sağladım.',
         },
         {
           module: 'Scaffolding',
-          title: 'Production-ready agent template standardı',
+          title: 'Production ortamına hazır agent template standartları',
           description:
-            'Cookiecutter-generated agent’ları multi-stage Docker build, non-root runtime, uv lockfile install, compose file ve gateway entrypoint ile hizalı health check pattern’leriyle güçlendirdim.',
+            'Cookiecutter ile üretilen agent\'ları; multi-stage Docker build, non-root çalışma yapısı, uv kilit dosyası (lockfile), compose dosyaları ve gateway ile uyumlu health check desenleriyle güçlendirdim.',
         },
         {
-          module: 'Operations',
-          title: 'Shared configuration ve observability convention’ları',
+          module: 'Operasyon',
+          title: 'Ortak konfigürasyon ve observability standartları',
           description:
-            'Environment-driven core settings, structured JSON logging, request/correlation ID, dynamic service naming ve OpenTelemetry-oriented hook’lar ekledim; agent call’larının local ve containerized ortamlarda debug edilmesini kolaylaştırdım.',
+            'Ortam değişkenleriyle yönetilen temel ayarlar, yapılandırılmış JSON logları, request/correlation ID\'leri, dinamik servis isimlendirmeleri ve OpenTelemetry uyumlu kancalar ekleyerek, agent isteklerinin lokal ve konteyner ortamlarında hata ayıklamasını kolaylaştırdım.',
         },
         {
-          module: 'Integration Contract',
-          title: 'Agent’ları thin gateway boundary etrafında standardize etme',
+          module: 'Entegrasyon Sözleşmesi',
+          title: 'Agent mimarisini gateway sınırında standartlaştırarak hafif tutma',
           description:
-            'Agent’ları lightweight HTTP integration shell olarak konumlandırdım: shared request envelope validate edilir, operational context eklenir ve iş domain logic’i tekrar yazılmadan downstream LLM-backed servise delege edilir.',
+            'Agent\'ları hafif HTTP entegrasyon katmanları olarak konumlandırdım: Gelen ortak istek doğrulanır, operasyonel bağlam eklenir ve asıl iş mantığı (domain logic) yeniden yazılmadan arka plandaki LLM destekli servise devredilir.',
         },
       ],
       impact:
-        'Monorepo, AI servisleri için ortak bir operating model sağladı: tek invoke contract, shared auth ve observability beklentileri, repeatable Docker/CI scaffolding ve mevcut agent’ları frontend/platform consumer’lara bağlamak için daha temiz bir yol.',
+        'Monorepo, AI servisleri için ortak bir çalışma modeli sundu: Tek bir entegrasyon sözleşmesi, paylaşılan auth ve observability standartları, tekrarlanabilir Docker/CI kurulumları ve mevcut agent\'ları platform kullanıcılarına bağlamak için daha temiz bir altyapı.',
     },
   },
   {
@@ -532,16 +531,16 @@ export const projects: Project[] = [
     },
     tr: {
       title: 'Task Manager Agent',
-      subtitle: 'Jira work-item automation POC',
+      subtitle: 'Jira iş öğesi (work-item) otomasyonu POC',
       badge: 'Agentic Workflow',
       supportingSummary:
-        'Meeting transcript, ses girdisi ve dağınık collaboration context’i structured Jira work item ve sprint aksiyonlarına çeviren AI assistant POC.',
+        'Toplantı dökümleri, sesli komutlar ve dağınık işbirliği bağlamlarını yapılandırılmış Jira görevlerine ve sprint aksiyonlarına çeviren AI asistanı konsept çalışması.',
       supportingImpact:
-        'Transcript processing akışlarını kurdum, voice model path’lerini ayarladım ve Jira MCP baseline’ına ek tool’lar yazarak sprint automation tarafını güçlendirdim.',
+        'Transcript işleme akışlarını kurdum, voice model yollarını yapılandırdım ve Jira MCP tabanına ek araçlar geliştirerek sprint otomasyonu süreçlerini güçlendirdim.',
       summary:
-        'Meeting transcript, ses girdisi ve dağınık collaboration context’i structured Jira work item ve sprint aksiyonlarına çeviren proof-of-concept AI assistant.',
+        'Toplantı dökümleri, sesli komutlar ve dağınık işbirliği bağlamlarını yapılandırılmış Jira görevlerine ve sprint aksiyonlarına çeviren konsept (POC) AI asistanı.',
       impact:
-        'Meeting-transcript processing akışlarını kurdum, voice model path’lerini ayarladım ve Jira MCP entegrasyonunu ek tool’lar ile typed request/response modelleriyle genişlettim. Bu çalışma task capture fikrini validated tool call’lar, sprint lifecycle desteği ve daha temiz local/service operasyonlarıyla güvenilir workflow automation yönüne taşıdı.',
+        'Toplantı dökümü (transcript) işleme akışlarını kurdum, sesli model yollarını yapılandırdım ve Jira MCP entegrasyonunu yeni araçlar ve typed request/response modelleriyle genişlettim. Bu çalışma; görev yakalama sürecini doğrulanmış tool call\'lar, sprint döngüsü desteği ve daha temiz operasyonlarla güvenilir bir iş akışı otomasyonuna dönüştürdü.',
     },
   },
   {
@@ -565,17 +564,17 @@ export const projects: Project[] = [
         'Built the CV validation chain and added a security guard layer. By adding PDF file-type checks, converting LLM responses into safer typed objects, and adding token discipline, we filter non-CV, abusive, off-topic, and prompt-injection-style uploads—making resume ingestion safer before heavier AI processing.',
     },
     tr: {
-      title: 'CV Validation Platform',
-      subtitle: 'LLM validation and safety chain',
+      title: 'CV Parsing Platform',
+      subtitle: 'LLM doğrulama ve güvenlik zinciri',
       badge: 'LLM Safety',
       supportingSummary:
-        'Downstream search veya matching akışlarından önce document-ingest boundary’sini korumaya odaklanan LLM-powered resume validation ve safety pipeline.',
+        'Arama veya eşleştirme iş akışlarından önce belge kabul sınırını (document-ingest boundary) korumaya odaklanan LLM tabanlı özgeçmiş doğrulama ve güvenlik altyapısı.',
       supportingImpact:
-        'Non-CV, abusive, off-topic ve prompt-injection tarzı upload’ları ağır AI processing öncesinde filtreleyerek resume ingestion akışını daha güvenli hale getirdi.',
+        'Özgeçmiş formatında olmayan, küfürlü, konu dışı ve prompt injection içeren yüklemeleri ağır yapay zeka işlemlerinden önce filtreleyerek belge kabul sürecini daha güvenli hale getirdi.',
       summary:
-        'Downstream search veya matching akışlarından önce document-ingest boundary’sini korumaya odaklanan LLM-powered resume validation pipeline.',
+        'Arama veya eşleştirme iş akışlarından önce belge kabul sınırını (document-ingest boundary) korumaya odaklanan LLM tabanlı özgeçmiş doğrulama ve güvenlik altyapısı.',
       impact:
-        'CV validation chain ve security guard layer kurarak resume ingestion akışını daha güvenli hale getirdim. PDF file-type check ekleme, LLM response’larını typed object’lere taşıma ve token israfını azaltma işlemleri sayesinde non-CV, abusive, off-topic ve prompt-injection tarzı upload’lar ağır AI processing öncesinde filtrelendi.',
+        'CV doğrulama zincirini kurarak bir güvenlik katmanı ekledim. PDF dosya türü kontrolleri, LLM yanıtlarının güvenli veri tiplerine (typed objects) dönüştürülmesi ve token optimizasyonu sayesinde; özgeçmiş formatında olmayan, küfürlü, konu dışı ve prompt injection benzeri yüklemeler ağır yapay zeka işlemlerine ulaşmadan filtrelenir.',
     },
   },
   {
@@ -650,55 +649,54 @@ export const projects: Project[] = [
     },
     tr: {
       title: 'KPI Advisor',
-      subtitle: 'Position-based KPI recommendation AI',
+      subtitle: 'Pozisyona dayalı KPI öneri AI servisi',
       badge: 'Production - B2B SaaS',
       summary:
-        'HR ve performance ekipleri için pozisyona göre structured KPI önerileri üreten, APQC/PCF metrics ve curated golden dataset ile güçlenen bir KPI Advisor servisi. Kısa bir position description ya da temel role field’ları gibi az context ile bile kullanılabilir KPI candidate’ları üretir; measurement logic, benchmark, frequency, indicator type ve rationale taşıyan reviewable JSON çıktılar döndürür.',
-      roleLine:
-        'Role: AI & Backend Engineer · Focus: KPI recommendation quality, prompt rules, eval workflow, service readiness',
-      focusTitle: 'KPI yazımını grounded bir öneri akışına çevirmeye katkı verdim.',
+        'İnsan Kaynakları ve performans ekipleri için pozisyona göre yapılandırılmış KPI önerileri üreten, APQC/PCF metrikleri ve derlenmiş altın veri seti (golden dataset) ile çalışan bir KPI Advisor servisi. Kısa bir pozisyon tanımı gibi kısıtlı bağlamla (sparse context) bile anlamlı KPI adayları üretir; ölçüm mantığı, benchmark, ölçüm sıklığı (frequency), gösterge türü (indicator type) ve gerekçe (rationale) içeren, incelenebilir JSON çıktıları döndürür.',
+      roleLine: 'Rol: AI & Backend Mühendisi · Odak: KPI öneri kalitesi, prompt kuralları, eval akışı, servis hazırlığı',
+      focusTitle: 'KPI taslağı oluşturma sürecini veriye dayalı (grounded) bir öneri akışına dönüştürdüm.',
       focusSummary:
-        'Buradaki ana iş dataset üretmek değil, az position context ile bile güvenilir KPI önerileri çıkarabilen bir akış kurmaktı. Recommendation layer, prompt/schema kuralları, APQC/PCF grounding, golden-dataset-backed review loop, LLM-as-judge scoring ve FastAPI/Streamlit servis yolunda çalıştım.',
+        'Buradaki ana problem sadece veri seti oluşturmak değildi; kısıtlı pozisyon bağlamından yola çıkarak iş anlamını (business meaning) kaybetmeyen güvenilir KPI önerileri çıkarmaktı. Öneri katmanı (recommendation layer), prompt/şema kısıtları, APQC/PCF temellendirmesi (grounding), golden-dataset destekli inceleme döngüleri, LLM-as-judge puanlaması ve sistemi tekrarlanabilir kılan FastAPI/Streamlit servis yapısı üzerinde çalıştım.',
       metrics: [
-        { value: '2,680', label: 'APQC metrics' },
-        { value: '1,631', label: 'PCF nodes' },
-        { value: '9', label: 'prompt rules' },
-        { value: '4', label: 'pipeline steps' },
+        { value: '2,680', label: 'APQC metriği' },
+        { value: '1,631', label: 'PCF düğümü' },
+        { value: '9', label: 'prompt kuralı' },
+        { value: '4', label: 'pipeline adımı' },
       ],
       contributions: [
         {
           module: 'Problem',
           title: 'Pozisyona özel KPI önerilerini standardize etmek zordu',
           description:
-            'Farklı roller için ölçülebilir KPI önerileri gerekiyordu; manuel spreadsheet hazırlığı yavaş, tutarsız ve review etmesi zor bir süreçti. Servisin role context’i korurken önerileri tanınan bir process framework ile ground etmesi gerekiyordu.',
+            'Farklı roller için ölçülebilir KPI önerileri gerekiyordu ancak elektronik tablo (spreadsheet) üzerinden manuel taslak hazırlamak yavaş, tutarsız ve incelenmesi zor bir süreçti. Servisin rol bağlamını (role context) korurken, önerileri kabul görmüş bir süreç çerçevesine (process framework) dayandırması gerekiyordu.',
         },
         {
           module: 'Katkım',
-          title: 'Recommendation output’u kullanılabilir KPI objeleri etrafında tasarlama',
+          title: 'Öneri çıktısını kullanılabilir KPI objeleri etrafında tasarlama',
           description:
-            'Promptları ve response schema’yı sıkılaştırdım; model yalnızca KPI ismi değil, measurement logic, data-source guidance, leading/lagging type, baseline veya benchmark, frequency, performance area ve rationale içeren öneriler üretir hale geldi.',
+            'Promptları ve yanıt şemalarını (response schemas) daralttım; model sadece KPI isimleri üretmekle kalmayıp, her öneride ölçüm mantığı, veri kaynağı yönergeleri, öncü/ardıl (leading/lagging) türü, referans değeri (benchmark), performans alanı ve mantıksal gerekçe sunar hale geldi.',
         },
         {
           module: 'Çözüm',
-          title: 'Generation, grounding ve review adımlarını tek döngüde bağlama',
+          title: 'Generation, grounding ve review adımlarını tek bir döngüde birleştirme',
           description:
-            'Anonymized position context hazırladım, generation akışını APQC/PCF retrieval ile hizaladım, sonuçları business review için export ettim ve SMART alignment, role relevance, clarity için LLM-as-judge kontrolleri ekledim.',
+            'Anonimleştirilmiş pozisyon bağlamı hazırladım, LLM üretimini APQC/PCF veri çekme (retrieval) işlemiyle uyumlu hale getirdim, sonuçları business review için dışa aktardım ve SMART uyumluluğu, rol uygunluğu ve netlik için LLM-as-judge kontrolleri ekledim.',
         },
         {
-          module: 'Quality loop',
-          title: 'Recommendation quality’i ölçülebilir hale getirme',
+          module: 'Kalite Döngüsü',
+          title: 'Öneri kalitesini ölçülebilir hale getirme',
           description:
-            'OpenAI Evals-compatible JSONL path’leri ve score-based review çıktıları kurdum; KPI candidate’ları opaque LLM response olarak kalmadan karşılaştırılabilir, filtrelenebilir ve iyileştirilebilir hale geldi.',
+            'OpenAI Evals uyumlu JSONL yolları ve puan bazlı (score-based) inceleme çıktıları oluşturdum; böylece KPI adayları kapalı kutu LLM yanıtları olarak kalmaktan çıkıp karşılaştırılabilir, filtrelenebilir ve iyileştirilebilir hale geldi.',
         },
         {
-          module: 'Service',
-          title: 'Advisor’ı operable AI microservice olarak paketleme',
+          module: 'Servis',
+          title: 'Advisor modülünü operasyonel bir AI mikroservisi olarak paketleme',
           description:
-            'FastAPI API, Streamlit review UI, Docker setup, environment-based OpenAI config, Redis cache path ve AI servislerinde kullanılan shared logging/metrics beklentilerini destekledim.',
+            'FastAPI tabanlı API, Streamlit tabanlı inceleme arayüzü, Docker kurulumu, ortam değişkenine dayalı OpenAI konfigürasyonu, Redis önbellekleme (caching) yolu ve AI servisleri için ortak loglama/metrik altyapılarını destekledim.',
         },
       ],
       impact:
-        'KPI tasarımını manuel spreadsheet hazırlığından repeatable AI recommendation service yönüne taşıdı: process-framework metrics ile grounded, prompt/schema kurallarıyla constrained, eval’lerle ölçülebilir ve business review öncesi denetlenebilir.',
+        'KPI tasarım sürecini manuel elektronik tablo hazırlığından, tekrarlanabilir bir AI öneri servisine dönüştürdü: Process-framework metrikleriyle desteklenen, şema ve prompt kurallarıyla sınırlandırılmış, eval\'lerle ölçülebilen ve iş birimlerine ulaşmadan önce denetlenebilen bir yapı.',
     },
   },
   {
@@ -782,60 +780,59 @@ export const projects: Project[] = [
     },
     tr: {
       title: 'Stroke Classification',
-      subtitle: 'CT image classification with KD',
+      subtitle: 'Knowledge Distillation ile CT image classification',
       badge: 'Open source capstone',
       recognition: {
         brand: 'TEKNOFEST',
         title: 'Sağlıkta Yapay Zeka Yarışması',
-        detail: 'Accepted',
+        detail: 'Kabul Edildi',
       },
       summary:
-        'Beyin BT görüntülerini Stroke / No-Stroke olarak sınıflandıran ve TEKNOFEST Sağlıkta Yapay Zeka Yarışması’na kabul alan open-source medical imaging sistemi. Projenin ana sorusu şuydu: hafif bir student model, ağır bir teacher modeli geride bırakabilir mi? Knowledge distillation ile EfficientNet-B0, InceptionV3 teacher baseline’ını aşarken inference maliyetini düşürdü; soft-voting ensemble ise kararlılığı 98.2% accuracy/F1 seviyesine taşıdı.',
-      roleLine:
-        'Role: ML Engineer & Researcher · Focus: data pipeline, CNN baselines, knowledge distillation, public demo',
-      focusTitle: 'Teacher-student deep learning ile lightweight clinical decision-support prototype kurdum.',
+        'Beyin bilgisayarlı tomografi (BT) görüntüleri için geliştirilen, TEKNOFEST Sağlıkta Yapay Zeka Yarışması’na kabul edilen açık kaynaklı inme (stroke) sınıflandırma sistemi. Projenin çıkış noktası şuydu: Hafif bir "öğrenci" (student) model, daha ağır bir "öğretmen" (teacher) modeli geride bırakabilir mi? Knowledge distillation kullanarak, daha düşük maliyetli EfficientNet-B0 modeli InceptionV3 teacher modelini aştı; soft-voting ensemble yaklaşımıyla tahmin kararlılığı %98.2 accuracy/F1 seviyesine taşındı.',
+      roleLine: 'Rol: ML Mühendisi & Araştırmacı · Odak: Veri pipeline\'ı, CNN temelleri, knowledge distillation, public demo',
+      focusTitle: 'Teacher-student deep learning ile hafif bir klinik karar destek prototipi kurdum.',
       focusSummary:
-        'Medikal görüntülemede hız ve doğruluk birlikte kritik olduğu için ana hedef, ağır InceptionV3 teacher modelin dark knowledge bilgisini daha verimli EfficientNet-B0 student modele aktarmaktı. Sistemi YAML-driven data pipeline, uv-based environment setup, 3-fold CNN/KD evaluation, ensemble testing, yayınlanmış model/data artifact’ları ve canlı Streamlit demo ile modernize ettim.',
+        'Medikal görüntüleme hem hız hem doğruluk gerektirdiğinden, temel fikir ağır InceptionV3 teacher modelinin gizli bilgisini (dark knowledge) daha verimli olan EfficientNet-B0 student modele aktarmaktı. Sistemi YAML tabanlı data pipeline, uv tabanlı ortam kurulumu, 3 katlı (3-fold) CNN/KD değerlendirmesi, ensemble testi, açık model/veri bileşenleri ve Streamlit demosu ile modernize ettim.',
       metrics: [
-        { value: '98.2%', label: 'peak accuracy' },
-        { value: '49.5K', label: 'CT images' },
-        { value: '7', label: 'model families' },
-        { value: '3', label: 'CV folds' },
+        { value: '%98.2', label: 'tepe doğruluk (accuracy)' },
+        { value: '49.5K', label: 'BT görüntüsü' },
+        { value: '7', label: 'model ailesi' },
+        { value: '3', label: 'CV katmanı (fold)' },
       ],
       contributions: [
         {
           module: 'Problem',
-          title: 'Fast CT inference için model maliyetini düşürmek gerekiyordu',
+          title: 'Hızlı BT analizi (inference), doğruluktan ödün vermeden düşük model maliyeti gerektiriyordu',
           description:
-            'Stroke screening zaman hassas bir problem; ağır CNN teacher modelleri inference cost ve hardware bottleneck yaratabiliyor. Proje, daha küçük bir student modelin diagnostic signal’ı koruyup koruyamayacağını test etti.',
+            'İnme (stroke) taraması zamana duyarlı bir işlemdir; ancak ağır CNN teacher modelleri inference maliyeti ve donanım darboğazları yaratabilir. Projede, daha küçük bir student modelin donanım dostu kalırken teşhis yeteneğini (diagnostic signal) koruyup koruyamayacağı test edildi.',
         },
         {
-          module: 'Data pipeline',
-          title: 'Projeyi modular MLOps pipeline olarak yeniden yapılandırma',
+          module: 'Veri Pipeline\'ı',
+          title: 'Projeyi modüler bir MLOps pipeline\'ı olarak yeniden inşa etme',
           description:
-            'Workflow’u local research scriptlerinden çıkarıp YAML configuration, uv dependency management, fold-based preprocessing, class balancing, augmentation ve dataset pull/push adımlarıyla repeatable experiment yapısına taşıdım.',
+            'İş akışını yerel araştırma script\'lerinden çıkararak; YAML konfigürasyonu, uv bağımlılık yönetimi, fold tabanlı ön işleme (preprocessing), sınıf dengeleme (class balancing), veri artırma (augmentation) ve veri seti çekme/gönderme adımlarıyla tekrarlanabilir bir deney yapısına taşıdım.',
         },
         {
-          module: 'Modeling',
-          title: 'InceptionV3 bilgisini EfficientNet student modellere distill etme',
+          module: 'Modelleme',
+          title: 'InceptionV3 bilgisini EfficientNet student modellere aktarma (distillation)',
           description:
-            'Birden fazla torchvision backbone’u karşılaştırdım, InceptionV3’ü teacher baseline olarak konumlandırdım ve dark knowledge bilgisini 98.0% F1 seviyesine ulaşan EfficientNet student modellere aktardım.',
+            'Farklı torchvision omurgalarını (backbone) karşılaştırdım, InceptionV3 modelini teacher temeli olarak konumlandırdım ve dark knowledge bilgisini %98.0 F1 skoruna ulaşan daha hafif EfficientNet student modellerine aktardım.',
         },
         {
-          module: 'Evaluation',
-          title: 'Soft-voting ile prediction stability’i artırma',
+          module: 'Değerlendirme',
+          title: 'Tahmin kararlılığını (prediction stability) en üst düzeye çıkarmak için soft-voting kullanımı',
           description:
-            'Fold-level metrics, loss curve, confusion matrix ve error report çıktılarıyla modelleri ölçtüm; distilled modelleri soft voting ile birleştirerek internal validation protocol üzerinde 98.2% accuracy/F1 elde ettim.',
+            'Fold tabanlı metrikler, kayıp (loss) eğrileri, karmaşıklık matrisleri (confusion matrix) ve hata raporlarıyla modelleri değerlendirdim; ardından distilled modelleri soft-voting ile birleştirerek iç doğrulama protokolünde %98.2 accuracy/F1 seviyesine ulaştım.',
         },
         {
-          module: 'Publishing',
-          title: 'Sistemi çalışan public demo olarak yayınlama',
+          module: 'Yayınlama',
+          title: 'Sistemi çalışan bir public demo olarak yayına alma',
           description:
-            'Modeli, dataset mirror’larını ve Streamlit demo’yu Hugging Face/Kaggle üzerinde yayınladım; Hub loading ve ONNX export path’leriyle classifier local training gerektirmeden incelenebilir ve denenebilir hale geldi.',
+            'Modeli, veri seti kopyalarını (mirrors) ve Streamlit demosunu Hugging Face/Kaggle üzerinde yayınladım. Sınıflandırıcının (classifier) yerel eğitime gerek kalmadan incelenebilmesi ve denenebilmesi için Hub loading ve ONNX dışa aktarım (export) yollarını kurdum.',
         },
       ],
       impact:
-        'Compact student modelin CT stroke classification için ağır teacher baseline’ı aşabileceğini gösterdi; inference constraint’lerini azaltırken sistemi reproducible, inspectable, public demo’ya uygun ve TEKNOFEST Sağlıkta Yapay Zeka kabulüyle dış doğrulama almış hale getirdi.',
+        'Kompakt bir student modelin CT stroke classification görevinde ağır bir teacher modelini geride bırakabileceğini gösterdi; çıkarım (inference) darboğazlarını azaltırken sistemin tekrarlanabilir, incelenebilir, public demo olarak sunulabilir ve TEKNOFEST Sağlıkta Yapay Zeka Yarışması kabulüyle dış doğrulama almış bir yapıya gelmesini sağladı.',
     },
   },
 ];

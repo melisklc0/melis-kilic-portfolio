@@ -32,7 +32,7 @@ export function Hero() {
                 {t.hero.cta_cv}
               </a>
               <a href="#contact" className="btn-ghost">
-                {lang === 'en' ? 'Get in touch' : 'Iletisime gec'}
+                {lang === 'en' ? 'Get in touch' : 'İletişime geç'}
               </a>
             </div>
           </div>

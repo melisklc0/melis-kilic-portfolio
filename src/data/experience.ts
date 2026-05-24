@@ -3,7 +3,7 @@
 
 export interface ExperienceEntry {
   id: string;
-  company: string;
+  company: { en: string; tr: string };
   role: { en: string; tr: string };
   period: string;
   description: { en: string; tr: string };
@@ -16,12 +16,12 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'qkare',
     type: 'work',
-    company: 'QKare Information Technologies',
+    company: { en: 'QKare Information Technologies', tr: 'QKare Bilgi Teknolojileri' },
     role: { en: 'AI & Data Engineer', tr: 'Yapay Zeka & Veri Mühendisi' },
     period: '2025 - Present',
     description: {
       en: 'Working across QKare’s B2B HR analytics platform, where workforce data, psychometric assessments, and LLM-backed product features meet. I contribute to dbt/PostgreSQL transformation layers, tenant-safe embedded BI, LangChain/LangGraph analytics agents, KPI and competency advisor services, and shared FastAPI gateway infrastructure with observability, Docker, and CI conventions.',
-      tr: 'QKare’in workforce data, psychometric assessment ve LLM-backed product feature’ları birleştiren B2B HR analytics platformunda çalışıyorum. dbt/PostgreSQL transformation layer, tenant-safe embedded BI, LangChain/LangGraph analytics agent’ları, KPI ve competency advisor servisleri, observability, Docker ve CI convention’ları olan shared FastAPI gateway altyapısına katkı veriyorum.',
+      tr: 'İş gücü verileri, psikometrik değerlendirmeler ve LLM destekli özellikleri birleştiren B2B İK analitiği SaaS platformunda çalışıyorum. Agentic AI servisleri, veri katmanları, evaluation pipeline\'ları ve FastAPI altyapısında çekirdek geliştirici olarak görev alıyorum.',
     },
     responsibilities: {
       en: [
@@ -29,8 +29,8 @@ export const experience: ExperienceEntry[] = [
         'Worked on PostgreSQL RLS, dbt marts, Superset embedding, observability, and AI service scaffolding',
       ],
       tr: [
-        'LangChain, LangGraph, FastAPI ve structured outputs ile LLM-backed product feature’lar geliştirdim',
-        'PostgreSQL RLS, dbt mart’lar, Superset embedding, observability ve AI service scaffolding tarafında çalıştım',
+        'LangChain/LangGraph tabanlı servisleri FastAPI backend altyapısı ve yapılandırılmış çıktılarla production ortamına taşıdım',
+        'PostgreSQL RLS kuralları, dbt veri martları, Superset gömülü BI ve yeniden kullanılabilir AI servis altyapıları geliştirdim',
       ],
     },
     techStack: [
@@ -46,12 +46,12 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'inncrea',
     type: 'work',
-    company: 'Inncrea Software & IT',
+    company: { en: 'Inncrea Software & IT', tr: 'Inncrea Yazılım & Bilişim' },
     role: { en: 'AI Research Intern', tr: 'Yapay Zeka Araştırma Stajyeri' },
     period: '08/2024 - 09/2024',
     description: {
       en: 'Researched CT-based stroke classification with CNN baselines, knowledge distillation, and repeatable evaluation workflows, forming the experimental foundation for the public Stroke Classification project.',
-      tr: 'BT tabanlı stroke classification için CNN baseline’ları, knowledge distillation ve repeatable evaluation workflow’ları üzerine çalıştım; bu çalışma public Stroke Classification projesinin deneysel temelini oluşturdu.',
+      tr: 'İnme tespiti için CT görüntü sınıflandırma deneyleri kurdum; fold-based evaluation, veri artırma pipeline\'ları ve CNN backbone benchmarking süreçleriyle deneyleri tekrarlanabilir hale getirdim.',
     },
     responsibilities: {
       en: [
@@ -59,8 +59,8 @@ export const experience: ExperienceEntry[] = [
         'Compared CNN backbones and distilled teacher models into lighter EfficientNet students',
       ],
       tr: [
-        'Preprocessing ve fold-based evaluation içeren repeatable CT image classification deneyleri kurdum',
-        'CNN backbone’larını karşılaştırıp teacher modelleri daha hafif EfficientNet student modellere distill ettim',
+        'Ön işleme ve fold-based evaluation içeren tekrarlanabilir CT görüntü sınıflandırma deneyleri kurdum',
+        'CNN backbone\'ları üzerinde karşılaştırmalı deneyler yürüterek teacher modellerin bilgisini daha hafif EfficientNet student modellere aktardım (knowledge distillation)',
       ],
     },
     techStack: [
@@ -74,7 +74,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'sivas-governorship',
     type: 'work',
-    company: 'Sivas Governorship',
+    company: { en: 'Sivas Governorship', tr: 'Sivas Valiliği' },
     role: { en: 'IT Intern', tr: 'Bilgi İşlem Stajyeri' },
     period: '07/2023 - 08/2023',
     description: {
@@ -93,7 +93,7 @@ export const education: ExperienceEntry[] = [
   {
     id: 'scu',
     type: 'education',
-    company: 'Sivas Cumhuriyet University',
+    company: { en: 'Sivas Cumhuriyet University', tr: 'Sivas Cumhuriyet Üniversitesi' },
     role: { en: "Bachelor's Degree, Computer Engineering", tr: 'Bilgisayar Mühendisliği Lisans' },
     period: '09/2021 - 07/2025',
     description: {
@@ -109,7 +109,7 @@ export const education: ExperienceEntry[] = [
   {
     id: 'agh-erasmus',
     type: 'education',
-    company: 'AGH University of Krakow',
+    company: { en: 'AGH University of Krakow', tr: 'AGH Krakow Bilim ve Teknoloji Üniversitesi' },
     role: { en: 'Erasmus+ Participant', tr: 'Erasmus+ Katılımcısı' },
     period: '09/2023 - 03/2024',
     description: {
@@ -125,7 +125,7 @@ export const education: ExperienceEntry[] = [
   {
     id: 'national-tech-academy',
     type: 'education',
-    company: 'National Technology Academy',
+    company: { en: 'National Technology Academy', tr: 'Milli Teknoloji Akademisi' },
     role: { en: 'AI Specialization Program', tr: 'Yapay Zeka Uzmanlık Programı' },
     period: '12/2024 - 06/2025',
     description: {

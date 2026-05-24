@@ -64,17 +64,15 @@ Currently building AI-powered healthcare products at Qkare Bilgi Teknolojileri.`
     },
     hero: {
       role: 'Yapay Zeka & Veri Mühendisi',
-      tagline: 'LLM\'ler, yapay zeka ajanları, RAG pipeline\'ları ve veri analitiği ile akıllı sistemler geliştiriyorum. Üretime hazır AI backend\'leri ve uygulamalı makine öğrenmesine odaklanıyorum.',
+      tagline: 'LLM tabanlı backend servisleri, agentic iş akışları ve veri platformları geliştiriyorum. Yapılandırılmış LLM çıktıları, tenant-safe veri erişimi ve ölçülebilir AI kalitesine odaklanan, uçtan uca production deneyimine sahip sistemler kuruyorum.',
       cta_projects: 'Projeleri Gör', cta_cv: 'CV\'yi Gör', cta_github: 'GitHub', cta_linkedin: 'LinkedIn',
     },
     about: {
       label: 'Hakkımda',
-      heading: 'Pratik sistemler geliştiren AI Mühendisi',
-      body: `Gerçek sorunları çözen üretime hazır yapay zeka sistemleri geliştirmeye odaklanan Bilgisayar Mühendisliği mezunuyum. Çalışmalarım LLM uygulamaları, RAG tabanlı erişim, yapay zeka ajanları, backend entegrasyonu ve veri analitiği pipeline'larını kapsar.
+      heading: 'Pratik sistemler geliştiren Yapay Zeka Mühendisi',
+      body: `LLM tabanlı backend servisleri, agentic iş akışları ve veri platformları geliştiren Yapay Zeka ve Veri Mühendisiyim. LangGraph orkestrasyonu, prompt engineering, evaluation pipeline'ları, FastAPI servisleri ve gözlemlenebilir altyapılar üzerinde uçtan uca production deneyimine sahibim. Özellikle yapılandırılmış LLM çıktıları, tenant-safe veri erişimi ve ölçülebilir yapay zeka kalitesi üzerine çalışıyorum.
 
-Teslimat yığınının tamamıyla ilgileniyorum — model tasarımı ve prompt mühendisliğinden gözlemlenebilirlik, izleme ve dağıtıma kadar. Araştırma ile mühendisliğin kesişiminde çalışarak karmaşık fikirleri temiz, sürdürülebilir sistemlere dönüştürüyorum.
-
-Şu anda Qkare Bilgi Teknolojileri'nde yapay zeka destekli sağlık ürünleri geliştiriyorum.`,
+Şu anda QKare Bilgi Teknolojileri'nde iş gücü verileri, psikometrik değerlendirmeler ve LLM destekli özellikleri birleştiren B2B İK analitiği SaaS platformunda çekirdek geliştirici olarak yer alıyorum.`,
     },
     skills: { label: 'Yetenekler', heading: 'Teknoloji Yığını' },
     projects: {
@@ -84,21 +82,21 @@ Teslimat yığınının tamamıyla ilgileniyorum — model tasarımı ve prompt 
       problem: 'Problem', contribution: 'Katkım', highlights: 'Teknik Özellikler', impact: 'Etki',
     },
     analyzer: {
-      label: 'AI Analizörü',
-      heading: 'Akıllı Analiz Pipeline\'ı',
-      subheading: 'Yapılandırılmış değerlendirme, LLM gözlemlenebilirliği ve otomatik rapor üretimiyle ajan tabanlı çok adımlı akıl yürütme — üretim backend servislerine entegre.',
-      capability_1_title: 'Çok Adımlı Akıl Yürütme',
-      capability_1_body: 'LangChain LCEL ile denetlenebilir akıl yürütme zincirleri — her adım izlenebilir ve incelenebilir.',
-      capability_2_title: 'Gözlemlenebilirlik & İzleme',
-      capability_2_body: 'Her LLM çağrısı, erişim adımı ve araç kullanımı Langfuse üzerinden tam hata ayıklama için kaydedilir.',
+      label: 'AI Analyzer',
+      heading: 'Akıllı Analiz Altyapısı',
+      subheading: 'Analiz modülleri için ayrılmış domain sözleşmeleri ve PostgreSQL RLS kuralları ile çalışan, tenant-safe doğal dil tabanlı analitik altyapısı.',
+      capability_1_title: 'Multi-step Akıl Yürütme',
+      capability_1_body: 'LangChain LCEL tabanlı denetlenebilir reasoning süreçleri; her adım Langfuse ile izlenebilir ve incelenebilir yapıda.',
+      capability_2_title: 'Gözlemlenebilirlik ve İzleme',
+      capability_2_body: 'Her LLM çağrısı, veri erişimi ve tool kullanımı Langfuse üzerinden tam hata ayıklama desteğiyle kaydedilir.',
       capability_3_title: 'Yapılandırılmış Değerlendirme',
-      capability_3_body: 'Her aşamada kalite geçitleriyle şemalara göre doğrulanan çıktılar — sadece üretilmez, doğrulanır.',
+      capability_3_body: 'LLM çıktıları her aşamada şemalarla doğrulanır ve kalite standartlarına göre değerlendirilir.',
       capability_4_title: 'Backend Entegrasyonu',
-      capability_4_body: 'Gerçek dünya veri erişimi için FastAPI servisleri, PostgreSQL ve harici API\'larla sıkı entegrasyon.',
+      capability_4_body: 'FastAPI servisleri, PostgreSQL RLS ve harici API\'lar ile tenant-safe veri erişimi sağlanır.',
       capability_5_title: 'Rapor Üretimi',
-      capability_5_body: 'Teknik olmayan paydaşların kullanabileceği yapılandırılmış karar destek raporları otomatik olarak üretilir.',
+      capability_5_body: 'Teknik olmayan paydaşların kullanabileceği yapılandırılmış, karar destekleyici analitik raporları otomatik olarak üretilir.',
       capability_6_title: 'Ajan Orkestrasyonu',
-      capability_6_body: 'Erişim, akıl yürütme, araç kullanımı ve yanıtı tutarlı bir döngüde koordine eden LangChain LCEL pipeline\'ları.',
+      capability_6_body: 'Erişim, tool kullanımı ve yanıtları tutarlı bir döngüde birleştiren LangChain/LangGraph tabanlı ajan sistemleri.',
     },
     experience: { label: 'Deneyim', heading: 'İş Geçmişi' },
     education: { label: 'Eğitim', heading: 'Akademik Geçmiş' },

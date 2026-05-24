@@ -26,12 +26,12 @@ export function Experience() {
         <div className="relative space-y-8 before:absolute before:left-[1.35rem] before:top-3 before:hidden before:h-[calc(100%-1.5rem)] before:w-px before:bg-border md:before:block">
           {experience.map((entry) => (
             <article key={entry.id} className="relative grid gap-5 md:grid-cols-[3rem_190px_1fr] lg:grid-cols-[3rem_210px_1fr]">
-              <TimelineMarker label={entry.company[0]} />
+              <TimelineMarker label={entry.company[l][0]} />
               <div className="space-y-2 md:pt-1">
                 <span className="inline-flex rounded-full border border-border bg-surface/80 px-3 py-1 text-2xs font-mono text-text-muted shadow-card">
                   {entry.period}
                 </span>
-                <p className="text-sm font-semibold leading-5 text-accent md:max-w-[11rem] lg:max-w-none">{entry.company}</p>
+                <p className="text-sm font-semibold leading-5 text-accent md:max-w-[11rem] lg:max-w-none">{entry.company[l]}</p>
               </div>
 
               <div className="rounded-2xl border border-border bg-surface/72 p-5 shadow-card backdrop-blur transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-card-md">
