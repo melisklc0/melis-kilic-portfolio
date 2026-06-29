@@ -700,6 +700,244 @@ export const projects: Project[] = [
     },
   },
   {
+    id: 'agentic-rag',
+    featured: true,
+    status: 'public',
+    techStack: ['LangGraph', 'MCP', 'Qdrant', 'FastAPI', 'Redis', 'PostgreSQL', 'Arize Phoenix', 'OpenTelemetry', 'Ragas', 'Docker', 'Python'],
+    links: {
+      github: 'https://github.com/Melce-AI/agentic-rag',
+    },
+    en: {
+      title: 'Agentic RAG',
+      subtitle: 'Autonomous enterprise knowledge runtime',
+      badge: 'Open Source · Agentic',
+      supportingSummary:
+        'An enterprise-grade agentic knowledge runtime that connects documents, SQL databases, and log files through a secure MCP process boundary — every answer audited in a self-reflection loop, every credential isolated behind a subprocess, every quality regression blocked at CI.',
+      supportingImpact:
+        'Built against three failure modes common in production RAG: unverified answers, credentials exposed in agent code, and no measurable quality floor. The result is a multi-agent system where hallucinations trigger a retry rather than ship, data credentials never live in the agent process, and a Ragas faithfulness gate prevents quality regressions from reaching production.',
+      summary:
+        'An open-source knowledge runtime built around three guarantees most RAG systems can\'t make: every LLM answer is audited before it ships, every data credential lives behind a process boundary the agent can\'t cross, and every CI merge is blocked until quality clears the faithfulness threshold. A cyclical LangGraph loop (Researcher → Analyst → Auditor) over documents, SQL databases, and log files — with 4-stage hybrid retrieval, HITL approval for destructive SQL, and a Ragas faithfulness gate enforced in CI.',
+      roleLine: 'Role: Architect & Developer · Focus: multi-agent orchestration, MCP process isolation, hybrid search, faithfulness evals',
+      focusTitle: 'I built a RAG system where hallucinations trigger a retry, credentials never live in agent memory, and quality regressions block CI merges.',
+      focusSummary:
+        'The design is driven by three failure modes common in production RAG: unverified answers, credentials exposed in agent code, and no measurable quality floor. The solution combines a self-reflection Auditor loop, an MCP subprocess boundary that keeps data credentials out of agent memory, and a Ragas faithfulness gate that blocks CI merges below the quality threshold.',
+      metrics: [
+        { value: '20', label: 'retrieval candidates, reranked to Top-5' },
+        { value: '6', label: 'production services' },
+        { value: '4', label: 'retrieval stages' },
+        { value: '3', label: 'knowledge sources' },
+      ],
+      contributions: [
+        {
+          module: 'Multi-Agent Loop',
+          title: 'Built a cyclical self-reflection loop that retries on hallucination',
+          description:
+            'The system doesn\'t surface a bad answer — it catches the problem and retries. When the Auditor flags a hallucination, it rewrites the retrieval query with its critique and routes back to the Researcher, invisible to the user. A revision budget stops the loop if a question genuinely can\'t be answered reliably.',
+        },
+        {
+          module: 'MCP Process Boundary',
+          title: 'Isolated data credentials behind an MCP subprocess',
+          description:
+            'A compromised agent can\'t reach production data, because it never had access in the first place. All database handles and credentials live in a separate subprocess the agent communicates with through a tool API — not stored in agent memory. This is a structural isolation guarantee, not a policy you can accidentally override.',
+        },
+        {
+          module: 'Hybrid Search',
+          title: 'Combined dense, sparse, and cross-encoder reranking into one pipeline',
+          description:
+            'Semantic search misses exact terms; keyword search misses meaning. The pipeline runs both in parallel, fuses the top candidates, then re-scores each query-chunk pair with a cross-encoder — narrowing 20 candidates to the 5 most relevant chunks. Results improve over any single retrieval method alone.',
+        },
+        {
+          module: 'HITL Approval',
+          title: 'Suspended destructive SQL for human review without losing state',
+          description:
+            'Before any write or delete operation, the agent pauses and shows the user exactly what SQL it wants to run. Approval resumes the workflow; rejection discards it. Either way, no intermediate state is lost — the graph picks up exactly where it left off, backed by a Redis checkpoint.',
+        },
+        {
+          module: 'CI/CD Faithfulness Gate',
+          title: 'Blocked quality regressions at the merge boundary',
+          description:
+            'Every pull request runs the system against a hand-authored question set. If answer quality drops below the threshold, the merge is blocked automatically — the same guarantee a failing unit test provides for code correctness, applied to RAG answer quality. No human needs to remember to verify quality before shipping.',
+        },
+      ],
+      impact:
+        'Built a verifiable, credential-isolated, measurable RAG system: every answer audited in a self-reflection loop, all credentials behind a process boundary, hybrid retrieval with cross-encoder reranking, HITL approval for destructive operations, and a CI faithfulness gate that prevents quality regressions from reaching production.',
+    },
+    tr: {
+      title: 'Agentic RAG',
+      subtitle: 'Özerk kurumsal bilgi çalışma zamanı',
+      badge: 'Açık Kaynak · Agentic',
+      supportingSummary:
+        'Dokümanları, SQL veritabanlarını ve log dosyalarını güvenli bir MCP süreç sınırı üzerinden birbirine bağlayan, kurumsal düzeyde özerk bilgi çalışma zamanı — her yanıt self-reflection döngüsünde denetlenir, her kimlik bilgisi subprocess\'in arkasında tutulur, her kalite gerilemesi CI\'da engellenir.',
+      supportingImpact:
+        'Production RAG sistemlerinde sık karşılaşılan üç başarısızlık moduna karşı kurgulandı: Doğrulanmamış yanıtlar, agent kodunda açıkta duran kimlik bilgileri ve ölçülemeyen kalite tabanı. Sonuç; halüsinasyonların kullanıcıya ulaşmak yerine yeniden deneme tetiklediği, veri kimlik bilgilerinin asla agent sürecinde bulunmadığı ve bir Ragas faithfulness gate\'inin kalite gerilmelerini production\'a ulaşmadan engellediği bir multi-agent sistem.',
+      summary:
+        'Çoğu RAG sisteminin veremediği üç garantiye dayanan açık kaynaklı bir bilgi çalışma zamanı: her LLM yanıtı gönderilmeden önce denetlenir, tüm veri kimlik bilgileri agent\'ın geçemeyeceği bir süreç sınırının arkasında tutulur ve her CI merge kalite eşiğini geçene kadar engellenir. Dokümanlar, SQL veritabanları ve log dosyaları üzerinde döngüsel LangGraph mimarisi (Researcher → Analyst → Auditor) — 4 aşamalı hibrit arama, yıkıcı SQL için HITL onayı ve Ragas CI gate ile.',
+      roleLine: 'Rol: Mimar & Geliştirici · Odak: Multi-agent orkestrasyon, MCP süreç izolasyonu, hibrit arama, faithfulness eval',
+      focusTitle: 'Halüsinasyonların yeniden deneme tetiklediği, kimlik bilgilerinin agent belleğine hiç girmediği ve kalite hataları CI merge\'lerini engellediği bir RAG sistemi kurdum.',
+      focusSummary:
+        'Tasarım, production RAG sistemlerinde sık karşılaşılan üç başarısızlık moduna karşı kurgulandı: Doğrulanmamış yanıtlar, agent kodunda açıkta duran kimlik bilgileri ve ölçülemeyen kalite tabanı. Çözüm; self-reflection döngülü bir Auditor, veri kimlik bilgilerini agent belleğinin dışında tutan bir MCP subprocess sınırı ve kalite eşiğinin altındaki CI merge işlemlerini engelleyen bir Ragas faithfulness gate\'inden oluşuyor.',
+      metrics: [
+        { value: '20', label: 'Top-5\'e indirilen retrieval adayı' },
+        { value: '6', label: 'production servisi' },
+        { value: '4', label: 'retrieval aşaması' },
+        { value: '3', label: 'bilgi kaynağı' },
+      ],
+      contributions: [
+        {
+          module: 'Multi-Agent Döngüsü',
+          title: 'Halüsinasyon durumunda yeniden deneme yapan döngüsel self-reflection mimarisi',
+          description:
+            'Sistem kötü bir yanıt döndürmez — sorunu yakalar ve yeniden dener. Auditor bir halüsinasyon tespit ettiğinde eleştirisini bir sonraki retrieval sorgusuna gömer ve Researcher\'a yönlendirir; kullanıcı bu adımı hiç fark etmez. Bir soru güvenilir şekilde yanıtlanamıyorsa, revizyon bütçesi döngüyü durdurur.',
+        },
+        {
+          module: 'MCP Süreç Sınırı',
+          title: 'Veri kimlik bilgilerini MCP subprocess\'in arkasına izole etme',
+          description:
+            'Güvenliği ihlal edilmiş bir agent, production verisine erişemez — çünkü ona hiç erişim verilmemiştir. Tüm veritabanı bağlantıları ve kimlik bilgileri, agent\'ın bir araç API\'si üzerinden iletişim kurduğu ayrı bir subprocess\'te yaşar — agent belleğinde değil. Bu yapısal bir güvencedir; yanlışlıkla geçersiz kılınamaz.',
+        },
+        {
+          module: 'Hibrit Arama',
+          title: 'Dense, sparse ve cross-encoder reranking\'i tek pipeline\'da birleştirme',
+          description:
+            'Semantik arama tam terimleri kaçırır; anahtar kelime araması ise anlamsal benzerlikleri. Pipeline her ikisini paralel çalıştırır, en iyi adayları birleştirir, ardından her sorgu-chunk çiftini cross-encoder ile yeniden puanlar — 20 adayı en alakalı 5 chunk\'a indirgeyerek. Tek bir yönteme kıyasla daha doğru sonuçlar üretir.',
+        },
+        {
+          module: 'HITL Onayı',
+          title: 'Yıkıcı SQL işlemlerini state kaybetmeden insan onayına askıya alma',
+          description:
+            'Herhangi bir yazma veya silme işleminden önce agent durur ve çalıştırmak istediği SQL\'i kullanıcıya gösterir. Onay iş akışını devam ettirir; red, iptale yol açar. Her iki durumda da ara durum kaybolmaz — graph, Redis checkpoint\'inden kaldığı yerden devam eder.',
+        },
+        {
+          module: 'CI/CD Faithfulness Gate',
+          title: 'Kalite gerilmelerini merge sınırında engelleme',
+          description:
+            'Her pull request, sistem tarafından elle hazırlanmış bir soru seti üzerinde çalıştırılır. Yanıt kalitesi eşiğin altına düşerse merge otomatik olarak engellenir — bir unit test\'in kod doğruluğuna sağladığı güvencenin RAG yanıt kalitesine uygulanmış hali. Göndermeden önce kaliteyi kontrol etmeyi hatırlayan birine ihtiyaç yoktur.',
+        },
+      ],
+      impact:
+        'Doğrulanabilir, kimlik-izolasyonlu ve ölçülebilir bir RAG sistemi inşa ettim: Her yanıt self-reflection döngüsünde denetlenir, tüm kimlik bilgileri süreç sınırının arkasındadır, cross-encoder reranking ile hibrit erişim sağlanır, yıkıcı işlemler için HITL onayı zorunludur ve CI faithfulness gate kalite gerilmelerinin production\'a ulaşmasını engeller.',
+    },
+  },
+  {
+    id: 'analytics-copilot',
+    featured: true,
+    status: 'public',
+    techStack: ['LangGraph', 'dbt Core', 'PostgreSQL', 'sqlglot', 'FastAPI', 'Redis', 'Langfuse', 'Apache Superset', 'Python'],
+    links: {
+      github: 'https://github.com/melisklc0/analytics-copilot',
+    },
+    en: {
+      title: 'Analytics Copilot',
+      subtitle: 'NL2SQL over a dbt-governed warehouse',
+      badge: 'Open Source · NL2SQL',
+      supportingSummary:
+        'A natural-language query interface over a dbt-modeled PostgreSQL warehouse built on one structural rule: aggregation belongs to dbt, never the LLM. The AI generates only SELECT queries against pre-computed mart tables; a 3-layer sqlglot AST validator enforces this before any query reaches the database — even if the prompt is bypassed.',
+      supportingImpact:
+        'Showed that enforcing the aggregation boundary in data modeling rather than prompt engineering makes NL2SQL structurally safer: hallucinated GROUP BY is impossible by construction, business metrics are tested once in dbt, and the validator enforces the AI\'s constraint at the code level — not just in the system prompt.',
+      summary:
+        'An open-source NL2SQL analytics interface built on one structural guarantee: the LLM can never aggregate. All GROUP BY, JOIN, and SUM logic lives in tested dbt mart tables over the Olist e-commerce dataset — the AI only generates SELECT queries against pre-computed results. A 3-layer sqlglot AST validator enforces this at the code level, blocking writes, aggregations, and schema hallucinations before any query reaches PostgreSQL.',
+      roleLine: 'Role: Architect & Developer · Focus: dbt mart design, AST SQL validation, LangGraph workflow, security model',
+      focusTitle: 'I built a governed NL2SQL system where aggregation logic belongs to dbt, not the LLM.',
+      focusSummary:
+        'The core architectural decision is a strict separation of concerns: dbt aggregates, the AI only queries. Pre-computed mart tables mean GROUP BY logic is tested once in dbt and never re-invented by the LLM at runtime. The 3-layer sqlglot validator enforces this constraint structurally — even if the prompt is bypassed, the AST check rejects non-SELECT SQL before it reaches the database.',
+      metrics: [
+        { value: '99K+', label: 'orders in warehouse' },
+        { value: '14', label: 'dbt models' },
+        { value: '6', label: 'AI mart tables' },
+        { value: '3', label: 'validation layers' },
+      ],
+      contributions: [
+        {
+          module: 'dbt Data Foundation',
+          title: 'Designed mart tables so the LLM never needs to aggregate',
+          description:
+            'When the AI queries "revenue by category", the answer is already in a tested, versioned table — not computed by the LLM at runtime. Six AI-specific mart tables turn complex business metrics into documented columns the model can query directly, and their schema flows automatically into the system prompt so the AI only sees what it\'s allowed to ask for.',
+        },
+        {
+          module: '3-Layer SQL Validator',
+          title: 'Blocked writes, aggregations, and schema hallucinations at the AST level',
+          description:
+            'Even if the LLM hallucinates a GROUP BY or a prompt injection slips through, the query never reaches the database. Three independent checks run in sequence — query type, SQL structure, and schema — each catching a different failure mode. Any failure routes back into the retry loop with structured feedback rather than surfacing an error to the user.',
+        },
+        {
+          module: 'LangGraph Workflow',
+          title: 'Orchestrated the full NL → SQL → results pipeline in a retry loop',
+          description:
+            'When the AI generates invalid SQL, the workflow doesn\'t fail — it feeds the validation error back to the model and retries. Users see clean results or a polite fallback message; they never see a raw database error from a first attempt. The same retry pattern used in production agentic systems, applied to SQL correctness.',
+        },
+        {
+          module: 'Security Model',
+          title: 'Enforced read-only access at both the application and database layers',
+          description:
+            'Defence in depth: even if the validator has a bug, the database refuses writes at the connection role level. Even if the LLM generates a runaway query, the row limit and statement timeout contain the damage. Credentials are never logged — they live only as typed secrets, never as plain strings.',
+        },
+        {
+          module: 'Observability',
+          title: 'Made every workflow run traceable with Langfuse and structured logs',
+          description:
+            'Every query leaves a full trace: the SQL generated, whether validation passed, how long the round trip took, and whether the result came from cache. Repeat questions skip the LLM entirely via Redis — latency and cost drop to near zero on warm hits, and Langfuse makes it obvious when they do.',
+        },
+      ],
+      impact:
+        'Showed that enforcing an aggregation boundary in data modeling — not in prompt engineering — makes NL2SQL structurally safer: hallucinated GROUP BY is impossible by construction, business metrics are tested once in dbt, and the validator makes the AI\'s constraint enforceable at the code level, not just in the system prompt.',
+    },
+    tr: {
+      title: 'Analytics Copilot',
+      subtitle: 'dbt tabanlı bir veri ambarı üzerinde NL2SQL',
+      badge: 'Açık Kaynak · NL2SQL',
+      supportingSummary:
+        'dbt tabanlı PostgreSQL veri ambarı üzerinde tek bir yapısal kurala dayanan doğal dil sorgulama arayüzü: aggregation dbt\'ye ait, YZ\'ye değil. YZ yalnızca önceden hesaplanmış mart tablolarına SELECT sorguları üretir; 3 katmanlı sqlglot AST doğrulayıcı bunu veritabanına ulaşmadan uygular — sistem prompt\'u atlatılsa bile.',
+      supportingImpact:
+        'Aggregation sınırının prompt mühendisliğinde değil veri modellemesinde uygulanmasının NL2SQL\'i yapısal olarak daha güvenli kıldığını gösterdi: Halüsine GROUP BY yapısal olarak imkansız, iş metrikleri dbt\'de bir kez test edilmiş ve doğrulayıcı YZ kısıtlamasını yalnızca sistem prompt\'unda değil kod seviyesinde uyguluyor.',
+      summary:
+        'Tek bir yapısal garantiye dayanan açık kaynaklı NL2SQL analitik arayüzü: YZ hiçbir zaman aggregate edemez. Tüm GROUP BY, JOIN ve SUM mantığı, Olist e-ticaret veri seti üzerindeki test edilmiş dbt mart tablolarında yaşar — YZ yalnızca önceden hesaplanmış sonuçlara SELECT sorguları üretir. 3 katmanlı sqlglot AST doğrulayıcı bunu kod düzeyinde uygular; yazma işlemlerini, aggregation\'ları ve şema halüsinasyonlarını herhangi bir sorgu PostgreSQL\'e ulaşmadan engeller.',
+      roleLine: 'Rol: Mimar & Geliştirici · Odak: dbt mart tasarımı, AST SQL doğrulama, LangGraph iş akışı, güvenlik modeli',
+      focusTitle: 'Aggregation mantığının LLM\'e değil dbt\'ye ait olduğu, yönetilen bir NL2SQL sistemi kurdum.',
+      focusSummary:
+        'Temel mimari karar, sorumlulukların net ayrımıdır: dbt toplar, YZ yalnızca sorgular. Önceden hesaplanmış mart tabloları, GROUP BY mantığının dbt\'de bir kez test edilmesi ve LLM tarafından çalışma zamanında (runtime) asla yeniden icat edilmemesi anlamına gelir. 3 katmanlı sqlglot doğrulayıcı bu kısıtlamayı yapısal olarak uygular — prompt atlatılsa bile AST kontrolü SELECT dışındaki SQL\'i veritabanına ulaşmadan reddeder.',
+      metrics: [
+        { value: '99K+', label: 'veri ambarındaki sipariş' },
+        { value: '14', label: 'dbt modeli' },
+        { value: '6', label: 'AI mart tablosu' },
+        { value: '3', label: 'doğrulama katmanı' },
+      ],
+      contributions: [
+        {
+          module: 'dbt Veri Temeli',
+          title: 'LLM\'in asla aggregate etmesine gerek kalmayacak mart tabloları tasarlama',
+          description:
+            'YZ "kategoriye göre gelir"i sorguladığında, yanıt zaten test edilmiş ve versiyonlanmış bir tabloda hazır bekler — YZ tarafından çalışma zamanında hesaplanmaz. Altı YZ\'ye özgü mart tablosu, karmaşık iş metriklerini modelin doğrudan sorgulayabileceği belgelenmiş sütunlara dönüştürür; şema otomatik olarak sistem prompt\'una akar, YZ yalnızca sorgulamasına izin verilen verileri görür.',
+        },
+        {
+          module: '3 Katmanlı SQL Doğrulayıcı',
+          title: 'Yazma işlemlerini, aggregation\'ları ve şema halüsinasyonlarını AST seviyesinde engelleme',
+          description:
+            'LLM bir GROUP BY üretse ya da prompt injection girişimi olsa bile, sorgu veritabanına hiç ulaşmaz. Üç bağımsız kontrol sırayla çalışır — sorgu türü, SQL yapısı ve şema — her katman farklı hata türlerini yakalar. Herhangi bir başarısızlık, kullanıcıya hata göstermek yerine yapılandırılmış geri bildirimle yeniden deneme döngüsüne yönlendirilir.',
+        },
+        {
+          module: 'LangGraph İş Akışı',
+          title: 'NL → SQL → sonuç pipeline\'ını yeniden deneme döngüsünde orkestre etme',
+          description:
+            'YZ geçersiz SQL ürettiğinde sistem başarısız olmaz — doğrulama hatasını modele geri iletir ve yeniden dener. Kullanıcılar temiz sonuçlar veya kibar bir yedek mesaj görür; ilk denemeden gelen ham bir veritabanı hatasıyla hiç karşılaşmazlar. Production agentic sistemlerde kullanılan yeniden deneme kalıbının SQL doğruluğuna uygulanmış hali.',
+        },
+        {
+          module: 'Güvenlik Modeli',
+          title: 'Uygulama ve veritabanı katmanlarında read-only erişimi zorunlu kılma',
+          description:
+            'Derinlemesine savunma: doğrulayıcının bir hatası olsa bile veritabanı bağlantı rolü seviyesinde yazmaları reddeder. LLM sonsuz çalışan bir sorgu üretse bile, satır limiti ve deyim zaman aşımı hasarı sınırlar. Kimlik bilgileri hiçbir zaman loglanmaz — yalnızca typed secret olarak yaşar, düz metin string olarak değil.',
+        },
+        {
+          module: 'Gözlemlenebilirlik',
+          title: 'Her iş akışı çalışmasını Langfuse ve yapılandırılmış loglarla izlenebilir kılma',
+          description:
+            'Her sorgu tam bir iz bırakır: üretilen SQL, doğrulamadan geçip geçmediği, round-trip süresi ve sonucun önbellekten gelip gelmediği. Tekrarlanan sorular Redis aracılığıyla LLM\'i tamamen atlar — sıcak cache hit\'lerinde gecikme ve maliyet sıfıra yaklaşır; Langfuse bunu ne zaman yaptığını açıkça gösterir.',
+        },
+      ],
+      impact:
+        'Aggregation sınırının prompt mühendisliğinde değil veri modellemesinde uygulanmasının NL2SQL\'i yapısal olarak daha güvenli kıldığını gösterdim: Halüsine GROUP BY yapısal olarak imkansız, iş metrikleri dbt\'de bir kez test edilmiş ve doğrulayıcı YZ kısıtlamasını yalnızca sistem prompt\'unda değil kod seviyesinde uygulanabilir hale getiriyor.',
+    },
+  },
+  {
     id: 'stroke-classification',
     featured: true,
     status: 'academic',
