@@ -6,7 +6,7 @@ const copy = {
     heading: 'About Me',
     body: [
       <>I am an AI Engineer focused on LLMs, multi-agent architectures, and modern data stacks, with a Computer Engineering background and hands-on production experience.</>,
-      <>At Qkare, I work across agent orchestration, RAG pipelines, FastAPI services, dbt + PostgreSQL data models, and Superset-based analytics layers. I care about systems that are not only impressive in demos, but also observable, maintainable, and useful in real workflows.</>,
+      <>At QKare, I work across agent orchestration, RAG pipelines, FastAPI services, dbt + PostgreSQL data models, and Superset-based analytics layers on a B2B HR analytics platform. I care about systems that are not only impressive in demos, but also observable, maintainable, and useful in real workflows.</>,
       <>My work spans structured LLM output, Pydantic validation, retrieval patterns, LLM-as-judge evaluation, deep learning experiments, and cost-aware inference pipelines from research prototypes to production B2B products.</>,
     ],
     stats: [
@@ -20,7 +20,7 @@ const copy = {
     heading: 'Hakkımda',
     body: [
       <>LLM'ler, multi-agent mimariler ve modern veri stackleri üzerine çalışan bir AI Engineer'ım; bilgisayar mühendisliği geçmişimi üretim ortamındaki pratik sistemlerle birleştiriyorum.</>,
-      <>Qkare'de agent orchestration, RAG pipeline'ları, FastAPI servisleri, dbt + PostgreSQL veri modelleri ve Superset tabanlı analitik katmanları üzerinde çalışıyorum. Demo'da iyi görünen değil, izlenebilir, sürdürülebilir ve gerçek iş akışlarında kullanılan sistemler kurmayı önemsiyorum.</>,
+      <>QKare'de bir B2B İK analitiği platformunda agent orchestration, RAG pipeline'ları, FastAPI servisleri, dbt + PostgreSQL veri modelleri ve Superset tabanlı analitik katmanları üzerinde çalışıyorum. Demo'da iyi görünen değil, izlenebilir, sürdürülebilir ve gerçek iş akışlarında kullanılan sistemler kurmayı önemsiyorum.</>,
       <>Çalışmalarım structured LLM output, Pydantic validation, retrieval pattern'ları, LLM-as-judge değerlendirme, deep learning denemeleri ve maliyet duyarlı inference pipeline'larını kapsıyor.</>,
     ],
     stats: [

@@ -703,7 +703,7 @@ export const projects: Project[] = [
     id: 'agentic-rag',
     featured: true,
     status: 'public',
-    techStack: ['LangGraph', 'MCP', 'Qdrant', 'FastAPI', 'Redis', 'PostgreSQL', 'Arize Phoenix', 'OpenTelemetry', 'Ragas', 'Docker', 'Python'],
+    techStack: ['LangGraph', 'MCP', 'Qdrant', 'FastAPI', 'Redis', 'PostgreSQL', 'Arize Phoenix', 'OpenTelemetry', 'Docker', 'Python'],
     links: {
       github: 'https://github.com/Melce-AI/agentic-rag',
     },
@@ -712,15 +712,15 @@ export const projects: Project[] = [
       subtitle: 'Autonomous enterprise knowledge runtime',
       badge: 'Open Source · Agentic',
       supportingSummary:
-        'An enterprise-grade agentic knowledge runtime that connects documents, SQL databases, and log files through a secure MCP process boundary — every answer audited in a self-reflection loop, every credential isolated behind a subprocess, every quality regression blocked at CI.',
+        'An enterprise-grade agentic knowledge runtime that connects documents, SQL databases, and log files through a secure MCP process boundary — every answer audited in a self-reflection loop, every credential isolated behind a subprocess, every write suspended for human approval.',
       supportingImpact:
-        'Built against three failure modes common in production RAG: unverified answers, credentials exposed in agent code, and no measurable quality floor. The result is a multi-agent system where hallucinations trigger a retry rather than ship, data credentials never live in the agent process, and a Ragas faithfulness gate prevents quality regressions from reaching production.',
+        'Built against three failure modes common in production RAG: unverified answers, credentials exposed in agent code, and agents given more database power than the task needs. The result is a multi-agent system where hallucinations trigger a retry rather than ship, data credentials never live in the agent process, and no destructive SQL runs without a human saying yes.',
       summary:
-        'An open-source knowledge runtime built around three guarantees most RAG systems can\'t make: every LLM answer is audited before it ships, every data credential lives behind a process boundary the agent can\'t cross, and every CI merge is blocked until quality clears the faithfulness threshold. A cyclical LangGraph loop (Researcher → Analyst → Auditor) over documents, SQL databases, and log files — with 4-stage hybrid retrieval, HITL approval for destructive SQL, and a Ragas faithfulness gate enforced in CI.',
-      roleLine: 'Role: Architect & Developer · Focus: multi-agent orchestration, MCP process isolation, hybrid search, faithfulness evals',
-      focusTitle: 'I built a RAG system where hallucinations trigger a retry, credentials never live in agent memory, and quality regressions block CI merges.',
+        'An open-source knowledge runtime built around three guarantees most RAG systems can\'t make: every LLM answer is audited before it ships, every data credential lives behind a process boundary the agent can\'t cross, and every SQL path is read-only unless a human approves otherwise. A cyclical LangGraph loop (Researcher → Analyst → Auditor) over documents, SQL databases, and log files — with 4-stage hybrid retrieval, HITL approval for destructive SQL, and OpenTelemetry tracing into Arize Phoenix.',
+      roleLine: 'Role: Architect & Developer · Focus: multi-agent orchestration, MCP process isolation, hybrid search, SQL safety model',
+      focusTitle: 'I built a RAG system where hallucinations trigger a retry, credentials never live in agent memory, and no agent can write to a database unattended.',
       focusSummary:
-        'The design is driven by three failure modes common in production RAG: unverified answers, credentials exposed in agent code, and no measurable quality floor. The solution combines a self-reflection Auditor loop, an MCP subprocess boundary that keeps data credentials out of agent memory, and a Ragas faithfulness gate that blocks CI merges below the quality threshold.',
+        'The design is driven by three failure modes common in production RAG: unverified answers, credentials exposed in agent code, and agents handed more database privilege than the task needs. The solution combines a self-reflection Auditor loop, an MCP subprocess boundary that keeps data credentials out of agent memory, and a two-layer SQL safety model where a read-only guard and a least-privilege Postgres role both have to be defeated before a write can happen.',
       metrics: [
         { value: '20', label: 'retrieval candidates, reranked to Top-5' },
         { value: '6', label: 'production services' },
@@ -753,29 +753,35 @@ export const projects: Project[] = [
             'Before any write or delete operation, the agent pauses and shows the user exactly what SQL it wants to run. Approval resumes the workflow; rejection discards it. Either way, no intermediate state is lost — the graph picks up exactly where it left off, backed by a Redis checkpoint.',
         },
         {
-          module: 'CI/CD Faithfulness Gate',
-          title: 'Blocked quality regressions at the merge boundary',
+          module: 'Two-Layer SQL Safety',
+          title: 'Made read-only the default that takes two failures to break',
           description:
-            'Every pull request runs the system against a hand-authored question set. If answer quality drops below the threshold, the merge is blocked automatically — the same guarantee a failing unit test provides for code correctness, applied to RAG answer quality. No human needs to remember to verify quality before shipping.',
+            'The agent\'s SQL tools are read-only by design, and it takes two independent failures to change that: a guard in the MCP tool layer rejects any non-read statement, and the adapter connects through a least-privilege Postgres role that has no write grant to begin with. A prompt injection that slips past the first layer still meets a database that refuses the query.',
+        },
+        {
+          module: 'Observability',
+          title: 'Traced every agent run with OpenTelemetry into Arize Phoenix',
+          description:
+            'A multi-agent loop is hard to debug from logs alone — you need to see which node re-retrieved, what the Auditor objected to, and how many revisions a question cost. OTEL spans stream into Arize Phoenix with LLM-native semantic conventions, and structured JSON logs carry a request ID across every line of the same run.',
         },
       ],
       impact:
-        'Built a verifiable, credential-isolated, measurable RAG system: every answer audited in a self-reflection loop, all credentials behind a process boundary, hybrid retrieval with cross-encoder reranking, HITL approval for destructive operations, and a CI faithfulness gate that prevents quality regressions from reaching production.',
+        'Built a verifiable, credential-isolated RAG system: every answer audited in a self-reflection loop, all credentials behind a process boundary, hybrid retrieval with cross-encoder reranking, HITL approval for destructive operations, and full OTEL tracing so an agent run can be reconstructed after the fact.',
     },
     tr: {
       title: 'Agentic RAG',
       subtitle: 'Özerk kurumsal bilgi çalışma zamanı',
       badge: 'Açık Kaynak · Agentic',
       supportingSummary:
-        'Dokümanları, SQL veritabanlarını ve log dosyalarını güvenli bir MCP süreç sınırı üzerinden birbirine bağlayan, kurumsal düzeyde özerk bilgi çalışma zamanı — her yanıt self-reflection döngüsünde denetlenir, her kimlik bilgisi subprocess\'in arkasında tutulur, her kalite gerilemesi CI\'da engellenir.',
+        'Dokümanları, SQL veritabanlarını ve log dosyalarını güvenli bir MCP süreç sınırı üzerinden birbirine bağlayan, kurumsal düzeyde özerk bilgi çalışma zamanı — her yanıt self-reflection döngüsünde denetlenir, her kimlik bilgisi subprocess\'in arkasında tutulur, her yazma işlemi insan onayına askıya alınır.',
       supportingImpact:
-        'Production RAG sistemlerinde sık karşılaşılan üç başarısızlık moduna karşı kurgulandı: Doğrulanmamış yanıtlar, agent kodunda açıkta duran kimlik bilgileri ve ölçülemeyen kalite tabanı. Sonuç; halüsinasyonların kullanıcıya ulaşmak yerine yeniden deneme tetiklediği, veri kimlik bilgilerinin asla agent sürecinde bulunmadığı ve bir Ragas faithfulness gate\'inin kalite gerilmelerini production\'a ulaşmadan engellediği bir multi-agent sistem.',
+        'Production RAG sistemlerinde sık karşılaşılan üç başarısızlık moduna karşı kurgulandı: Doğrulanmamış yanıtlar, agent kodunda açıkta duran kimlik bilgileri ve agent\'a işin gerektirdiğinden fazla veritabanı yetkisi verilmesi. Sonuç; halüsinasyonların kullanıcıya ulaşmak yerine yeniden deneme tetiklediği, veri kimlik bilgilerinin asla agent sürecinde bulunmadığı ve hiçbir yıkıcı SQL\'in insan onayı olmadan çalışmadığı bir multi-agent sistem.',
       summary:
-        'Çoğu RAG sisteminin veremediği üç garantiye dayanan açık kaynaklı bir bilgi çalışma zamanı: her LLM yanıtı gönderilmeden önce denetlenir, tüm veri kimlik bilgileri agent\'ın geçemeyeceği bir süreç sınırının arkasında tutulur ve her CI merge kalite eşiğini geçene kadar engellenir. Dokümanlar, SQL veritabanları ve log dosyaları üzerinde döngüsel LangGraph mimarisi (Researcher → Analyst → Auditor) — 4 aşamalı hibrit arama, yıkıcı SQL için HITL onayı ve Ragas CI gate ile.',
-      roleLine: 'Rol: Mimar & Geliştirici · Odak: Multi-agent orkestrasyon, MCP süreç izolasyonu, hibrit arama, faithfulness eval',
-      focusTitle: 'Halüsinasyonların yeniden deneme tetiklediği, kimlik bilgilerinin agent belleğine hiç girmediği ve kalite hataları CI merge\'lerini engellediği bir RAG sistemi kurdum.',
+        'Çoğu RAG sisteminin veremediği üç garantiye dayanan açık kaynaklı bir bilgi çalışma zamanı: her LLM yanıtı gönderilmeden önce denetlenir, tüm veri kimlik bilgileri agent\'ın geçemeyeceği bir süreç sınırının arkasında tutulur ve bir insan aksini onaylamadıkça her SQL yolu salt-okunurdur. Dokümanlar, SQL veritabanları ve log dosyaları üzerinde döngüsel LangGraph mimarisi (Researcher → Analyst → Auditor) — 4 aşamalı hibrit arama, yıkıcı SQL için HITL onayı ve Arize Phoenix\'e akan OpenTelemetry tracing ile.',
+      roleLine: 'Rol: Mimar & Geliştirici · Odak: Multi-agent orkestrasyon, MCP süreç izolasyonu, hibrit arama, SQL güvenlik modeli',
+      focusTitle: 'Halüsinasyonların yeniden deneme tetiklediği, kimlik bilgilerinin agent belleğine hiç girmediği ve hiçbir agent\'ın veritabanına başıboş yazamadığı bir RAG sistemi kurdum.',
       focusSummary:
-        'Tasarım, production RAG sistemlerinde sık karşılaşılan üç başarısızlık moduna karşı kurgulandı: Doğrulanmamış yanıtlar, agent kodunda açıkta duran kimlik bilgileri ve ölçülemeyen kalite tabanı. Çözüm; self-reflection döngülü bir Auditor, veri kimlik bilgilerini agent belleğinin dışında tutan bir MCP subprocess sınırı ve kalite eşiğinin altındaki CI merge işlemlerini engelleyen bir Ragas faithfulness gate\'inden oluşuyor.',
+        'Tasarım, production RAG sistemlerinde sık karşılaşılan üç başarısızlık moduna karşı kurgulandı: Doğrulanmamış yanıtlar, agent kodunda açıkta duran kimlik bilgileri ve agent\'a işin gerektirdiğinden fazla veritabanı yetkisi verilmesi. Çözüm; self-reflection döngülü bir Auditor, veri kimlik bilgilerini agent belleğinin dışında tutan bir MCP subprocess sınırı ve bir yazma işleminin gerçekleşmesi için hem salt-okunur guard\'ın hem de en az yetkili Postgres rolünün aşılmasını gerektiren iki katmanlı bir SQL güvenlik modelinden oluşuyor.',
       metrics: [
         { value: '20', label: 'Top-5\'e indirilen retrieval adayı' },
         { value: '6', label: 'production servisi' },
@@ -808,14 +814,20 @@ export const projects: Project[] = [
             'Herhangi bir yazma veya silme işleminden önce agent durur ve çalıştırmak istediği SQL\'i kullanıcıya gösterir. Onay iş akışını devam ettirir; red, iptale yol açar. Her iki durumda da ara durum kaybolmaz — graph, Redis checkpoint\'inden kaldığı yerden devam eder.',
         },
         {
-          module: 'CI/CD Faithfulness Gate',
-          title: 'Kalite gerilmelerini merge sınırında engelleme',
+          module: 'İki Katmanlı SQL Güvenliği',
+          title: 'Salt-okunurluğu, kırılması için iki bağımsız hata gereken bir varsayılan haline getirme',
           description:
-            'Her pull request, sistem tarafından elle hazırlanmış bir soru seti üzerinde çalıştırılır. Yanıt kalitesi eşiğin altına düşerse merge otomatik olarak engellenir — bir unit test\'in kod doğruluğuna sağladığı güvencenin RAG yanıt kalitesine uygulanmış hali. Göndermeden önce kaliteyi kontrol etmeyi hatırlayan birine ihtiyaç yoktur.',
+            'Agent\'ın SQL araçları tasarım gereği salt-okunurdur ve bunun değişmesi için iki bağımsız katmanın birden aşılması gerekir: MCP tool katmanındaki guard okuma dışındaki her ifadeyi reddeder, adapter ise zaten hiç yazma yetkisi olmayan en az yetkili bir Postgres rolüyle bağlanır. İlk katmanı geçen bir prompt injection, sorguyu reddeden bir veritabanıyla karşılaşır.',
+        },
+        {
+          module: 'Gözlemlenebilirlik',
+          title: 'Her agent çalışmasını OpenTelemetry ile Arize Phoenix\'e izletme',
+          description:
+            'Multi-agent bir döngüyü sadece loglardan hata ayıklamak zordur — hangi node\'un yeniden retrieval yaptığını, Auditor\'ın neye itiraz ettiğini ve bir sorunun kaç revizyona mal olduğunu görmek gerekir. OTEL span\'leri LLM\'e özgü semantic convention\'larla Arize Phoenix\'e akar; yapılandırılmış JSON loglar ise aynı çalışmanın her satırında bir request ID taşır.',
         },
       ],
       impact:
-        'Doğrulanabilir, kimlik-izolasyonlu ve ölçülebilir bir RAG sistemi inşa ettim: Her yanıt self-reflection döngüsünde denetlenir, tüm kimlik bilgileri süreç sınırının arkasındadır, cross-encoder reranking ile hibrit erişim sağlanır, yıkıcı işlemler için HITL onayı zorunludur ve CI faithfulness gate kalite gerilmelerinin production\'a ulaşmasını engeller.',
+        'Doğrulanabilir ve kimlik-izolasyonlu bir RAG sistemi inşa ettim: Her yanıt self-reflection döngüsünde denetlenir, tüm kimlik bilgileri süreç sınırının arkasındadır, cross-encoder reranking ile hibrit erişim sağlanır, yıkıcı işlemler için HITL onayı zorunludur ve OTEL tracing sayesinde bir agent çalışması sonradan yeniden kurgulanabilir.',
     },
   },
   {
@@ -842,7 +854,7 @@ export const projects: Project[] = [
         'The core architectural decision is a strict separation of concerns: dbt aggregates, the AI only queries. Pre-computed mart tables mean GROUP BY logic is tested once in dbt and never re-invented by the LLM at runtime. The 3-layer sqlglot validator enforces this constraint structurally — even if the prompt is bypassed, the AST check rejects non-SELECT SQL before it reaches the database.',
       metrics: [
         { value: '99K+', label: 'orders in warehouse' },
-        { value: '14', label: 'dbt models' },
+        { value: '26', label: 'dbt models' },
         { value: '6', label: 'AI mart tables' },
         { value: '3', label: 'validation layers' },
       ],
@@ -877,6 +889,12 @@ export const projects: Project[] = [
           description:
             'Every query leaves a full trace: the SQL generated, whether validation passed, how long the round trip took, and whether the result came from cache. Repeat questions skip the LLM entirely via Redis — latency and cost drop to near zero on warm hits, and Langfuse makes it obvious when they do.',
         },
+        {
+          module: 'Embedded BI Layer',
+          title: 'Served the same dbt foundation to business users through Superset',
+          description:
+            'Not every question deserves an LLM — some are just a dashboard. A separate `dashboard` mart subdirectory is denormalized for fast GROUP BY in Superset, while the AI marts are shaped so the model never needs to GROUP BY at all: same dbt foundation, two mart grains for two consumers. Dashboards embed through a guest-token endpoint backed by a `superset_ro` role with SELECT on the mart schema only, and the dashboard export is committed and auto-imported so a fresh clone renders against real data.',
+        },
       ],
       impact:
         'Showed that enforcing an aggregation boundary in data modeling — not in prompt engineering — makes NL2SQL structurally safer: hallucinated GROUP BY is impossible by construction, business metrics are tested once in dbt, and the validator makes the AI\'s constraint enforceable at the code level, not just in the system prompt.',
@@ -897,7 +915,7 @@ export const projects: Project[] = [
         'Temel mimari karar, sorumlulukların net ayrımıdır: dbt toplar, YZ yalnızca sorgular. Önceden hesaplanmış mart tabloları, GROUP BY mantığının dbt\'de bir kez test edilmesi ve LLM tarafından çalışma zamanında (runtime) asla yeniden icat edilmemesi anlamına gelir. 3 katmanlı sqlglot doğrulayıcı bu kısıtlamayı yapısal olarak uygular — prompt atlatılsa bile AST kontrolü SELECT dışındaki SQL\'i veritabanına ulaşmadan reddeder.',
       metrics: [
         { value: '99K+', label: 'veri ambarındaki sipariş' },
-        { value: '14', label: 'dbt modeli' },
+        { value: '26', label: 'dbt modeli' },
         { value: '6', label: 'AI mart tablosu' },
         { value: '3', label: 'doğrulama katmanı' },
       ],
@@ -931,6 +949,12 @@ export const projects: Project[] = [
           title: 'Her iş akışı çalışmasını Langfuse ve yapılandırılmış loglarla izlenebilir kılma',
           description:
             'Her sorgu tam bir iz bırakır: üretilen SQL, doğrulamadan geçip geçmediği, round-trip süresi ve sonucun önbellekten gelip gelmediği. Tekrarlanan sorular Redis aracılığıyla LLM\'i tamamen atlar — sıcak cache hit\'lerinde gecikme ve maliyet sıfıra yaklaşır; Langfuse bunu ne zaman yaptığını açıkça gösterir.',
+        },
+        {
+          module: 'Gömülü BI Katmanı',
+          title: 'Aynı dbt temelini Superset üzerinden iş birimlerine de açma',
+          description:
+            'Her soru bir LLM hak etmez — bazıları sadece bir dashboard\'dur. Ayrı bir `dashboard` mart klasörü Superset\'te hızlı GROUP BY için denormalize edilirken, AI martları modelin hiç GROUP BY yapmasına gerek kalmayacak şekilde biçimlendirildi: aynı dbt temeli, iki tüketici için iki farklı mart grain\'i. Panolar, yalnızca mart şemasında SELECT yetkisi olan bir `superset_ro` rolüne dayanan guest-token endpoint\'i üzerinden gömülür; dashboard export\'u repoya işlenip otomatik import edildiği için temiz bir clone gerçek veriyle açılır.',
         },
       ],
       impact:
