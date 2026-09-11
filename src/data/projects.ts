@@ -815,7 +815,7 @@ export const projects: Project[] = [
         },
         {
           module: 'İki Katmanlı SQL Güvenliği',
-          title: 'Salt-okunurluğu, kırılması için iki bağımsız hata gereken bir varsayılan haline getirme',
+          title: 'Salt-okunurluğu iki bağımsız katmanla güvence altına alma',
           description:
             'Agent\'ın SQL araçları tasarım gereği salt-okunurdur ve bunun değişmesi için iki bağımsız katmanın birden aşılması gerekir: MCP tool katmanındaki guard okuma dışındaki her ifadeyi reddeder, adapter ise zaten hiç yazma yetkisi olmayan en az yetkili bir Postgres rolüyle bağlanır. İlk katmanı geçen bir prompt injection, sorguyu reddeden bir veritabanıyla karşılaşır.',
         },
